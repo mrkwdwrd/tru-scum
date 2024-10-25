@@ -1,4 +1,5 @@
 <script setup>
+import Camera from '@/components/Camera.vue'
 import Scene from '@/components/Scene.vue'
 import { onMounted, ref } from 'vue';
 
@@ -16,6 +17,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <Camera v-show="false" />
   <Scene v-if="scene === 1" :id="1" />
   <Scene v-if="scene === 2" :id="2" />
 </template>

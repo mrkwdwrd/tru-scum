@@ -5,6 +5,6 @@ const props = defineProps({
 })
 </script>
 <template>
- <p>Scene: {{ id }}</p>
- <Camera />
+  <p>Scene: {{ id }}</p>
+  <Camera :id="`s${id}c1`"/>
 </template>
