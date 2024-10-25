@@ -8,9 +8,7 @@ const startCamera = () => {
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true })
           .then((stream) => {
-            if (props.id) {
-              video.srcObject = stream
-            }
+            video.srcObject = stream
           })
           .catch(function(error) {
               console.log("Something went wrong!")
@@ -24,7 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <video :id="`${id}-video`" autoplay></video>
+  <video :id="`${id}-video`" autoplay v-show="id"></video>
   <small>{{ id }}</small>
 </template>
 
