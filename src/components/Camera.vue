@@ -23,7 +23,6 @@ onMounted(() => {
 
 <template>
   <video :id="`${id}-video`" autoplay v-show="id"></video>
-  <small>{{ id }}</small>
 </template>
 
 <style scoped>

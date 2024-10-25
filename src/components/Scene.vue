@@ -1,5 +1,4 @@
 <script setup>
-import Camera from '@/components/Camera.vue'
 const props = defineProps({
   id: Number
 })
@@ -8,7 +7,7 @@ const props = defineProps({
 <template>
   <section>
     <div class="debug">Scene: {{ id }}</div>
-    <Camera :id="`s${id}c1`"/>
+    <slot />
   </section>
 </template>
 
