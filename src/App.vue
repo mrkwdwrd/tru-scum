@@ -3,7 +3,7 @@ import Camera from '@/components/Camera.vue'
 </script>
 
 <template>
-  <Camera />
+  <Camera id="cam-1"/>
 </template>
 
 <style scoped>

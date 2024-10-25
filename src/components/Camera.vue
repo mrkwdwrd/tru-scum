@@ -1,8 +1,10 @@
 <script setup>
 import { onMounted } from 'vue';
-
+const props = defineProps({
+  id: String
+})
 const startCamera = () => {
-    const video = document.getElementById('video')
+    const video = document.getElementById(`${props.id}-video`)
     if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true })
           .then((stream) => {
@@ -20,7 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <video id="video" autoplay></video>
+  <video :id="`${id}-video`" autoplay></video>
 </template>
 
 <style scoped>
