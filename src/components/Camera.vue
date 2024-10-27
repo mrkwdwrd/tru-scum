@@ -22,8 +22,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <video :id="`${id}-video`" autoplay v-show="id"></video>
+  <video v-show="id" :id="`${id}-video`" autoplay class="w-full h-fit"></video>
 </template>
 
-<style scoped>
+<style lang="css" scoped>
 </style>

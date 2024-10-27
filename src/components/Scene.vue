@@ -5,24 +5,18 @@ const props = defineProps({
 </script>
 
 <template>
-  <section>
+  <section class="relative h-full w-full">
     <div class="debug">Scene: {{ id }}</div>
     <slot />
   </section>
 </template>
 
-<style scoped>
-  section {
-    position: relative;
-    height: 100%;
-    width: 100%;
-  }
+<style lang="css" scoped>
   .debug {
     position: absolute;
-    background: #000;
+    background: #333;
     bottom: 0;
     left: 0;
-    width: 100%;
     color: #666;
     padding: 5px 10px;
     font-size: 11px;

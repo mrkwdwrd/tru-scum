@@ -10,6 +10,9 @@ const keyListener = (e) => {
   if (e.code === 'Space') {
     scene.value = scene.value ? scene.value + 1 : 1
   }
+  if (e.code === 'Backspace') {
+    scene.value = scene.value ? scene.value - 1 : null
+  }
 }
 
 onMounted(() => {
@@ -25,7 +28,7 @@ onMounted(() => {
   </main>
 </template>
 
-<style scoped>
+<style lang="css" scoped>
   main {
     position: fixed;
     height: 100vh;
