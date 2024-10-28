@@ -1,8 +1,12 @@
 <script setup>
 import Camera from '@/components/Camera.vue'
-import SceneOne from './scenes/SceneOne.vue';
-import SceneTwo from './scenes/SceneTwo.vue';
-import { onMounted, ref } from 'vue';
+import SceneOne from '@/scenes/SceneOne.vue'
+import SceneTwo from '@/scenes/SceneTwo.vue'
+import { onMounted, ref } from 'vue'
+
+const elem = document.documentElement
+
+const fullScreen = ref(false)
 
 const scene = ref(null)
 
@@ -15,21 +19,16 @@ const keyListener = (e) => {
   }
 }
 
-const elem = document.documentElement
-
-const fullScreen = ref(false)
-
 const enterFullScreen = () => {
   if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
+    elem.requestFullscreen()
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen()
+  } else if (elem.msRequestFullscreen) {
+    elem.msRequestFullscreen()
   }
   fullScreen.value = true
 }
-
 
 onMounted(() => {
   document.addEventListener('keydown', keyListener)
@@ -39,7 +38,11 @@ onMounted(() => {
 <template>
   <Camera v-show="false" v-if="!scene"/>
   <main>
-    <button v-if="!fullScreen" @click="enterFullScreen" class="absolute text-white top-0 right-0 left-0 bottom-0">Enter Full Screen</button>
+    <button v-if="!fullScreen"
+      @click="enterFullScreen"
+      class="absolute text-white top-0 right-0 left-0 bottom-0">
+      Enter Full Screen
+    </button>
     <SceneOne v-if="scene === 1" :id="1" />
     <SceneTwo v-if="scene === 2" :id="2" />
   </main>
