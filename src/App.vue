@@ -21,7 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Camera v-show="false" />
+  <Camera v-show="false" v-if="!scene"/>
   <main>
     <SceneOne v-if="scene === 1" :id="1" />
     <SceneTwo v-if="scene === 2" :id="2" />

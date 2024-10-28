@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <Scene :id="id" class="bg-gray-200">
+  <Scene :id="id" class="bg-gray-200 max-w-[1980px] mx-auto">
     <div class="flex h-full items-center">
       <div class="w-2/3 p-5 flex items-center flex-col">
         <Camera :id="`s${id}c1`"/>

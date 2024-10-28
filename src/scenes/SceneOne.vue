@@ -8,7 +8,7 @@
 </script>
 
 <template>
-  <Scene :id="id">
+  <Scene :id="id" class="bg-gray-200 max-w-[1980px] mx-auto">
       <Camera :id="`s${id}c1`"/>
   </Scene>
 </template>
