@@ -15,6 +15,22 @@ const keyListener = (e) => {
   }
 }
 
+const elem = document.documentElement
+
+const fullScreen = ref(false)
+
+const enterFullScreen = () => {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+  fullScreen.value = true
+}
+
+
 onMounted(() => {
   document.addEventListener('keydown', keyListener)
 })
@@ -23,6 +39,7 @@ onMounted(() => {
 <template>
   <Camera v-show="false" v-if="!scene"/>
   <main>
+    <button v-if="!fullScreen" @click="enterFullScreen" class="absolute text-white top-0 right-0 left-0 bottom-0">Enter Full Screen</button>
     <SceneOne v-if="scene === 1" :id="1" />
     <SceneTwo v-if="scene === 2" :id="2" />
   </main>
