@@ -2,6 +2,7 @@
 import Camera from '@/components/Camera.vue'
 import SceneOne from '@/scenes/SceneOne.vue'
 import SceneTwo from '@/scenes/SceneTwo.vue'
+import SceneThree from '@/scenes/SceneThree.vue'
 import { onMounted, ref } from 'vue'
 
 const elem = document.documentElement
@@ -45,6 +46,7 @@ onMounted(() => {
     </button>
     <SceneOne v-if="scene === 1" :id="1" />
     <SceneTwo v-if="scene === 2" :id="2" />
+    <SceneThree v-if="scene === 3" :id="3" />
   </main>
 </template>
 
