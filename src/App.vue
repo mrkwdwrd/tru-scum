@@ -4,6 +4,7 @@ import SceneOne from '@/scenes/SceneOne.vue'
 import SceneTwo from '@/scenes/SceneTwo.vue'
 import SceneThree from '@/scenes/SceneThree.vue'
 import SceneFour from '@/scenes/SceneFour.vue'
+import SceneFive from '@/scenes/SceneFive.vue'
 import { onMounted, ref } from 'vue'
 
 const elem = document.documentElement
@@ -59,6 +60,7 @@ onMounted(() => {
     <SceneTwo v-if="scene === 2" :id="2" />
     <SceneThree v-if="scene === 3" :id="3" />
     <SceneFour v-if="scene === 4" :id="4" />
+    <SceneFive v-if="scene === 5" :id="5" />
 
   </main>
 </template>

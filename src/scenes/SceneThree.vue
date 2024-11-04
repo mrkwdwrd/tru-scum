@@ -58,7 +58,9 @@
           </li>
         </ul>
       </nav>
-
+      <main class="w-5/6 text-white">
+        <IgBio class="border-b"/>
+      </main>
       <!-- Overlay -->
       <div class="bg-black opacity-50 absolute w-full h-full"></div>
 
