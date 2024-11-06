@@ -5,6 +5,7 @@ import SceneTwo from '@/scenes/SceneTwo.vue'
 import SceneThree from '@/scenes/SceneThree.vue'
 import SceneFour from '@/scenes/SceneFour.vue'
 import SceneFive from '@/scenes/SceneFive.vue'
+import SceneSix from '@/scenes/SceneSix.vue'
 import { onMounted, ref } from 'vue'
 
 const elem = document.documentElement
@@ -39,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <Camera v-show="false" v-if="!scene"/>
+  <Camera v-show="false" v-if="!scene" :footer="false"/>
   <main>
     <button v-if="!fullScreen"
       @click="enterFullScreen"
@@ -61,6 +62,7 @@ onMounted(() => {
     <SceneThree v-if="scene === 3" :id="3" />
     <SceneFour v-if="scene === 4" :id="4" />
     <SceneFive v-if="scene === 5" :id="5" />
+    <SceneSix v-if="scene === 6" :id="6" />
 
   </main>
 </template>

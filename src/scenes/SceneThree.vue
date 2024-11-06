@@ -1,5 +1,6 @@
 <script setup>
-  import Scene  from '@/components/Scene.vue';
+  import Scene  from '@/components/Scene.vue'
+  import img from '@/assets/images/image.jpg'
 
   const props = defineProps({
     id: Number
@@ -69,23 +70,27 @@
         <div class="flex justify-center">
 
           <!-- Image -->
-          <img src="" class="w-[1200px] h-[1200px]"/>
+          <img :src="img" class="w-[1200px] h-[1200px] max-h-[90vh] max-w-[90vh]"/>
 
           <!-- Sidebar -->
           <div class="max-w-[500px] min-w-[405px] flex flex-col bg-black">
             <!-- Account -->
             <div class="p-4 border-b border-gray-700 text-white flex justify-between leading-8 font-bold">
-              <span class="align-middle flex gap-2">
+              <span class="align-middle flex gap-2 items-center">
                 <i class="inline-block h-8 w-8 bg-white rounded-full"></i>
                 <span>Commodo Justo</span>
-                &middot;
+                <svg aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                  <circle cx="12" cy="12.02" r="2.5"/>
+                </svg>
                 <span class="text-blue-500">Follow</span>
               </span>
 
-              <span class="align-middle">
-                &middot;
-                &middot;
-                &middot;
+              <span class="align-middle flex gap-2 items-center">
+                <svg aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
+                  <circle cx="12" cy="12.02" r="2.5"/>
+                  <circle cx="19.46" cy="12.02" r="2.5"/>
+                  <circle cx="4.54" cy="12.02" r="2.5"/>
+                </svg>
               </span>
             </div>
 

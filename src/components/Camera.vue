@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted } from 'vue';
 const props = defineProps({
-  id: String
+  id: String,
+  footer: Boolean
 })
 const startCamera = () => {
     const video = document.getElementById(`${props.id}-video`)
@@ -22,7 +23,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <video v-show="id" :id="`${id}-video`" autoplay class="w-full h-fit"></video>
+  <div class="flex flex-col w-full">
+    <div :class="['w-full h-full overflow-hidden', { 'max-h-[80vh]': footer }]">
+      <video v-show="id" :id="`${id}-video`" autoplay class="w-full"></video>
+    </div>
+    <slot/>
+  </div>
 </template>
 
 <style lang="css" scoped>

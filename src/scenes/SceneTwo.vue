@@ -13,13 +13,14 @@
 </script>
 
 <template>
-  <Scene :id="id" class="bg-gray-200 max-w-[1980px] mx-auto">
+  <Scene :id="id" class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full items-center">
       <div class="w-2/3 p-5 flex items-center flex-col">
-        <Camera :id="`s${id}c1`"/>
-        <div class="flex bg-gray-200 w-full justify-between p-4">
+        <Camera :id="`s${id}c1`" :footer="true">
+        <div class="flex bg-gray-800 w-full justify-between p-4">
           <Viewers :start="88"/>
         </div>
+        </Camera>
       </div>
       <div class="h-screen w-1/3 flex items-center">
         <Comments :comments="sceneTwo.comments"/>
