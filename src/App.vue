@@ -22,7 +22,7 @@ const viewers = ref(88)
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    scene.value = scene.value ? scene.value + 1 : 1
+    scene.value = scene.value ? Math.min(scene.value + 1, 19) : 1
   }
   if (e.code === 'Backspace') {
     scene.value = scene.value ? scene.value - 1 : null
@@ -59,19 +59,19 @@ onMounted(() => {
     <!-- 2. YouTube Search -->
     <SceneTwo v-if="scene === 3" :id="2" />
     <Scene  v-if="scene === 4"/>
-    <!-- 3. Avery's Instagram Profile -->
+    <!-- 3. Juniper's Instagram Profile -->
     <SceneThree v-if="scene === 5" :id="3" />
     <Scene  v-if="scene === 6"/>
-    <!-- 4. Avery's Instagram Cat Photo -->
+    <!-- 4. Juniper's Instagram Cat Photo -->
     <SceneFour v-if="scene === 7" :id="4" />
     <Scene  v-if="scene === 8"/>
-    <!-- 5. Avery's Instagram Profile Description -->
+    <!-- 5. Juniper's Instagram Profile Description -->
     <SceneFive v-if="scene === 9" :id="5" />
     <Scene  v-if="scene === 10"/>
     <!-- 6. Livestream with Comments -->
     <SceneSix v-if="scene === 11" :id="6" :viewers="viewers + 72" @count="val => { viewers = val }"/>
     <Scene  v-if="scene === 12"/>
-    <!-- 7. Avery's Instagram Notes App Screenshot -->
+    <!-- 7. Juniper's Instagram Notes App Screenshot -->
     <SceneSeven v-if="scene === 13" :id="7" />
     <Scene  v-if="scene === 14"/>
     <!-- 8. Zoomed Instagram Comment(s) -->
