@@ -6,6 +6,10 @@ import SceneThree from '@/scenes/SceneThree.vue'
 import SceneFour from '@/scenes/SceneFour.vue'
 import SceneFive from '@/scenes/SceneFive.vue'
 import SceneSix from '@/scenes/SceneSix.vue'
+import SceneSeven from '@/scenes/SceneSeven.vue'
+import SceneEight from '@/scenes/SceneEight.vue'
+import SceneTen from '@/scenes/SceneTen.vue'
+import Scene from '@/components/Scene.vue'
 import { onMounted, ref } from 'vue'
 
 const elem = document.documentElement
@@ -13,6 +17,8 @@ const elem = document.documentElement
 const fullScreen = ref(false)
 
 const scene = ref(null)
+
+const viewers = ref(88)
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
@@ -48,21 +54,40 @@ onMounted(() => {
       Enter Full Screen
     </button>
     <!-- 1. Livestream Fullscreen? -->
+    <SceneOne v-if="scene === 1" :id="1" :viewers="viewers" @count="val => { viewers = val }"/>
+    <Scene  v-if="scene === 2"/>
     <!-- 2. YouTube Search -->
+    <SceneTwo v-if="scene === 3" :id="2" />
+    <Scene  v-if="scene === 4"/>
     <!-- 3. Avery's Instagram Profile -->
+    <SceneThree v-if="scene === 5" :id="3" />
+    <Scene  v-if="scene === 6"/>
     <!-- 4. Avery's Instagram Cat Photo -->
+    <SceneFour v-if="scene === 7" :id="4" />
+    <Scene  v-if="scene === 8"/>
     <!-- 5. Avery's Instagram Profile Description -->
+    <SceneFive v-if="scene === 9" :id="5" />
+    <Scene  v-if="scene === 10"/>
     <!-- 6. Livestream with Comments -->
+    <SceneSix v-if="scene === 11" :id="6" :viewers="viewers + 72" @count="val => { viewers = val }"/>
+    <Scene  v-if="scene === 12"/>
     <!-- 7. Avery's Instagram Notes App Screenshot -->
+    <SceneSeven v-if="scene === 13" :id="7" />
+    <Scene  v-if="scene === 14"/>
     <!-- 8. Zoomed Instagram Comment(s) -->
-    <!-- 9. Greg's Twitter/Instagram DMs -->
+    <SceneEight v-if="scene === 15" :id="8" />
+    <Scene  v-if="scene === 16"/>
+    <!-- 9. Greg's Twitter/Instagram DMs TBC-->
     <!-- 10. Livestream Switching Off -->
-    <SceneOne v-if="scene === 1" :id="1" />
-    <SceneTwo v-if="scene === 2" :id="2" />
-    <SceneThree v-if="scene === 3" :id="3" />
-    <SceneFour v-if="scene === 4" :id="4" />
-    <SceneFive v-if="scene === 5" :id="5" />
-    <SceneSix v-if="scene === 6" :id="6" />
+    <SceneTen v-if="scene === 17" :id="10" :viewers="viewers + 112" @count="val => { viewers = val }"/>
+    <Scene  v-if="scene === 18"/>
+
+    <Scene  v-if="scene === 19">
+      <div class="flex h-full justify-center items-center">
+        <span class="text-white font-semibold">Fin.</span>
+      </div>
+    </Scene>
+
 
   </main>
 </template>

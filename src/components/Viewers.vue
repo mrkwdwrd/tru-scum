@@ -9,11 +9,14 @@ const props = defineProps({
   }
 })
 
+const emits = defineEmits(['count'])
+
 const count = ref(props.start)
 
 const updateCount = () => {
   setInterval(() => {
     count.value = count.value + parseInt(Math.random() * 10)
+    emits('count', count.value)
   }, 1000)
 }
 

@@ -27,10 +27,7 @@
 <template>
   <div class="p-4 text-white flex justify-between text-sm flex-wrap">
     <span class="inline-flex gap-6 items-start">
-      <IgAvatar />
-      <!-- <span class="rounded-full h-10 w-10 p-[0.2em] border flex-shrink-0 border-gray-400" :class="[{ 'border-pink-500': stories }]">
-        <i class="inline-block h-8 w-8 bg-white rounded-full "></i>
-      </span> -->
+      <IgAvatar :stories="stories" />
       <span class="pt-1 font-medium">
         <span class="font-black">{{ user }}</span>
         Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.

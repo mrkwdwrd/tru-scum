@@ -3,7 +3,7 @@
   import IgBio from '@/components/IgBio.vue'
   import IgComment from '@/components/IgComment.vue'
   import IgAvatar from '@/components/IgAvatar.vue'
-  import image from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
+  import image from '@/assets/images/IMG_F86A9C06889F-1.jpeg'
   import profileImg from '@/assets/images/openart-image_NGXUjRea_1731311569725_raw.png'
 
   const props = defineProps({
@@ -64,7 +64,7 @@
         </ul>
       </nav>
       <main class="w-5/6 text-white">
-        <IgBio class="border-b" :image="profileImg"/>
+        <IgBio class="border-b"/>
       </main>
       <!-- Overlay -->
       <div class="bg-black opacity-50 absolute w-full h-full"></div>
