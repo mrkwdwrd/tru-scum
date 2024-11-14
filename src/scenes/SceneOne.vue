@@ -1,7 +1,7 @@
 <script setup>
   import Scene  from '@/components/Scene.vue'
   import Camera from '@/components/Camera.vue'
-  import Viewers from '@/components/Viewers.vue'
+  import Caption from '@/components/Caption.vue'
 import { onMounted } from 'vue';
 
   const props = defineProps({
@@ -22,9 +22,7 @@ import { onMounted } from 'vue';
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
         <Camera :id="`s${id}c1`" :footer="true" :time="time">
-          <div class="flex bg-gray-800 w-full justify-between p-4">
-            <Viewers :start="viewers" @count="(val) => emits('count', val)"/>
-          </div>
+          <Caption :time="time" :viewers="viewers" @count="(val) => emits('count', val)"/>
         </Camera>
       </div>
     </div>

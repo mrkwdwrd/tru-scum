@@ -2,7 +2,7 @@
   import Scene  from '@/components/Scene.vue'
   import Camera from '@/components/Camera.vue'
   import Comments from '@/components/Comments.vue'
-  import Viewers from '@/components/Viewers.vue'
+  import Caption from '@/components/Caption.vue'
 
   import { sceneTwo } from '@/content.js'
 
@@ -20,9 +20,7 @@
     <div class="flex h-full items-center">
       <div class="w-2/3 p-5 flex items-center flex-col">
         <Camera :id="`s${id}c1`" :footer="true" :time="time">
-        <div class="flex bg-gray-800 w-full justify-between p-4">
-          <Viewers :start="viewers" @count="(val) => emits('count', val)"/>
-        </div>
+          <Caption :time="time" :viewers="viewers" @count="(val) => emits('count', val)"/>
         </Camera>
       </div>
       <div class="h-screen w-1/3 flex items-center">
