@@ -30,6 +30,6 @@ onMounted(() => {
 <template>
   <div class="bg-red-800 px-4 py-2 rounded-full flex text-white flex-nowrap gap-2 font-semibold ">
     <EyeIcon class="size-6 text-white animate-pulse"/>
-    {{ count }} Viewers
+    {{ Intl.NumberFormat().format(count) }} Viewers
   </div>
 </template>

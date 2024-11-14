@@ -2,7 +2,7 @@
   import Scene  from '@/components/Scene.vue'
   import Camera from '@/components/Camera.vue'
   import Caption from '@/components/Caption.vue'
-import { onMounted } from 'vue';
+  import { onMounted } from 'vue'
 
   const props = defineProps({
     id: Number,
