@@ -15,7 +15,7 @@
   <Scene :id="id" class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
-        <Camera :id="`s${id}c1`" :footer="true">
+        <Camera :id="`s${id}c1`" :footer="true" :time="time">
           <div class="flex bg-gray-800 w-full justify-between p-4">
             <Viewers :start="viewers" @count="(val) => emits('count', val)"/>
           </div>

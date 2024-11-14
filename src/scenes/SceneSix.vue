@@ -8,7 +8,8 @@
 
   const props = defineProps({
     id: Number,
-    viewers: Number
+    viewers: Number,
+    time: Number
   })
 
   const emits = defineEmits(['count'])
@@ -18,7 +19,7 @@
   <Scene :id="id" class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full items-center">
       <div class="w-2/3 p-5 flex items-center flex-col">
-        <Camera :id="`s${id}c1`" :footer="true">
+        <Camera :id="`s${id}c1`" :footer="true" :time="time">
         <div class="flex bg-gray-800 w-full justify-between p-4">
           <Viewers :start="viewers" @count="(val) => emits('count', val)"/>
         </div>

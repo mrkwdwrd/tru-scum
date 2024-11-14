@@ -20,6 +20,8 @@ const scene = ref(null)
 
 const viewers = ref(88)
 
+const time = ref(0)
+
 const keyListener = (e) => {
   if (e.code === 'Space') {
     scene.value = scene.value ? Math.min(scene.value + 1, 19) : 1
@@ -40,6 +42,12 @@ const enterFullScreen = () => {
   fullScreen.value = true
 }
 
+const startTime = () => {
+  setInterval(() => {
+    time.value++
+  }, 1000)
+}
+
 onMounted(() => {
   document.addEventListener('keydown', keyListener)
 })
@@ -54,7 +62,7 @@ onMounted(() => {
       Enter Full Screen
     </button>
     <!-- 1. Livestream Fullscreen? -->
-    <SceneOne v-if="scene === 1" :id="1" :viewers="viewers" @count="val => { viewers = val }"/>
+    <SceneOne v-if="scene === 1" :id="1" :viewers="viewers" :time="time" @start="startTime" @count="val => { viewers = val }"/>
     <Scene  v-if="scene === 2"/>
     <!-- 2. YouTube Search -->
     <SceneTwo v-if="scene === 3" :id="2" />
@@ -69,7 +77,7 @@ onMounted(() => {
     <SceneFive v-if="scene === 9" :id="5" />
     <Scene  v-if="scene === 10"/>
     <!-- 6. Livestream with Comments -->
-    <SceneSix v-if="scene === 11" :id="6" :viewers="viewers + 72" @count="val => { viewers = val }"/>
+    <SceneSix v-if="scene === 11" :id="6" :viewers="viewers + 72" :time="time" @count="val => { viewers = val }"/>
     <Scene  v-if="scene === 12"/>
     <!-- 7. Juniper's Instagram Notes App Screenshot -->
     <SceneSeven v-if="scene === 13" :id="7" />
@@ -79,7 +87,7 @@ onMounted(() => {
     <Scene  v-if="scene === 16"/>
     <!-- 9. Greg's Twitter/Instagram DMs TBC-->
     <!-- 10. Livestream Switching Off -->
-    <SceneTen v-if="scene === 17" :id="10" :viewers="viewers + 112" @count="val => { viewers = val }"/>
+    <SceneTen v-if="scene === 17" :id="10" :viewers="viewers + 112" :time="time" @count="val => { viewers = val }"/>
     <Scene  v-if="scene === 18"/>
 
     <Scene  v-if="scene === 19">
