@@ -29,7 +29,7 @@ const props = defineProps({
       </div>
       <div class="flex gap-2 py-2 items-center">
         <span>Ligula Nibh</span>
-        <span class="text-sm text-gray-400">She/Her</span>
+        <!-- <span class="text-sm text-gray-400">He/Him</span> -->
       </div>
       <div>
         Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna.

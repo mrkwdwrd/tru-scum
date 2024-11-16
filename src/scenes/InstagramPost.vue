@@ -3,10 +3,11 @@
   import IgBio from '@/components/IgBio.vue'
   import IgComment from '@/components/IgComment.vue'
   import IgAvatar from '@/components/IgAvatar.vue'
-  import image from '@/assets/images/IMG_F86A9C06889F-1.jpeg'
-  import profileImg from '@/assets/images/openart-image_NGXUjRea_1731311569725_raw.png'
+  import profileImage from '@/assets/images/openart-image_NGXUjRea_1731311569725_raw.png'
+  import logo from '@/assets/images/LogicTrap_logo.png'
 
   const props = defineProps({
+    image: String
   })
 </script>
 
@@ -46,7 +47,9 @@
               Create
             </li>
             <li class="flex gap-5 py-4">
-              <span class="h-6 w-6 bg-white rounded-full"</span>
+              <span class="h-6 w-6 bg-white rounded-full overflow-hidden">
+                <img :src="logo" />
+              </span>
               Profile
             </li>
           </ul>
@@ -80,7 +83,7 @@
             <!-- Account -->
             <div class="p-4 border-b border-gray-700 text-white flex justify-between leading-8 font-bold text-sm">
               <span class="align-middle flex gap-6 items-center">
-                <IgAvatar :image="profileImg"/>
+                <IgAvatar :image="profileImage"/>
                   <span class="inline-flex items-center">
                   <span class="font-black">Commodo Justo</span>
                   <svg aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="24">

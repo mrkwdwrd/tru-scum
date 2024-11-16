@@ -9,6 +9,9 @@ import InstagramPost from '@/scenes/InstagramPost.vue'
 import InstagramComments from './scenes/InstagramComments.vue'
 import Scene from '@/components/Scene.vue'
 import { onMounted, ref } from 'vue'
+import notesImage from '@/assets/images/IMG_F86A9C06889F-1.jpeg'
+import catEarsImage from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
+
 
 const elem = document.documentElement
 
@@ -22,7 +25,7 @@ const time = ref(0)
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    scene.value = scene.value ? Math.min(scene.value + 1, 20) : 1
+    scene.value = scene.value ? Math.min(scene.value + 1, 21) : 1
   }
   if (e.code === 'Backspace') {
     scene.value = scene.value ? scene.value - 1 : null
@@ -78,45 +81,46 @@ onMounted(() => {
 
     <!-- Juniper's Instagram Profile -->
     <InstagramAccount v-if="scene === 6" />
+    <InstagramPost v-if="scene === 7" :image="catEarsImage"/>
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 7" :viewers="viewers" :time="time" />
+    <LivestreamWithComments v-if="scene === 8" :viewers="viewers" :time="time" />
 
     <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 8" />
+    <LivestreamComments v-if="scene === 9" />
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 9" :viewers="viewers" :time="time" />
+    <LivestreamWithComments v-if="scene === 10" :viewers="viewers" :time="time" />
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 10" />
+    <LivestreamComments v-if="scene === 11" />
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 11" :viewers="viewers" :time="time" />
+    <LivestreamWithComments v-if="scene === 12" :viewers="viewers" :time="time" />
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 12" />
+    <LivestreamComments v-if="scene === 13" />
 
     <!-- Fullscreen Livestream -->
-    <Livestream v-if="scene === 13" :viewers="viewers" :time="time" />
+    <Livestream v-if="scene === 14" :viewers="viewers" :time="time" />
 
     <!-- Juniper's Instagram Notes App Screenshot -->
-    <InstagramPost  v-if="scene === 14" />
+    <InstagramPost v-if="scene === 15" :image="notesImage"/>
 
     <!-- Zoomed Instagram Comment(s) -->
-    <InstagramComments v-if="scene === 15" />
+    <InstagramComments v-if="scene === 16" />
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 16" :viewers="viewers" :time="time" />
+    <LivestreamWithComments v-if="scene === 17" :viewers="viewers" :time="time" />
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 17" />
+    <LivestreamComments v-if="scene === 18" />
 
     <!-- Livestream Switching Off -->
-    <Livestream v-if="scene === 18" :viewers="viewers" :time="time" />
-    <Scene  v-if="scene === 19"/>
+    <Livestream v-if="scene === 19" :viewers="viewers" :time="time" />
+    <Scene  v-if="scene === 20"/>
 
-    <Scene  v-if="scene === 20">
+    <Scene  v-if="scene === 21">
       <div class="flex h-full justify-center items-center">
         <span class="text-white font-semibold">Fin.</span>
       </div>

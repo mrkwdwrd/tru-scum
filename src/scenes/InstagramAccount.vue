@@ -8,6 +8,7 @@
   import image5 from '@/assets/images/openart-image_X1KAOd8n_1731313086490_raw.jpg'
   import image6 from '@/assets/images/15683193341_7a3594dd53_k.png'
   import profileImage from '@/assets/images/openart-image_NGXUjRea_1731311569725_raw.png'
+  import logo from '@/assets/images/LogicTrap_logo.png'
 
 
   const props = defineProps({
@@ -50,7 +51,7 @@
               Create
             </li>
             <li class="flex gap-5 py-4">
-              <span class="h-6 w-6 bg-white rounded-full"><img :src="profileImage" /></span>
+              <span class="h-6 w-6 bg-white rounded-full overflow-hidden"><img :src="logo" /></span>
               Profile
             </li>
           </ul>

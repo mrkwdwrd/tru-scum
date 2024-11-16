@@ -25,7 +25,7 @@
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
         <Camera :id="`s${uuid}c1`" :footer="true" :time="time">
-          <Caption :time="time" :viewers="viewers" @count="(val) => emits('count', val)"/>
+          <Caption :time="time" :viewers="viewers" />
         </Camera>
       </div>
     </div>
