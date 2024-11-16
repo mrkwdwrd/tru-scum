@@ -20,7 +20,6 @@ const updateCount = () => {
   }, 1000)
 }
 
-
 onMounted(() => {
   updateCount()
 })

@@ -1,14 +1,12 @@
 <script setup>
 import Camera from '@/components/Camera.vue'
-import SceneOne from '@/scenes/SceneOne.vue'
-import SceneTwo from '@/scenes/SceneTwo.vue'
-import SceneThree from '@/scenes/SceneThree.vue'
-import SceneFour from '@/scenes/SceneFour.vue'
-import SceneFive from '@/scenes/SceneFive.vue'
-import SceneSix from '@/scenes/SceneSix.vue'
-import SceneSeven from '@/scenes/SceneSeven.vue'
-import SceneEight from '@/scenes/SceneEight.vue'
-import SceneTen from '@/scenes/SceneTen.vue'
+import Logo from './scenes/Logo.vue'
+import Livestream from './scenes/Livestream.vue'
+import LivestreamWithComments from './scenes/LivestreamWithComments.vue'
+import LivestreamComments from './scenes/LivestreamComments.vue'
+import InstagramAccount from './scenes/InstagramAccount.vue'
+import InstagramPost from '@/scenes/InstagramPost.vue'
+import InstagramComments from './scenes/InstagramComments.vue'
 import Scene from '@/components/Scene.vue'
 import { onMounted, ref } from 'vue'
 
@@ -24,7 +22,7 @@ const time = ref(0)
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    scene.value = scene.value ? Math.min(scene.value + 1, 19) : 1
+    scene.value = scene.value ? Math.min(scene.value + 1, 20) : 1
   }
   if (e.code === 'Backspace') {
     scene.value = scene.value ? scene.value - 1 : null
@@ -45,6 +43,7 @@ const enterFullScreen = () => {
 const startTime = () => {
   setInterval(() => {
     time.value++
+    viewers.value = viewers.value + parseInt(Math.random() * 15)
   }, 1000)
 }
 
@@ -54,43 +53,70 @@ onMounted(() => {
 </script>
 
 <template>
-  <Camera v-show="false" v-if="!scene" :footer="false"/>
+  <Camera v-show="false"  :footer="false"/>
   <main>
     <button v-if="!fullScreen"
       @click="enterFullScreen"
       class="absolute text-white top-0 right-0 left-0 bottom-0">
       Enter Full Screen
     </button>
-    <!-- 1. Livestream Fullscreen? -->
-    <SceneOne v-if="scene === 1" :id="1" :viewers="viewers" :time="time" @start="startTime" @count="val => { viewers = val }"/>
-    <Scene  v-if="scene === 2"/>
-    <!-- 2. YouTube Search -->
-    <SceneTwo v-if="scene === 3" :id="2" />
-    <Scene  v-if="scene === 4"/>
-    <!-- 3. Juniper's Instagram Profile -->
-    <SceneThree v-if="scene === 5" :id="3" />
-    <Scene  v-if="scene === 6"/>
-    <!-- 4. Juniper's Instagram Cat Photo -->
-    <SceneFour v-if="scene === 7" :id="4" />
-    <Scene  v-if="scene === 8"/>
-    <!-- 5. Juniper's Instagram Profile Description -->
-    <SceneFive v-if="scene === 9" :id="5" />
-    <Scene  v-if="scene === 10"/>
-    <!-- 6. Livestream with Comments -->
-    <SceneSix v-if="scene === 11" :id="6" :viewers="viewers + 72" :time="time" @count="val => { viewers = val }"/>
-    <Scene  v-if="scene === 12"/>
-    <!-- 7. Juniper's Instagram Notes App Screenshot -->
-    <SceneSeven v-if="scene === 13" :id="7" />
-    <Scene  v-if="scene === 14"/>
-    <!-- 8. Zoomed Instagram Comment(s) -->
-    <SceneEight v-if="scene === 15" :id="8" />
-    <Scene  v-if="scene === 16"/>
-    <!-- 9. Greg's Twitter/Instagram DMs TBC-->
-    <!-- 10. Livestream Switching Off -->
-    <SceneTen v-if="scene === 17" :id="10" :viewers="viewers + 112" :time="time" @count="val => { viewers = val }"/>
-    <Scene  v-if="scene === 18"/>
 
-    <Scene  v-if="scene === 19">
+    <!-- Logic Trap Logo -->
+    <Logo v-if="scene === 1" />
+
+    <!-- Livestream with Comments (s. 1) -->
+    <LivestreamWithComments v-if="scene === 2" :viewers="viewers" :time="time" @start="startTime"/>
+
+      <!-- Fullscreen Comments (s. 2) -->
+    <LivestreamComments v-if="scene === 3" />
+
+    <!-- Livestream with Comments (s. 3) -->
+    <LivestreamWithComments v-if="scene === 4" :viewers="viewers" :time="time" />
+
+    <!-- Fullscreen Comments (s. 4) -->
+    <LivestreamComments v-if="scene === 5" />
+
+    <!-- Juniper's Instagram Profile -->
+    <InstagramAccount v-if="scene === 6" />
+
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 7" :viewers="viewers" :time="time" />
+
+    <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="scene === 8" />
+
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 9" :viewers="viewers" :time="time" />
+
+      <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="scene === 10" />
+
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 11" :viewers="viewers" :time="time" />
+
+      <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="scene === 12" />
+
+    <!-- Fullscreen Livestream -->
+    <Livestream v-if="scene === 13" :viewers="viewers" :time="time" />
+
+    <!-- Juniper's Instagram Notes App Screenshot -->
+    <InstagramPost  v-if="scene === 14" />
+
+    <!-- Zoomed Instagram Comment(s) -->
+    <InstagramComments v-if="scene === 15" />
+
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 16" :viewers="viewers" :time="time" />
+
+      <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="scene === 17" />
+
+    <!-- Livestream Switching Off -->
+    <Livestream v-if="scene === 18" :viewers="viewers" :time="time" />
+    <Scene  v-if="scene === 19"/>
+
+    <Scene  v-if="scene === 20">
       <div class="flex h-full justify-center items-center">
         <span class="text-white font-semibold">Fin.</span>
       </div>
