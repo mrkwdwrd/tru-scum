@@ -1,17 +1,18 @@
 <script setup>
 import Camera from '@/components/Camera.vue'
-import Logo from './scenes/Logo.vue'
-import Livestream from './scenes/Livestream.vue'
-import LivestreamWithComments from './scenes/LivestreamWithComments.vue'
-import LivestreamComments from './scenes/LivestreamComments.vue'
-import InstagramAccount from './scenes/InstagramAccount.vue'
+import Logo from '@/scenes/Logo.vue'
+import Livestream from '@/scenes/Livestream.vue'
+import LivestreamWithComments from '@/scenes/LivestreamWithComments.vue'
+import LivestreamComments from '@/scenes/LivestreamComments.vue'
+import InstagramAccount from '@/scenes/InstagramAccount.vue'
 import InstagramPost from '@/scenes/InstagramPost.vue'
-import InstagramComments from './scenes/InstagramComments.vue'
+import InstagramComments from '@/scenes/InstagramComments.vue'
+import InstagramBio from '@/scenes/InstagramBio.vue'
 import Scene from '@/components/Scene.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import notesImage from '@/assets/images/IMG_F86A9C06889F-1.jpeg'
 import catEarsImage from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
-
+import dressImage from '@/assets/images/openart-image_8rlC-yOP_1731742127760_raw.jpg'
 
 const elem = document.documentElement
 
@@ -25,7 +26,7 @@ const time = ref(0)
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    scene.value = scene.value ? Math.min(scene.value + 1, 21) : 1
+    scene.value = scene.value ? Math.min(scene.value + 1, 23) : 1
   }
   if (e.code === 'Backspace') {
     scene.value = scene.value ? scene.value - 1 : null
@@ -53,14 +54,19 @@ const startTime = () => {
 onMounted(() => {
   document.addEventListener('keydown', keyListener)
 })
+
+watch(scene, val => {
+  console.warn('scene', val)
+})
+
 </script>
 
 <template>
   <Camera v-show="false"  :footer="false"/>
-  <main>
+  <main class="cursor-none">
     <button v-if="!fullScreen"
       @click="enterFullScreen"
-      class="absolute text-white top-0 right-0 left-0 bottom-0">
+      class="absolute text-white top-0 right-0 left-0 bottom-0 cursor-pointer">
       Enter Full Screen
     </button>
 
@@ -82,17 +88,15 @@ onMounted(() => {
     <!-- Juniper's Instagram Profile -->
     <InstagramAccount v-if="scene === 6" />
     <InstagramPost v-if="scene === 7" :image="catEarsImage"/>
+    <InstagramPost v-if="scene === 8" :image="dressImage"/>
 
-    <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 8" :viewers="viewers" :time="time" />
-
-    <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 9" />
+    <!-- Juniper's Instagram Bio -->
+    <InstagramBio v-if="scene === 9" />
 
     <!-- Livestream with Comments (s. ?) -->
     <LivestreamWithComments v-if="scene === 10" :viewers="viewers" :time="time" />
 
-      <!-- Fullscreen Comments (s. ?) -->
+    <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 11" />
 
     <!-- Livestream with Comments (s. ?) -->
@@ -101,26 +105,32 @@ onMounted(() => {
       <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 13" />
 
-    <!-- Fullscreen Livestream -->
-    <Livestream v-if="scene === 14" :viewers="viewers" :time="time" />
-
-    <!-- Juniper's Instagram Notes App Screenshot -->
-    <InstagramPost v-if="scene === 15" :image="notesImage"/>
-
-    <!-- Zoomed Instagram Comment(s) -->
-    <InstagramComments v-if="scene === 16" />
-
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 17" :viewers="viewers" :time="time" />
+    <LivestreamWithComments v-if="scene === 14" :viewers="viewers" :time="time" />
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 18" />
+    <LivestreamComments v-if="scene === 15" />
+
+    <!-- Fullscreen Livestream -->
+    <Livestream v-if="scene === 16" :viewers="viewers" :time="time" />
+
+    <!-- Juniper's Instagram Notes App Screenshot -->
+    <InstagramPost v-if="scene === 17" :image="notesImage"/>
+
+    <!-- Zoomed Instagram Comment(s) -->
+    <InstagramComments v-if="scene === 18" />
+
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 19" :viewers="viewers" :time="time" />
+
+      <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="scene === 20" />
 
     <!-- Livestream Switching Off -->
-    <Livestream v-if="scene === 19" :viewers="viewers" :time="time" />
-    <Scene  v-if="scene === 20"/>
+    <Livestream v-if="scene === 21" :viewers="viewers" :time="time" />
+    <Scene  v-if="scene === 22"/>
 
-    <Scene  v-if="scene === 21">
+    <Scene  v-if="scene === 23">
       <div class="flex h-full justify-center items-center">
         <span class="text-white font-semibold">Fin.</span>
       </div>
