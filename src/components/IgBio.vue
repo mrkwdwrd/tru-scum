@@ -15,7 +15,7 @@ const props = defineProps({
     </div>
     <div class="w-2/3">
       <div class="flex gap-5 py-4 items-center">
-        <span class="font-semibold text-lg">Commodo_justo</span>
+        <span class="font-semibold text-lg">Juniper_in_bloom</span>
         <div class="flex gap-2">
           <span class="bg-blue-500 px-5 py-2 rounded-lg font-bold text-sm">Follow</span>
           <span class="bg-gray-700 px-5 py-2 rounded-lg font-bold text-sm">Message</span>
@@ -37,11 +37,15 @@ const props = defineProps({
         <span>410 Following</span>
       </div>
       <div class="flex gap-2 py-2 items-center">
-        <span>Juniper</span>
+        <span class="font-semibold">Juniper</span>
         <span class="text-sm text-gray-400">He/They</span>
       </div>
       <div>
-        Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam eget risus varius blandit sit amet non magna.
+        16 ♑️ ftm non-binary transmasc (he/they)<br />silly lil internet boi
+        <span class="font-semibold flex gap-2 items-center my-2">
+          <svg aria-label="Link icon" class="x1lliihq x1n2onr6 x7l2uk3" fill="currentColor" height="12" role="img" viewBox="0 0 24 24" width="12"><title>Link icon</title><path d="m9.726 5.123 1.228-1.228a6.47 6.47 0 0 1 9.15 9.152l-1.227 1.227m-4.603 4.603-1.228 1.228a6.47 6.47 0 0 1-9.15-9.152l1.227-1.227" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="8.471" x2="15.529" y1="15.529" y2="8.471"></line></svg>
+            <span class="text-gray-300 block text-sm">http://tiktok.com/@juniper.blum148</span>
+        </span>
       </div>
     </div>
   </div>

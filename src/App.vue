@@ -66,6 +66,7 @@ onMounted(() => {
 })
 
 watch(scene, val => {
+  console.warn('Scene', val)
   if (val === null) {
     clearInterval(timer)
     time.value = 0
@@ -117,7 +118,7 @@ watch(scene, val => {
     <LivestreamWithComments v-if="scene === 10" :viewers="viewers" :time="time" :comments="comments" @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 11" />
+    <LivestreamComments v-if="scene === 11" :comments="comments" @comments="val => handleComments(val)"/>
 
     <!-- Livestream with Comments (s. ?) -->
     <LivestreamWithComments v-if="scene === 12" :viewers="viewers" :time="time" :comments="comments" @comments="val => handleComments(val)"/>
@@ -129,7 +130,7 @@ watch(scene, val => {
     <LivestreamWithComments v-if="scene === 14" :viewers="viewers" :time="time" :comments="comments" @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 15" />
+    <LivestreamComments v-if="scene === 15" :comments="comments" @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Livestream -->
     <Livestream v-if="scene === 16" :viewers="viewers" :time="time" />
@@ -144,7 +145,7 @@ watch(scene, val => {
     <LivestreamWithComments v-if="scene === 19" :viewers="viewers" :time="time" :comments="comments" @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 20" />
+    <LivestreamComments v-if="scene === 20" :comments="comments" @comments="val => handleComments(val)"/>
 
     <!-- Livestream Switching Off -->
     <Livestream v-if="scene === 21" :viewers="viewers" :time="time" :comments="comments" @comments="val => handleComments(val)"/>

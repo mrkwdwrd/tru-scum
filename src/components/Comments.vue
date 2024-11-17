@@ -50,7 +50,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="h-full w-full p-5 flex flex-col justify-end gap-2 border-l border-neutral-700">
+  <div class="h-full w-full p-5 flex flex-col justify-end gap-2">
     <Comment v-for="comment in existingComments" :text="comment.text" :user="comment.user" />
     <Comment v-for="comment in comments" :text="comment.text" :user="comment.user" :delay="comment.delay"/>
   </div>

@@ -30,7 +30,7 @@
               <span class="align-middle flex gap-6 items-center">
                 <IgAvatar :image="profileImage"/>
                   <span class="inline-flex items-center">
-                  <span class="font-black">Commodo Justo</span>
+                  <span class="font-black">Juniper_in_bloom</span>
                   <svg aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="24">
                     <circle cx="12" cy="12" r="2.25"/>
                   </svg>
