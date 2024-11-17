@@ -19,6 +19,6 @@
           <span class="block font-bold text-md text-white">The Logic Trap</span>
       </div>
     </div>
-    <Viewers :start="viewers" />
+    <Viewers :viewers="viewers" />
   </div>
 </template>

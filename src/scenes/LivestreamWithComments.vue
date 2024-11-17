@@ -32,7 +32,7 @@
         </Camera>
       </div>
       <div class="h-screen w-1/3 flex items-center">
-        <Comments :existingComments="comments" :comments="sceneTwo.comments" @comments="val => emits('comments', val)"/>
+        <Comments :existingComments="comments" :comments="sceneTwo.comments.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" @comments="val => emits('comments', val)"/>
       </div>
     </div>
   </Scene>

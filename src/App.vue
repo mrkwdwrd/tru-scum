@@ -22,13 +22,15 @@ const fullScreen = ref(false)
 
 const scene = ref(null)
 
-const viewers = ref(0)
+const viewers = ref(1)
 
-const time = ref(0)
+const time = ref(1)
 
 const comments = ref([])
 
-let timer
+let timerInterval
+
+let viewerInterval
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
@@ -50,11 +52,26 @@ const enterFullScreen = () => {
   fullScreen.value = true
 }
 
+
 const startTime = () => {
-   timer = setInterval(() => {
+  calcViewers()
+  timerInterval = setInterval(() => {
     time.value++
-    viewers.value = viewers.value + parseInt(Math.random() * 15)
   }, 1000)
+
+}
+
+const calcViewers = () => {
+  viewerInterval = setInterval(() => {
+    const factor = randomIntFromInterval(-24, 334)
+    const max = randomIntFromInterval(52376, 61022)
+    const inc = parseInt(Math.random() * factor)
+    viewers.value = Math.min(viewers.value + inc, max)
+  }, 500)
+}
+
+const randomIntFromInterval = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 const handleComments = array => {
@@ -68,12 +85,15 @@ onMounted(() => {
 watch(scene, val => {
   console.warn('Scene', val)
   if (val === null) {
-    clearInterval(timer)
-    time.value = 0
-    viewers.value = 0
+    clearInterval(timerInterval)
+    clearInterval(viewerInterval)
+    time.value = 1
+    viewers.value = 1
     comments.value = []
     reset.value = true
     setTimeout(() => {
+      time.value = 1
+      viewers.value = 1
       reset.value = false
     }, 2000)
   }
