@@ -1,17 +1,19 @@
 <script setup>
-  import Scene  from '@/components/Scene.vue'
-  import Comments from '@/components/Comments.vue'
+import Scene  from '@/components/Scene.vue'
+import Comments from '@/components/Comments.vue'
+import { sceneTwo } from '@/content.js'
 
-  import { sceneTwo } from '@/content.js'
+const props = defineProps({
+  comments: Array
+})
 
-  const props = defineProps({
-  })
+const emits = defineEmits(['comments'])
 </script>
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full justify-center items-center max-w-2xl mx-auto">
-      <Comments :comments="sceneTwo.comments"/>
+      <Comments :existingComments="comments" :comments="sceneTwo.comments" @comments="val => emits('comments', val)"/>
     </div>
   </Scene>
 </template>

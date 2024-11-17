@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 const props = defineProps({
-  id: String,
+  id: Number,
   footer: Boolean,
   time: Number
 })

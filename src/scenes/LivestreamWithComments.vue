@@ -9,11 +9,12 @@
   const instance = getCurrentInstance()
 
   const props = defineProps({
+    comments: Array,
     viewers: Number,
     time: Number
   })
 
-  const emits = defineEmits(['count', 'start'])
+  const emits = defineEmits(['count', 'start', 'comments'])
 
   const uuid = ref(instance.uid)
 
@@ -26,12 +27,12 @@
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full items-center">
       <div class="w-2/3 p-5 flex items-center flex-col">
-        <Camera :id="`s${uuid}c1`" :footer="true" :time="time">
-          <Caption :time="time" :viewers="viewers" @count="(val) => emits('count', val)"/>
+        <Camera :id="uuid" :footer="true" :time="time">
+          <Caption :time="time" :viewers="viewers" />
         </Camera>
       </div>
       <div class="h-screen w-1/3 flex items-center">
-        <Comments :comments="sceneTwo.comments"/>
+        <Comments :existingComments="comments" :comments="sceneTwo.comments" @comments="val => emits('comments', val)"/>
       </div>
     </div>
   </Scene>
