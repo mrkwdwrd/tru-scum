@@ -64,7 +64,7 @@ const startTime = () => {
 const calcViewers = () => {
   viewerInterval = setInterval(() => {
     const factor = randomIntFromInterval(-24, 334)
-    const max = randomIntFromInterval(52376, 61022)
+    const max = randomIntFromInterval(59376, 61022)
     const inc = parseInt(Math.random() * factor)
     viewers.value = Math.min(viewers.value + inc, max)
   }, 500)
@@ -76,6 +76,7 @@ const randomIntFromInterval = (min, max) => {
 
 const handleComments = array => {
   comments.value.push(...array)
+  comments.value.splice(0, comments.value.length - 10)
 }
 
 onMounted(() => {

@@ -3,7 +3,7 @@ export const sceneOne = {}
 export const sceneTwo = {
   comments: [
     {
-      user: 'Anturtat1981 ---- THE FIRST',
+      user: 'Anturtat1981',
       text: 'Sed posuere consectetur est at lobortis.',
       delay: 500
     },

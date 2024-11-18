@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { UserCircleIcon } from '@heroicons/vue/24/solid'
 const props = defineProps({
+  image: String,
   user: String,
   text: String,
   delay: {
@@ -23,8 +24,8 @@ onMounted (() => {
   <Transition>
     <div v-if="show" class="rounded-md p-5 w-full bg-neutral-900 relative top-0">
       <div class="flex gap-5 transition-opacity delay-100">
-        <span class="block bg-gray-500 w-12 h-12 rounded-full flex-shrink-0">
-          <UserCircleIcon class="text-gray-200"/>
+        <span class="block bg-gray-500 w-12 h-12 rounded-full flex-shrink-0 overflow-hidden">
+           <img :src="`/src/assets/profile-images/${image}.jpg`" />
         </span>
         <div class="text-gray-300 font-medium flex-shrink text-sm">
           <p class="font-bold">{{ user }}</p>

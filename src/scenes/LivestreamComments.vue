@@ -1,7 +1,7 @@
 <script setup>
 import Scene  from '@/components/Scene.vue'
 import Comments from '@/components/Comments.vue'
-import { sceneTwo } from '@/content.js'
+import { section1 } from '@/comments'
 
 const props = defineProps({
   comments: Array
@@ -13,7 +13,8 @@ const emits = defineEmits(['comments'])
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full justify-center items-end max-w-2xl mx-auto">
-      <Comments class="scale-150 max-h-20" :existingComments="comments" :comments="sceneTwo.comments.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" @comments="val => emits('comments', val)"/>
+      <!-- <Comments class="scale-150 max-h-20" :existingComments="comments" :comments="sceneTwo.comments.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" @comments="val => emits('comments', val)"/> -->
+      <Comments class="scale-150 max-h-20" :existingComments="comments" :comments="section1" @comments="val => emits('comments', val)"/>
     </div>
   </Scene>
 </template>
