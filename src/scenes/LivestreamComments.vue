@@ -18,6 +18,3 @@ const emits = defineEmits(['comments'])
     </div>
   </Scene>
 </template>
-
-<style lang="css" scoped>
-</style>

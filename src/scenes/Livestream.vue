@@ -11,12 +11,12 @@
     viewers: Number
   })
 
-  const emits = defineEmits(['count', 'start'])
+  const emits = defineEmits(['count', 'mount'])
 
   const uuid = ref(instance.uid)
 
   onMounted(() => {
-    emits('start')
+    emits('mount')
   })
 </script>
 
@@ -25,7 +25,7 @@
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
         <Camera :id="uuid" :footer="true" :time="time">
-          <Caption :time="time" :viewers="viewers" />
+          <Caption :viewers="viewers" />
         </Camera>
       </div>
     </div>

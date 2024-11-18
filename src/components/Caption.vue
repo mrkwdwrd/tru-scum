@@ -3,7 +3,6 @@
   import logo from '@/assets/images/LogicTrap_logo.png'
 
   const props = defineProps({
-    time: Number,
     viewers: Number
   })
 </script>

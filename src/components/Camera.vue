@@ -27,7 +27,9 @@ onMounted(() => {
 <template>
   <div class="flex flex-col w-full">
     <div :class="['w-full h-full overflow-hidden', { 'max-h-[80vh]': footer }]">
-      <video v-show="id" :id="`${id}-video`" autoplay class="w-full"></video>
+      <div class="aspect-video overflow-hidden">
+        <video v-show="id" :id="`${id}-video`" autoplay class="w-full"></video>
+      </div>
     </div>
     <div class="w-full px-5 flex justify-between -mt-12 h-12 z-10 bottom-0 text-white">
       <span class="w-1/2 flex flex-row items-center">

@@ -4,6 +4,7 @@ import Logo from '@/scenes/Logo.vue'
 import Livestream from '@/scenes/Livestream.vue'
 import LivestreamWithComments from '@/scenes/LivestreamWithComments.vue'
 import LivestreamComments from '@/scenes/LivestreamComments.vue'
+import LivestreamOff from '@/scenes/LivestreamOff.vue'
 import InstagramAccount from '@/scenes/InstagramAccount.vue'
 import InstagramPost from '@/scenes/InstagramPost.vue'
 import InstagramComments from '@/scenes/InstagramComments.vue'
@@ -34,7 +35,7 @@ let viewerInterval
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    scene.value = scene.value ? Math.min(scene.value + 1, 23) : 1
+    scene.value = scene.value ? Math.min(scene.value + 1, 26) : 1
   }
   if (e.code === 'Backspace') {
     scene.value = scene.value > 1 ? scene.value - 1 : null
@@ -58,7 +59,10 @@ const startTime = () => {
   timerInterval = setInterval(() => {
     time.value++
   }, 1000)
+}
 
+const stopTime = () => {
+  clearInterval(timerInterval)
 }
 
 const calcViewers = () => {
@@ -116,7 +120,7 @@ watch(scene, val => {
     <Logo v-if="scene === 1" />
 
     <!-- Livestream with Comments (s. 1) -->
-    <LivestreamWithComments v-if="scene === 2" :viewers="viewers" :time="time" @start="startTime" :comments="comments" @comments="val => handleComments(val)"/>
+    <LivestreamWithComments v-if="scene === 2" :viewers="viewers" :time="time" @mount="startTime" :comments="comments" @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. 2) -->
     <LivestreamComments v-if="scene === 3" :comments="comments" @comments="val => handleComments(val)"/>
@@ -165,14 +169,19 @@ watch(scene, val => {
     <!-- Livestream with Comments (s. ?) -->
     <LivestreamWithComments v-if="scene === 19" :viewers="viewers" :time="time" :comments="comments" @comments="val => handleComments(val)"/>
 
-      <!-- Fullscreen Comments (s. ?) -->
+    <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 20" :comments="comments" @comments="val => handleComments(val)"/>
 
     <!-- Livestream Switching Off -->
     <Livestream v-if="scene === 21" :viewers="viewers" :time="time" :comments="comments" @comments="val => handleComments(val)"/>
-    <Scene  v-if="scene === 22"/>
+    <LivestreamOff v-if="scene === 22" :viewers="viewers" :time="time" @mount="stopTime" :comments="comments" @comments="val => handleComments(val)"/>
+    <Scene  v-if="scene === 23"/>
 
-    <Scene  v-if="scene === 23">
+    <Logo v-if="scene === 24" />
+    <Logo v-if="scene === 25" :fadeOut="true" />
+
+    <!-- Logo -->
+    <Scene  v-if="scene === 26">
       <div class="flex h-full justify-center items-center">
         <span class="text-white font-semibold">Fin.</span>
       </div>
