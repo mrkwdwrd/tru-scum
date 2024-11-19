@@ -7,7 +7,8 @@ const props = defineProps({
     type: Array,
     default: []
   },
-  comments: Array
+  comments: Array,
+  time: Number
 })
 
 const instance = getCurrentInstance()
@@ -15,8 +16,6 @@ const instance = getCurrentInstance()
 const emits = defineEmits(['comments'])
 
 const comments = ref([])
-
-const uuid = ref(instance.uid)
 
 const interval = 1000
 
@@ -57,6 +56,7 @@ const showComments = (array) => {
       })
     })
     promise.then(function () {
+      console.warn('--- Coments Repeat', new Date(props.time * 1000).toISOString().slice(11, 19))
       showComments(props.comments)
     })
   }

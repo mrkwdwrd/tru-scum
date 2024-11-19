@@ -90,7 +90,7 @@ onMounted(() => {
 })
 
 watch(scene, val => {
-  console.warn('Scene', val)
+  console.warn('Scene', val, new Date(time.value * 1000).toISOString().slice(11, 19))
   if (val === null) {
     clearInterval(timerInterval)
     clearInterval(viewerInterval)
@@ -130,8 +130,9 @@ watch(scene, val => {
       @mount="startTime"
       @comments="val => handleComments(val)"/>
 
-      <!-- Fullscreen =Comments (s. 2) -->
+      <!-- Fullscreen Comments (s. 2) -->
     <LivestreamComments v-if="scene === 3"
+      :time="time"
       :existingComments="comments"
       :comments="section2"
       @comments="val => handleComments(val)"/>
@@ -146,6 +147,7 @@ watch(scene, val => {
 
     <!-- Fullscreen Comments (s. 4) -->
     <LivestreamComments v-if="scene === 5"
+      :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
@@ -182,19 +184,22 @@ watch(scene, val => {
 
     <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 11"
+      :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream with Comments (s. ?) -->
     <LivestreamWithComments v-if="scene === 12"
-      :viewers="viewers" :time="time"
+      :viewers="viewers"
+      :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 13"
+      :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
@@ -209,6 +214,7 @@ watch(scene, val => {
 
       <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 15"
+      :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
@@ -241,6 +247,7 @@ watch(scene, val => {
 
     <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 20"
+      :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
