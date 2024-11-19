@@ -4,11 +4,11 @@
   import Comments from '@/components/Comments.vue'
   import Caption from '@/components/Caption.vue'
   import { onMounted, getCurrentInstance, ref } from 'vue'
-  import { section1 } from '@/comments'
 
   const instance = getCurrentInstance()
 
   const props = defineProps({
+    existingComments: Array,
     comments: Array,
     viewers: Number,
     time: Number
@@ -33,7 +33,7 @@
       </div>
       <div class="h-screen w-1/3 flex items-center">
         <!-- <Comments :existingComments="comments" :comments="section1.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" @comments="val => emits('comments', val)"/> -->
-        <Comments :existingComments="comments" :comments="section1" @comments="val => emits('comments', val)"/>
+        <Comments :existingComments="existingComments" :comments="comments" @comments="val => emits('comments', val)"/>
       </div>
     </div>
   </Scene>
