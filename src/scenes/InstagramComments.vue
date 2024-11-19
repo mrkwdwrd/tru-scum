@@ -9,7 +9,7 @@
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="max-w-lg mx-auto flex items-center h-full">
-      <IgComment user="Condimentum" age="27d" :likes="2" :stories="true" class="scale-150" />
+      <IgComment user="Condimentum" :age="[ 16, 'minutes' ]" :likes="2" :replies="2" :stories="true" comment="Aenean lacinia bibendum nulla sed consectetur." class="scale-150" />
     </div>
   </Scene>
 </template>

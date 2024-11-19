@@ -7,6 +7,7 @@ import LivestreamComments from '@/scenes/LivestreamComments.vue'
 import LivestreamOff from '@/scenes/LivestreamOff.vue'
 import InstagramAccount from '@/scenes/InstagramAccount.vue'
 import InstagramPost from '@/scenes/InstagramPost.vue'
+import IgComment from '@/components/IgComment.vue'
 import InstagramComments from '@/scenes/InstagramComments.vue'
 import InstagramBio from '@/scenes/InstagramBio.vue'
 import Scene from '@/components/Scene.vue'
@@ -114,7 +115,7 @@ watch(scene, val => {
       Enter Full Screen
     </button>
 
-    <div v-if="reset" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-red-500 font-extrabold">RESET!</div>
+    <div v-if="reset" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-green-600 font-extrabold">RESET!</div>
 
     <!-- Logic Trap Logo -->
     <Logo v-if="scene === 1" />
@@ -133,8 +134,14 @@ watch(scene, val => {
 
     <!-- Juniper's Instagram Profile -->
     <InstagramAccount v-if="scene === 6" />
-    <InstagramPost v-if="scene === 7" :image="catEarsImage"/>
-    <InstagramPost v-if="scene === 8" :image="dressImage"/>
+    <InstagramPost v-if="scene === 7" :image="catEarsImage" :age="[ 18, 'days' ]" :likes="222" caption="Cras mattis consectetur purus sit amet fermentum.">
+      <IgComment user="ParturientQuam" :age="[ 18, 'days' ]" :likes="16" :replies="2" comment="Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna."/>
+      <IgComment user="Condimentum" :age="[ 18, 'days' ]" :likes="2" :replies="2" :stories="true" comment="Aenean lacinia bibendum nulla sed consectetur."/>
+    </InstagramPost>
+    <InstagramPost v-if="scene === 8" :image="dressImage" :age="[ 21, 'days' ]" :likes="222" caption="Cras mattis consectetur purus sit amet fermentum.">
+      <IgComment user="ParturientQuam" :age="[ 21, 'days' ]" :likes="16" :replies="2" comment="Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna."/>
+      <IgComment user="Condimentum" :age="[ 21, 'days' ]" :likes="2" :replies="2" :stories="true" comment="Aenean lacinia bibendum nulla sed consectetur."/>
+    </InstagramPost>
 
     <!-- Juniper's Instagram Bio -->
     <InstagramBio v-if="scene === 9" />
@@ -161,7 +168,10 @@ watch(scene, val => {
     <Livestream v-if="scene === 16" :viewers="viewers" :time="time" />
 
     <!-- Juniper's Instagram Notes App Screenshot -->
-    <InstagramPost v-if="scene === 17" :image="notesImage"/>
+    <InstagramPost v-if="scene === 17" :image="notesImage" :age="[ 10, 'minutes' ]" :likes="222" caption="Cras mattis consectetur purus sit amet fermentum.">
+      <IgComment user="ParturientQuam" :age="[ 10, 'minutes' ]" :likes="16" :replies="2" comment="Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna."/>
+      <IgComment user="Condimentum" :age="[ 11, 'minutes' ]" :likes="2" :replies="2" :stories="true" comment="Aenean lacinia bibendum nulla sed consectetur."/>
+    </InstagramPost>
 
     <!-- Zoomed Instagram Comment(s) -->
     <InstagramComments v-if="scene === 18" />
