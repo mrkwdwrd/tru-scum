@@ -21,10 +21,10 @@
     },
     user: String,
     comment: String,
-    age: Array,
+    age: String,
   })
 
-  const ageString = `${props.age[0]}${props.age[1][0]}`
+  // const ageString = `${props.age[0]}${props.age[1][0]}`
 </script>
 
 <template>
@@ -35,7 +35,7 @@
         <span class="font-black mr-2">{{ user }}</span>
          {{ comment }}
         <div class="text-gray-300 flex mt-4 text-xs gap-3">
-          <span>{{ ageString }}</span>
+          <span>{{ age }}</span>
           <span v-if="!caption && likes" class="font-bold">{{ likes }} likes</span>
           <span v-if="!caption" class="font-bold">Reply</span>
         </div>

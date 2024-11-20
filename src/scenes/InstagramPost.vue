@@ -13,6 +13,7 @@
   })
 
   const ageString = `${props.age[0]} ${props.age[1]} ago`
+  const captionAgeString = `${props.age[0]} ${props.age[1][0]}`
 
 </script>
 
@@ -55,7 +56,7 @@
 
             <!-- Comments -->
             <div class="overflow-hidden flex-grow w-full">
-              <IgComment v-if="caption" :caption="true" user="Commodo Justo" :age="age" :comment="caption" />
+              <IgComment v-if="caption" :caption="true" user="Commodo Justo" :age="captionAgeString" :comment="caption" />
               <slot/>
             </div>
 
@@ -73,7 +74,6 @@
                 {{ likes }} Likes
               </div>
               <div class="text-gray-300 text-xs px-5">
-                <!-- {{ age }} days ago -->
                   {{ ageString }}
               </div>
             </div>
