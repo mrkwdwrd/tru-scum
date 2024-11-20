@@ -160,10 +160,10 @@ watch(scene, val => {
       :likes="72"
       caption="🐱🐾💙✨">
       <IgComment user="RainbowsAndRizz" image="RainbowsAndRizz" :age="`${18} days`" :likes="16" :replies="2" :stories="true" comment="SWEET BABY BOI 🥺"/>
-      <IgComment user="KawaiiKingX🌸🐾" image="KawaiiKingX" :age="`${18} days`" :likes="2" :replies="0" :stories="true" comment="Beautiful!!! ♥️"/>
+      <IgComment user="KawaiiKingX🌸🐾" image="KawaiiKingX" :age="`${18} days`" :likes="2" :replies="0" :stories="false" comment="Beautiful!!! ♥️"/>
       <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${18} days`" :likes="1" :replies="0" :stories="true" comment="Yasssssssssssssssss"/>
       <IgComment user="NekoVibes" image="NekoVibes" :age="`${18} days`" :likes="1" :stories="true" comment="Trans rights are catboi rights!!!"/>
-      <IgComment user="Meowster🐾💙" image="Meowster" :age="`${18} days`" :likes="1" :stories="true" comment="I’m getting into it too! You look gorgeous! 😊♥️"/>
+      <IgComment user="Meowster🐾💙" image="Meowster" :age="`${18} days`" :likes="1" :stories="false" comment="I’m getting into it too! You look gorgeous! 😊♥️"/>
     </InstagramPost>
     <InstagramPost v-if="scene === 8"
       :image="dressImage"
@@ -172,7 +172,7 @@ watch(scene, val => {
       caption="Felt cute, might just conquer the world later 😌✨ #StayShiny 🌈💖">
       <IgComment user="RainbowsAndRizz" image="RainbowsAndRizz" :age="`${21} days`" :likes="16" :replies="0" :stories="true" comment="Omg, you’re absolutely SLAYING this look! ✨🔥 Love the vibes, you’re glowing frfr!"/>
       <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${21} days`" :likes="2" :replies="0" :stories="true" comment="ngl this fit is EVERYTHING 😍✨ ur looking soooo confident im obsessed! xxx"/>
-      <IgComment user="M4sc+M4gic" image="M4sc+M4gic" :age="`${21} days`" :likes="6" :replies="0" :stories="true" comment="Ayo, who let you be this stunning?? 💅🏽 This whole vibe is chef’s kiss 🤌🏻"/>
+      <IgComment user="M4sc+M4gic" image="M4sc+M4gic" :age="`${21} days`" :likes="6" :replies="0" :stories="false" comment="Ayo, who let you be this stunning?? 💅🏽 This whole vibe is chef’s kiss 🤌🏻"/>
       <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${21} days`" :likes="1" :replies="0" :stories="true" comment="Bro, you’re legit radiating positivity 🫶 keep shining joojoo ✨🌟"/>
     </InstagramPost>
 
@@ -234,10 +234,10 @@ watch(scene, val => {
       :image="notesImage"
       :age="[ 10, 'minutes' ]"
       :likes="222">
-      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️"/>
+      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️"/>
       <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟"/>
       <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg"/>
-      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="true" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺"/>
+      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺"/>
     </InstagramPost>
 
     <!-- Zoomed Instagram Comment(s) -->

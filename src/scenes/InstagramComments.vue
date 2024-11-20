@@ -8,7 +8,7 @@
 
   let age = ref(9)
   const likes = ref(23)
-  const replies = ref(4)
+  const replies = ref(6)
 
   const randomInt = (min, max) => {
     return parseInt(Math.random() * (max - min) + min)
