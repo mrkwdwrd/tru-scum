@@ -56,7 +56,7 @@
 
             <!-- Comments -->
             <div class="overflow-hidden flex-grow w-full">
-              <IgComment v-if="caption" :caption="true" user="Commodo Justo" :age="captionAgeString" :comment="caption" />
+              <IgComment v-if="caption" :caption="true" user="Juniper_in_bloom" :age="captionAgeString" :comment="caption" />
               <slot/>
             </div>
 

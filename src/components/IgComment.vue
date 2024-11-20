@@ -22,6 +22,7 @@
     user: String,
     comment: String,
     age: String,
+    image: String
   })
 
   // const ageString = `${props.age[0]}${props.age[1][0]}`
@@ -30,7 +31,7 @@
 <template>
   <div class="p-4 text-white flex justify-between text-sm flex-wrap">
     <span class="inline-flex gap-6 items-start w-full">
-      <IgAvatar :stories="stories" :image="caption ? profileImage : null"/>
+      <IgAvatar :stories="stories" :image="caption ? profileImage : `/assets/profile-images/${image}.jpg`"/>
       <span class="pt-1 font-medium w-full flex-grow">
         <span class="font-black mr-2">{{ user }}</span>
          {{ comment }}

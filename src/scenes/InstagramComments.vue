@@ -39,7 +39,8 @@
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="max-w-lg mx-auto flex items-center h-full">
       <IgComment class="scale-150"
-        user="Condimentum"
+        user="NekoVibes"
+        image="NekoVibes"
         :age="`${age}m`"
         :likes="likes"
         :replies="replies"
