@@ -1,6 +1,7 @@
 <script setup>
   import IgBio  from '@/components/IgBio.vue';
-  import image1 from '@/assets/images/IMG_F86A9C06889F-1.jpeg'
+  // import image1 from '@/assets/images/IMG_F86A9C06889F-1.jpeg'
+  import image1 from '@/assets/images/IMG_2670C479D8DC-1.jpg'
   import image5 from '@/assets/images/concert.jpg'
   import image3 from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
   import image4 from '@/assets/images/openart-image_8rlC-yOP_1731742127760_raw.jpg'
