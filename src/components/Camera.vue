@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 const props = defineProps({
   id: Number,
   footer: Boolean,
@@ -19,9 +19,21 @@ const startCamera = () => {
     }
 }
 
+const keyListener = (e) => {
+  if (e.code === 'ArrowDown') {
+    startCamera()
+  }
+}
+
 onMounted(() => {
   startCamera()
+  document.addEventListener('keydown', keyListener)
 })
+
+onBeforeUnmount(() => {
+  document.removeEventListener('keydown', keyListener)
+})
+
 </script>
 
 <template>

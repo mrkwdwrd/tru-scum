@@ -281,7 +281,6 @@ watch(scene, val => {
       </div>
     </Scene>
 
-
   </main>
 </template>
 
