@@ -17,7 +17,7 @@ const emits = defineEmits(['comments'])
 
 const comments = ref([])
 
-const interval = 1000
+const interval = 1500
 
 onBeforeUnmount(() => {
   promise = null

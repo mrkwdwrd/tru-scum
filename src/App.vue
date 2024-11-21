@@ -70,11 +70,11 @@ const stopTime = () => {
 
 const calcViewers = () => {
   viewerInterval = setInterval(() => {
-    const factor = randomIntFromInterval(-24, 334)
-    const max = randomIntFromInterval(59376, 61022)
+    const factor = randomIntFromInterval(-4, 14)
+    const max = randomIntFromInterval(9376, 10022)
     const inc = parseInt(Math.random() * factor)
     viewers.value = Math.max(Math.min(viewers.value + inc, max), 1)
-  }, 500)
+  }, 1000)
 }
 
 const randomIntFromInterval = (min, max) => {
@@ -159,7 +159,7 @@ watch(scene, val => {
       :image="catEarsImage"
       :age="[ 18, 'days' ]"
       :likes="72"
-      caption="🐱🐾💙✨">
+      caption="Getting kinda into this femboi astheic ngl 🐱🐾💙✨">
       <IgComment user="RainbowsAndRizz" image="RainbowsAndRizz" :age="`${18} days`" :likes="16" :replies="2" :stories="true" comment="SWEET BABY BOI 🥺"/>
       <IgComment user="KawaiiKingX🌸🐾" image="KawaiiKingX" :age="`${18} days`" :likes="2" :replies="0" :stories="false" comment="Beautiful!!! ♥️"/>
       <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${18} days`" :likes="1" :replies="0" :stories="true" comment="Yasssssssssssssssss"/>
