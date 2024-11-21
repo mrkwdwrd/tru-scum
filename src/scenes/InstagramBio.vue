@@ -10,7 +10,7 @@
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
       <div class="flex h-full relative">
-        <main class="w-full flex items-center">
+        <main class="w-full flex items-center scale-150">
           <IgBio class="scale-150" :image="profileImage"/>
         </main>
       </div>

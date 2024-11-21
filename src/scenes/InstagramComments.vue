@@ -36,8 +36,8 @@
 </script>
 
 <template>
-  <Scene class="bg-black max-w-[1980px] mx-auto">
-    <div class="max-w-lg mx-auto flex items-center h-full">
+  <Scene class="bg-black max-w-[1980px] mx-auto scale-150">
+    <div class="max-w-lg mx-auto flex items-center h-full scale-150">
       <IgComment class="scale-150"
         user="NekoVibes"
         image="NekoVibes"
