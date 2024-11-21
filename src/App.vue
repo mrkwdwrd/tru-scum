@@ -73,7 +73,7 @@ const calcViewers = () => {
     const factor = randomIntFromInterval(-24, 334)
     const max = randomIntFromInterval(59376, 61022)
     const inc = parseInt(Math.random() * factor)
-    viewers.value = Math.min(viewers.value + inc, max)
+    viewers.value = Math.max(Math.min(viewers.value + inc, max), 1)
   }, 500)
 }
 
