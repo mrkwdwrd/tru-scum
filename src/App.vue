@@ -76,9 +76,22 @@ const stopTime = () => {
   clearInterval(timerInterval)
 }
 
+const getFactor = (val) => {
+  if (val < 6000) {
+    return randomIntFromInterval(16, 164)
+  }
+  if (val < 8000) {
+    return randomIntFromInterval(4, 87)
+  }
+  if (val < 9000) {
+    return randomIntFromInterval(1, 45)
+  }
+  return randomIntFromInterval(-4, 14)
+}
+
 const calcViewers = () => {
   viewerInterval = setInterval(() => {
-    const factor = randomIntFromInterval(-4, 14)
+    const factor = getFactor(viewers.value)
     const max = randomIntFromInterval(9376, 10022)
     const inc = parseInt(Math.random() * factor)
     viewers.value = Math.max(Math.min(viewers.value + inc, max), 1)
