@@ -48,7 +48,7 @@ const showComments = (array) => {
           image: findImage(),
           user: usernames[parseInt(Math.random() * (999 - 1) + 1)],
           text: comment,
-          delay: parseInt(Math.random() * 600)
+          delay: parseInt(Math.random() * 800)
         })
         return new Promise(function (resolve) {
           timeout = setTimeout(resolve, interval)

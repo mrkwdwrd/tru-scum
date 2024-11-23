@@ -16,7 +16,7 @@ import { onMounted, ref, watch } from 'vue'
 import notesImage from '@/assets/images/IMG_2670C479D8DC-1.jpg'
 import catEarsImage from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
 import dressImage from '@/assets/images/openart-image_8rlC-yOP_1731742127760_raw.jpg'
-import { section1, section2, section3, section4  } from '@/comments'
+import { section1, section2, section3, section4, section5, section6, section7, section8, section9, section10 } from '@/comments'
 
 const elem = document.documentElement
 
@@ -215,14 +215,14 @@ watch(cue, val => {
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section5"
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="cue === 13"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section6"
       @comments="val => handleComments(val)"/>
 
     <Scene v-if="cue === 14"/>
@@ -231,7 +231,7 @@ watch(cue, val => {
     <LivestreamComments v-if="cue === 15"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section7"
       @comments="val => handleComments(val)"/>
 
     <Scene v-if="cue === 16"/>
@@ -241,14 +241,14 @@ watch(cue, val => {
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section8"
       @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="cue === 18"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section9"
       @comments="val => handleComments(val)"/>
 
     <Scene v-if="cue === 19"/>
@@ -287,14 +287,14 @@ watch(cue, val => {
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section9"
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="cue === 26"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section10"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream with Comments (s. ?) -->
@@ -302,15 +302,15 @@ watch(cue, val => {
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
+      :comments="section10"
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="cue === 28"
       :time="time"
       :existingComments="comments"
-      :comments="section4"
-      @comments="val => handleComments(val)"/>
+      :comments="section10"
+      @comments="val =>handleComments(val)"/>
 
     <!-- Livestream Switching Off -->
     <Livestream v-if="cue === 29"
