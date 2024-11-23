@@ -38,7 +38,7 @@ let viewerInterval
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    scene.value = scene.value ? Math.min(scene.value + 1, 26) : 1
+    scene.value = scene.value ? Math.min(scene.value + 1, 33) : 1
   }
   if (e.code === 'Backspace') {
     scene.value = scene.value > 1 ? scene.value - 1 : null
@@ -146,16 +146,26 @@ watch(scene, val => {
       :existingComments="comments"
       @comments="val => handleComments(val)"/>
 
+    <Scene v-if="scene === 5"/>
+
+    <LivestreamWithComments v-if="scene === 6"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)"/>
+
     <!-- Fullscreen Comments (s. 4) -->
-    <LivestreamComments v-if="scene === 5"
+    <LivestreamComments v-if="scene === 7"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
     <!-- Juniper's Instagram Profile -->
-    <InstagramAccount v-if="scene === 6" />
-    <InstagramPost v-if="scene === 7"
+    <InstagramAccount v-if="scene === 8" />
+
+    <InstagramPost v-if="scene === 9"
       :image="catEarsImage"
       :age="[ 18, 'days' ]"
       :likes="72"
@@ -166,7 +176,11 @@ watch(scene, val => {
       <IgComment user="NekoVibes" image="NekoVibes" :age="`${18} days`" :likes="1" :stories="true" comment="Trans rights are catboi rights!!!"/>
       <IgComment user="Meowster🐾💙" image="Meowster" :age="`${18} days`" :likes="1" :stories="false" comment="I’m getting into it too! You look gorgeous! 😊♥️"/>
     </InstagramPost>
-    <InstagramPost v-if="scene === 8"
+
+      <!-- Juniper's Instagram Bio -->
+    <InstagramBio v-if="scene === 10" />
+
+    <InstagramPost v-if="scene === 11"
       :image="dressImage"
       :age="[ 21, 'days' ]"
       :likes="92"
@@ -177,24 +191,6 @@ watch(scene, val => {
       <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${21} days`" :likes="1" :replies="0" :stories="true" comment="Bro, you’re legit radiating positivity 🫶 keep shining joojoo ✨🌟"/>
     </InstagramPost>
 
-    <!-- Juniper's Instagram Bio -->
-    <InstagramBio v-if="scene === 9" />
-
-    <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 10"
-      :viewers="viewers"
-      :time="time"
-      :existingComments="comments"
-      :comments="section4"
-      @comments="val => handleComments(val)"/>
-
-    <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 11"
-      :time="time"
-      :existingComments="comments"
-      :comments="section4"
-      @comments="val => handleComments(val)"/>
-
     <!-- Livestream with Comments (s. ?) -->
     <LivestreamWithComments v-if="scene === 12"
       :viewers="viewers"
@@ -203,20 +199,14 @@ watch(scene, val => {
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
-      <!-- Fullscreen Comments (s. ?) -->
+    <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 13"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
-    <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 14"
-      :viewers="viewers"
-      :time="time"
-      :existingComments="comments"
-      :comments="section4"
-      @comments="val => handleComments(val)"/>
+    <Scene v-if="scene === 14"/>
 
       <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="scene === 15"
@@ -225,13 +215,42 @@ watch(scene, val => {
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
+    <Scene v-if="scene === 16"/>
+
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 17"
+      :viewers="viewers"
+      :time="time"
+      :existingComments="comments"
+      :comments="section4"
+      @comments="val => handleComments(val)"/>
+
+      <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="scene === 18"
+      :time="time"
+      :existingComments="comments"
+      :comments="section4"
+      @comments="val => handleComments(val)"/>
+
+    <Scene v-if="scene === 19"/>
+
     <!-- Fullscreen Livestream -->
-    <Livestream v-if="scene === 16"
+    <Livestream v-if="scene === 20"
       :viewers="viewers"
       :time="time" />
 
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 21"
+      :viewers="viewers"
+      :time="time"
+      :existingComments="comments"
+      :comments="section4"
+      @comments="val => handleComments(val)"/>
+
+    <InstagramAccount v-if="scene === 22" />
+
     <!-- Juniper's Instagram Notes App Screenshot -->
-    <InstagramPost v-if="scene === 17"
+    <InstagramPost v-if="scene === 23"
       :image="notesImage"
       :age="[ 10, 'minutes' ]"
       :likes="222">
@@ -242,10 +261,10 @@ watch(scene, val => {
     </InstagramPost>
 
     <!-- Zoomed Instagram Comment(s) -->
-    <InstagramComments v-if="scene === 18" />
+    <InstagramComments v-if="scene === 24" />
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 19"
+    <LivestreamWithComments v-if="scene === 25"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -253,30 +272,43 @@ watch(scene, val => {
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 20"
+    <LivestreamComments v-if="scene === 26"
+      :time="time"
+      :existingComments="comments"
+      :comments="section4"
+      @comments="val => handleComments(val)"/>
+
+    <!-- Livestream with Comments (s. ?) -->
+    <LivestreamWithComments v-if="scene === 27"
+      :viewers="viewers"
+      :time="time"
+      :existingComments="comments"
+      :comments="section4"
+      @comments="val => handleComments(val)"/>
+
+    <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="scene === 28"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream Switching Off -->
-    <Livestream v-if="scene === 21"
+    <Livestream v-if="scene === 29"
       :viewers="viewers"
       :time="time" />
 
-    <LivestreamOff v-if="scene === 22"
+    <LivestreamOff v-if="scene === 30"
       :viewers="viewers"
       :time="time"
       @mount="stopTime" />
 
-    <Scene  v-if="scene === 23"/>
-
-    <Logo v-if="scene === 24" />
-    <Logo v-if="scene === 25"
+    <Logo v-if="scene === 31" />
+    <Logo v-if="scene === 32"
       :fadeOut="true" />
 
     <!-- Logo -->
-    <Scene  v-if="scene === 26">
+    <Scene  v-if="scene === 33">
       <div class="flex h-full justify-center items-center">
         <span class="text-white font-semibold">Fin.</span>
       </div>
