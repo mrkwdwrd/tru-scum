@@ -125,8 +125,6 @@ watch(cue, val => {
       Enter Full Screen
     </button>
 
-    <div v-if="reset" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-green-600 font-extrabold">RESET!</div>
-
     <!-- Logic Trap Logo -->
     <Logo v-if="cue === 1" />
 
@@ -322,7 +320,9 @@ watch(cue, val => {
       </div>
     </Scene>
 
-    <div v-if="showCue" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-neutral-200 font-extrabold z-100">Cue {{ cue }}</div>
+    <div v-if="showCue" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-neutral-200 font-extrabold">Cue {{ cue }}</div>
+    <div v-if="reset" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-green-600 font-extrabold">RESET!</div>
+
   </main>
 </template>
 
