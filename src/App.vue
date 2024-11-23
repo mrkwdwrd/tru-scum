@@ -24,7 +24,9 @@ const reset = ref(false)
 
 const fullScreen = ref(false)
 
-const scene = ref(null)
+const showCue = ref(false)
+
+const cue = ref(null)
 
 const viewers = ref(1)
 
@@ -38,10 +40,13 @@ let viewerInterval
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    scene.value = scene.value ? Math.min(scene.value + 1, 33) : 1
+    cue.value = cue.value ? Math.min(cue.value + 1, 33) : 1
   }
   if (e.code === 'Backspace') {
-    scene.value = scene.value > 1 ? scene.value - 1 : null
+    cue.value = cue.value > 1 ? cue.value - 1 : null
+  }
+  if (e.code === 'KeyQ') {
+    toggleShowCue()
   }
 }
 
@@ -56,6 +61,9 @@ const enterFullScreen = () => {
   fullScreen.value = true
 }
 
+const toggleShowCue = () => {
+  showCue.value = !showCue.value
+}
 
 const startTime = () => {
   calcViewers()
@@ -90,8 +98,8 @@ onMounted(() => {
   document.addEventListener('keydown', keyListener)
 })
 
-watch(scene, val => {
-  console.warn('Scene', val, new Date(time.value * 1000).toISOString().slice(11, 19))
+watch(cue, val => {
+  console.warn('Cue', val, new Date(time.value * 1000).toISOString().slice(11, 19))
   if (val === null) {
     clearInterval(timerInterval)
     clearInterval(viewerInterval)
@@ -120,10 +128,10 @@ watch(scene, val => {
     <div v-if="reset" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-green-600 font-extrabold">RESET!</div>
 
     <!-- Logic Trap Logo -->
-    <Logo v-if="scene === 1" />
+    <Logo v-if="cue === 1" />
 
     <!-- Livestream with Comments (s. 1) -->
-    <LivestreamWithComments v-if="scene === 2"
+    <LivestreamWithComments v-if="cue === 2"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -132,23 +140,23 @@ watch(scene, val => {
       @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. 2) -->
-    <LivestreamComments v-if="scene === 3"
+    <LivestreamComments v-if="cue === 3"
       :time="time"
       :existingComments="comments"
       :comments="section2"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream with Comments (s. 3) -->
-    <LivestreamWithComments v-if="scene === 4"
+    <LivestreamWithComments v-if="cue === 4"
       :viewers="viewers"
       :time="time"
       :comments="section3"
       :existingComments="comments"
       @comments="val => handleComments(val)"/>
 
-    <Scene v-if="scene === 5"/>
+    <Scene v-if="cue === 5"/>
 
-    <LivestreamWithComments v-if="scene === 6"
+    <LivestreamWithComments v-if="cue === 6"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -156,16 +164,16 @@ watch(scene, val => {
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. 4) -->
-    <LivestreamComments v-if="scene === 7"
+    <LivestreamComments v-if="cue === 7"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
     <!-- Juniper's Instagram Profile -->
-    <InstagramAccount v-if="scene === 8" />
+    <InstagramAccount v-if="cue === 8" />
 
-    <InstagramPost v-if="scene === 9"
+    <InstagramPost v-if="cue === 9"
       :image="catEarsImage"
       :age="[ 18, 'days' ]"
       :likes="72"
@@ -178,9 +186,9 @@ watch(scene, val => {
     </InstagramPost>
 
       <!-- Juniper's Instagram Bio -->
-    <InstagramBio v-if="scene === 10" />
+    <InstagramBio v-if="cue === 10" />
 
-    <InstagramPost v-if="scene === 11"
+    <InstagramPost v-if="cue === 11"
       :image="dressImage"
       :age="[ 21, 'days' ]"
       :likes="92"
@@ -192,7 +200,7 @@ watch(scene, val => {
     </InstagramPost>
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 12"
+    <LivestreamWithComments v-if="cue === 12"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -200,25 +208,25 @@ watch(scene, val => {
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 13"
+    <LivestreamComments v-if="cue === 13"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
-    <Scene v-if="scene === 14"/>
+    <Scene v-if="cue === 14"/>
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 15"
+    <LivestreamComments v-if="cue === 15"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
-    <Scene v-if="scene === 16"/>
+    <Scene v-if="cue === 16"/>
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 17"
+    <LivestreamWithComments v-if="cue === 17"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -226,31 +234,31 @@ watch(scene, val => {
       @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 18"
+    <LivestreamComments v-if="cue === 18"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
-    <Scene v-if="scene === 19"/>
+    <Scene v-if="cue === 19"/>
 
     <!-- Fullscreen Livestream -->
-    <Livestream v-if="scene === 20"
+    <Livestream v-if="cue === 20"
       :viewers="viewers"
       :time="time" />
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 21"
+    <LivestreamWithComments v-if="cue === 21"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
-    <InstagramAccount v-if="scene === 22" />
+    <InstagramAccount v-if="cue === 22" />
 
     <!-- Juniper's Instagram Notes App Screenshot -->
-    <InstagramPost v-if="scene === 23"
+    <InstagramPost v-if="cue === 23"
       :image="notesImage"
       :age="[ 10, 'minutes' ]"
       :likes="222">
@@ -261,10 +269,10 @@ watch(scene, val => {
     </InstagramPost>
 
     <!-- Zoomed Instagram Comment(s) -->
-    <InstagramComments v-if="scene === 24" />
+    <InstagramComments v-if="cue === 24" />
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 25"
+    <LivestreamWithComments v-if="cue === 25"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -272,14 +280,14 @@ watch(scene, val => {
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 26"
+    <LivestreamComments v-if="cue === 26"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="scene === 27"
+    <LivestreamWithComments v-if="cue === 27"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -287,33 +295,34 @@ watch(scene, val => {
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="scene === 28"
+    <LivestreamComments v-if="cue === 28"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream Switching Off -->
-    <Livestream v-if="scene === 29"
+    <Livestream v-if="cue === 29"
       :viewers="viewers"
       :time="time" />
 
-    <LivestreamOff v-if="scene === 30"
+    <LivestreamOff v-if="cue === 30"
       :viewers="viewers"
       :time="time"
       @mount="stopTime" />
 
-    <Logo v-if="scene === 31" />
-    <Logo v-if="scene === 32"
+    <Logo v-if="cue === 31" />
+    <Logo v-if="cue === 32"
       :fadeOut="true" />
 
     <!-- Logo -->
-    <Scene  v-if="scene === 33">
+    <Scene  v-if="cue === 33">
       <div class="flex h-full justify-center items-center">
         <span class="text-white font-semibold">Fin.</span>
       </div>
     </Scene>
 
+    <div v-if="showCue" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-neutral-200 font-extrabold z-100">Cue {{ cue }}</div>
   </main>
 </template>
 
