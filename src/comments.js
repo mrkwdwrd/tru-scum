@@ -382,13 +382,6 @@ export const section6 = [
 ]
 
 export const section7 = [
-  'TERFs always playing the victim',
-  'okay but like some people deserve to be bullied tbh',
-  'GODWINS LAW',
-  'Omg he really said facts > feelings',
-  'Based',
-  'Am I still trans if im 1900 elo in chess???',
-  'Notice me senpai I paid $5 now i cant make rent',
   'didn’t think I’d hear fascism discourse at 3am but I’m not complaining',
   'oh shit what',
   'woah',
