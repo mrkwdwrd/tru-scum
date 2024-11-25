@@ -827,8 +827,9 @@ export const section10 = [
   'Mr Chat I don’t feel so good…',
   'Aww I wanna send him a Blahaj to hug',
   '#ByeGreg',
-  'Oh god I’ve googled that too',
-  'Fucking hell my parents are the same',
+];
+
+export const section11 = [
   'shit',
   'jesus',
   'fucking christ I did not ask to be so attacked so early in the morning',
@@ -865,6 +866,9 @@ export const section10 = [
   '🐈',
   'makes sense he likes cats hes such a fucking pussy',
   'Hes fucking deranged all trannies are',
+];
+
+export const section12 = [
   'He’s not well',
   'Guys wtf',
   '#ByeGreg',
@@ -886,8 +890,6 @@ export const section10 = [
   'HE SHOULD’VE DONE IT',
   '40%',
   '#ByeGreg',
-  '40%',
-  '40%',
   'What does 40% mean?',
   '40%',
   'omg no',

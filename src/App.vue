@@ -26,7 +26,9 @@ import {
   section7,
   section8,
   section9,
-  section10
+  section10,
+  section11,
+  section12
 } from '@/comments'
 
 const elem = document.documentElement
@@ -59,9 +61,13 @@ const keyListener = (e) => {
   if (e.code === 'KeyQ') {
     toggleShowCue()
   }
+  if (e.code === 'KeyF') {
+    enterFullScreen()
+  }
 }
 
 const enterFullScreen = () => {
+  document.addEventListener('contextmenu', e => e.preventDefault());
   if (elem.requestFullscreen) {
     elem.requestFullscreen()
   } else if (elem.webkitRequestFullscreen) {
@@ -142,7 +148,7 @@ watch(cue, val => {
 
 <template>
   <Camera v-show="false"  :footer="false"/>
-  <main class="cursor-none">
+  <main class="cursor-none select-none">
     <button v-if="!fullScreen"
       @click="enterFullScreen"
       class="absolute text-white top-0 right-0 left-0 bottom-0 cursor-pointer">
@@ -178,23 +184,17 @@ watch(cue, val => {
 
     <Scene v-if="cue === 5"/>
 
-    <LivestreamComments v-if="cue === 6"
-      :time="time"
-      :comments="section3"
-      :existingComments="comments"
-      @comments="val => handleComments(val)"/>
-
     <!-- Fullscreen Comments (s. 4) -->
-    <LivestreamComments v-if="cue === 7"
+    <LivestreamComments v-if="cue === 6"
       :time="time"
       :existingComments="comments"
       :comments="section4"
       @comments="val => handleComments(val)"/>
 
     <!-- Juniper's Instagram Profile -->
-    <InstagramAccount v-if="cue === 8" />
+    <InstagramAccount v-if="cue === 7" />
 
-    <InstagramPost v-if="cue === 9"
+    <InstagramPost v-if="cue === 8"
       :image="catEarsImage"
       :age="[ 18, 'days' ]"
       :likes="72"
@@ -207,9 +207,9 @@ watch(cue, val => {
     </InstagramPost>
 
       <!-- Juniper's Instagram Bio -->
-    <InstagramBio v-if="cue === 10" />
+    <InstagramBio v-if="cue === 9" />
 
-    <InstagramPost v-if="cue === 11"
+    <InstagramPost v-if="cue === 10"
       :image="dressImage"
       :age="[ 21, 'days' ]"
       :likes="92"
@@ -221,7 +221,7 @@ watch(cue, val => {
     </InstagramPost>
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="cue === 12"
+    <LivestreamWithComments v-if="cue === 11"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -229,23 +229,23 @@ watch(cue, val => {
       @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="cue === 13"
+    <LivestreamComments v-if="cue === 12"
       :time="time"
       :existingComments="comments"
       :comments="section6"
       @comments="val => handleComments(val)"/>
 
-    <Scene v-if="cue === 14"/>
+    <Scene v-if="cue === 13"/>
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="cue === 15"
+    <LivestreamComments v-if="cue === 14"
       :time="time"
       :existingComments="comments"
       :comments="section7"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="cue === 16"
+    <LivestreamWithComments v-if="cue === 15"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -253,21 +253,21 @@ watch(cue, val => {
       @comments="val => handleComments(val)"/>
 
       <!-- Fullscreen Comments (s. ?) -->
-    <LivestreamComments v-if="cue === 17"
+    <LivestreamComments v-if="cue === 16"
       :time="time"
       :existingComments="comments"
       :comments="section9"
       @comments="val => handleComments(val)"/>
 
-    <Scene v-if="cue === 18"/>
+    <Scene v-if="cue === 17"/>
 
     <!-- Fullscreen Livestream -->
-    <Livestream v-if="cue === 19"
+    <Livestream v-if="cue === 18"
       :viewers="viewers"
       :time="time" />
 
     <!-- Livestream with Comments (s. ?) -->
-    <LivestreamWithComments v-if="cue === 20"
+    <LivestreamWithComments v-if="cue === 19"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -275,7 +275,7 @@ watch(cue, val => {
       @comments="val => handleComments(val)"/>
 
     <!-- Juniper's Instagram Notes App Screenshot -->
-    <InstagramPost v-if="cue === 21"
+    <InstagramPost v-if="cue === 20"
       :image="notesImage"
       :age="[ 10, 'minutes' ]"
       :likes="222">
@@ -286,13 +286,20 @@ watch(cue, val => {
     </InstagramPost>
 
     <!-- Zoomed Instagram Comment(s) -->
-    <InstagramComments v-if="cue === 22" />
+    <InstagramComments v-if="cue === 21" />
+
+    <!-- Fullscreen Comments (s. ?) -->
+    <LivestreamComments v-if="cue === 22"
+      :time="time"
+      :existingComments="comments"
+      :comments="section10"
+      @comments="val => handleComments(val)"/>
 
     <!-- Fullscreen Comments (s. ?) -->
     <LivestreamComments v-if="cue === 23"
       :time="time"
       :existingComments="comments"
-      :comments="section10"
+      :comments="section11"
       @comments="val => handleComments(val)"/>
 
     <!-- Livestream with Comments (s. ?) -->
@@ -300,7 +307,7 @@ watch(cue, val => {
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
-      :comments="section10"
+      :comments="section12"
       @comments="val => handleComments(val)"/>
 
     <Livestream v-if="cue === 25"

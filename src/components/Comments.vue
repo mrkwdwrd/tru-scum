@@ -1,7 +1,7 @@
 <script setup>
 import Comment from '@/components/Comment.vue'
 import usernames from '@/usernames'
-import { ref, onBeforeUnmount, getCurrentInstance, onMounted } from 'vue'
+import { ref, onBeforeUnmount, onMounted } from 'vue'
 const props = defineProps({
   existingComments: {
     type: Array,
@@ -10,8 +10,6 @@ const props = defineProps({
   comments: Array,
   time: Number
 })
-
-const instance = getCurrentInstance()
 
 const emits = defineEmits(['comments'])
 

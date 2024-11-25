@@ -14,7 +14,7 @@ const startCamera = () => {
             video.srcObject = stream
           })
           .catch(function(error) {
-              console.log("Something went wrong!")
+              console.error("Something went wrong!", error)
           });
     }
 }

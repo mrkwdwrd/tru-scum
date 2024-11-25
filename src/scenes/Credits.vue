@@ -14,7 +14,7 @@ setTimeout(() => {
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto flex items-center content-center w-full">
-      <div id="credits" :class="['text-center text-white w-full flex flex-col gap-1 max-w-xl mx-auto', { 'fade-in': fade }]">
+      <div id="credits" :class="['text-center text-white w-full flex flex-col gap-1 max-w-3xl mx-auto scale-150', { 'fade-in': fade }]">
         <h1 class="uppercase text-5xl font-black">Truscum</h1>
         <h2 class="uppercase font-medium mt-4">Writer/producer</h2>
         <p class="uppercase font-medium text-3xl">Oscar Bray</p>
