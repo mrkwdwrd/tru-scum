@@ -12,12 +12,22 @@ import InstagramComments from '@/scenes/InstagramComments.vue'
 import InstagramBio from '@/scenes/InstagramBio.vue'
 import Scene from '@/components/Scene.vue'
 import { onMounted, ref, watch } from 'vue'
-// import notesImage from '@/assets/images/IMG_F86A9C06889F-1.jpeg'
-import notesImage from '@/assets/images/IMG_2670C479D8DC-1.jpg'
+import notesImage from '@/assets/images/IMG_12C199CFA5F9-1.jpg'
 import catEarsImage from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
 import dressImage from '@/assets/images/openart-image_8rlC-yOP_1731742127760_raw.jpg'
-import { section1, section2, section3, section4, section5, section6, section7, section8, section9, section10 } from '@/comments'
 import Credits from './scenes/Credits.vue'
+import {
+  section1,
+  section2,
+  section3,
+  section4,
+  section5,
+  section6,
+  section7,
+  section8,
+  section9,
+  section10
+} from '@/comments'
 
 const elem = document.documentElement
 
