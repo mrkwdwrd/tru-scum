@@ -1,7 +1,7 @@
 <script setup>
   import Scene  from '@/components/Scene.vue'
   import Caption from '@/components/Caption.vue'
-  import { onBeforeUnmount, onMounted, ref } from 'vue'
+  import { defineEmits, onBeforeUnmount, onMounted, ref } from 'vue'
 
   const props = defineProps({
     time: Number,
@@ -17,7 +17,7 @@
   const calcViewers = () => {
     viewerInterval = setInterval(() => {
       const inc = parseInt(Math.random() * 1500)
-      viewers.value = Math.max(Math.min(viewers.value - inc, 9376), 88)
+      viewers.value = Math.max(Math.min(viewers.value - inc, 9376), 13)
     }, 1000)
   }
 
