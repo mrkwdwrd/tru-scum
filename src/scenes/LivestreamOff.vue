@@ -1,17 +1,35 @@
 <script setup>
   import Scene  from '@/components/Scene.vue'
   import Caption from '@/components/Caption.vue'
-  import { getCurrentInstance, onMounted } from 'vue'
+  import { onBeforeUnmount, onMounted, ref } from 'vue'
 
   const props = defineProps({
     time: Number,
     viewers: Number
   })
 
+  let viewerInterval
+
   const emits = defineEmits(['count', 'mount'])
+
+  const viewers = ref(props.viewers)
+
+  const calcViewers = () => {
+    viewerInterval = setInterval(() => {
+      const inc = parseInt(Math.random() * 500)
+      console.warn(inc)
+      viewers.value = Math.max(Math.min(viewers.value - inc, 9376), 88)
+    }, 1000)
+  }
+
 
   onMounted(() => {
     emits('mount')
+    calcViewers()
+  })
+
+  onBeforeUnmount(() => {
+    clearInterval(viewerInterval)
   })
 </script>
 

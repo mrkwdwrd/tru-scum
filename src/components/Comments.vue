@@ -29,7 +29,7 @@ let timeout
 const images = ref([])
 
 const findImage = () => {
-  let int = parseInt(Math.random() * (283 - 1) + 1)
+  let int = parseInt(Math.random() * (482 - 1) + 1)
   while (images.value.indexOf(int) >= 0) int = parseInt(Math.random() * (283 - 1) + 1)
   images.value.push(int)
   if (images.value.length > 80) {
@@ -44,9 +44,9 @@ const showComments = (array) => {
       promise = promise.then(function () {
         comments.value.push({
           image: findImage(),
-          user: usernames[parseInt(Math.random() * (999 - 1) + 1)],
+          user: usernames[parseInt(Math.random() * (1099 - 1) + 1)],
           text: comment,
-          delay: parseInt(Math.random() * 800)
+          delay: parseInt(Math.random() * 900)
         })
         return new Promise(function (resolve) {
           timeout = setTimeout(resolve, interval)

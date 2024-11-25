@@ -866,9 +866,6 @@ export const section11 = [
   '🐈',
   'makes sense he likes cats hes such a fucking pussy',
   'Hes fucking deranged all trannies are',
-];
-
-export const section12 = [
   'He’s not well',
   'Guys wtf',
   '#ByeGreg',
@@ -879,6 +876,15 @@ export const section12 = [
   '#ByeGreg',
   'I feel like an astronaut in the ocean',
   'OKAY COOL BUT YOU MIGHT’VE CAUSED A TEENAGER TO FUCKING KILL HIMSELF CAN WE GET BACK TO THAT PLEASE?????',
+  '#ByeGreg',
+  'Ye it’s his flatmate',
+  'Whose simon?',
+  'My brain hurts',
+  'What the fuck',
+  '#ByeGreg',
+];
+
+export const section12 = [
   'pogchamp',
   'die mad',
   '#ByeGreg',
@@ -909,6 +915,12 @@ export const section12 = [
   'Greg seek professional help',
   'Fucking hell my heart is breaking',
   'WHAT IS HAPPENING',
+  'Hes fucking deranged all trannies are',
+  'He’s not well',
+  'Guys wtf',
+  '#ByeGreg',
+  'How drunk even is he????',
+  'hi',
   '#ByeGreg',
   'guys I’m gonna go',
   'am I still trans if I’m fucking dead?',
