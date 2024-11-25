@@ -16,11 +16,10 @@
 
   const calcViewers = () => {
     viewerInterval = setInterval(() => {
-      const inc = parseInt(Math.random() * 500)
+      const inc = parseInt(Math.random() * 1500)
       viewers.value = Math.max(Math.min(viewers.value - inc, 9376), 88)
     }, 1000)
   }
-
 
   onMounted(() => {
     emits('mount')

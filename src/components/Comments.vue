@@ -54,7 +54,7 @@ const showComments = (array) => {
       })
     })
     promise.then(function () {
-      console.warn('--- Coments Repeat', new Date(props.time * 1000).toISOString().slice(11, 19))
+      console.warn('--- Comments Repeat', new Date(props.time * 1000).toISOString().slice(11, 19))
       showComments(props.comments)
     })
   }

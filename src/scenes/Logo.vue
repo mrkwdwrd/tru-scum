@@ -32,7 +32,7 @@
 <style lang="css" scoped>
   #logo {
     opacity: 1;
-    transition: opacity 5s ease-in-out;
+    transition: opacity 8s ease-in-out;
   }
   #logo.fade-out {
     opacity: 0;

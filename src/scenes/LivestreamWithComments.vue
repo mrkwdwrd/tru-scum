@@ -32,7 +32,6 @@
         </Camera>
       </div>
       <div class="h-screen w-1/3 flex items-center">
-        <!-- <Comments :existingComments="comments" :comments="section1.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)" @comments="val => emits('comments', val)"/> -->
         <Comments :existingComments="existingComments" :comments="comments" :time="time" @comments="val => emits('comments', val)"/>
       </div>
     </div>

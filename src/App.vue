@@ -147,7 +147,7 @@ watch(cue, val => {
 </script>
 
 <template>
-  <Camera v-show="false"  :footer="false"/>
+  <!-- <Camera v-show="false"  :footer="false"/> -->
   <main class="!cursor-none !select-none">
     <button v-if="!fullScreen"
       @click="enterFullScreen"
