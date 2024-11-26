@@ -90,6 +90,7 @@ const startTime = () => {
 }
 
 const stopTime = () => {
+  clearInterval(viewerInterval)
   clearInterval(timerInterval)
 }
 
@@ -131,8 +132,7 @@ onMounted(() => {
 watch(cue, val => {
   console.warn('Cue', val, new Date(time.value * 1000).toISOString().slice(11, 19))
   if (val === null) {
-    clearInterval(timerInterval)
-    clearInterval(viewerInterval)
+    stopTime()
     time.value = 1
     viewers.value = 1
     comments.value = []
@@ -147,7 +147,7 @@ watch(cue, val => {
 </script>
 
 <template>
-  <!-- <Camera v-show="false"  :footer="false"/> -->
+  <Camera v-show="false"  :footer="false"/>
   <main class="!cursor-none !select-none">
     <button v-if="!fullScreen"
       @click="enterFullScreen"

@@ -30,7 +30,7 @@ const images = ref([])
 
 const findImage = () => {
   let int = parseInt(Math.random() * (482 - 1) + 1)
-  while (images.value.indexOf(int) >= 0) int = parseInt(Math.random() * (283 - 1) + 1)
+  while (images.value.indexOf(int) >= 0) int = parseInt(Math.random() * (482 - 1) + 1)
   images.value.push(int)
   if (images.value.length > 80) {
     images.value.shift()

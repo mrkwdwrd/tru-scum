@@ -16,8 +16,8 @@
 
   const calcViewers = () => {
     viewerInterval = setInterval(() => {
-      const inc = parseInt(Math.random() * 1500)
-      viewers.value = Math.max(Math.min(viewers.value - inc, 9376), 13)
+      const int = parseInt(Math.random() * 1500)
+      viewers.value = Math.max(Math.min(viewers.value - int, 9376), 0)
     }, 1000)
   }
 
