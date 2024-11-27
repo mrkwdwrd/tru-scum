@@ -83,6 +83,7 @@ const toggleShowCue = () => {
 }
 
 const startTime = () => {
+  viewers.value = 1
   calcViewers()
   timerInterval = setInterval(() => {
     time.value++
