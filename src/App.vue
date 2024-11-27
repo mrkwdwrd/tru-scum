@@ -83,6 +83,8 @@ const toggleShowCue = () => {
 }
 
 const startTime = () => {
+  stopTime()
+  time.value = 1
   viewers.value = 1
   calcViewers()
   timerInterval = setInterval(() => {
@@ -134,13 +136,9 @@ watch(cue, val => {
   console.warn('Cue', val, new Date(time.value * 1000).toISOString().slice(11, 19))
   if (val === null) {
     stopTime()
-    time.value = 1
-    viewers.value = 1
     comments.value = []
     reset.value = true
     setTimeout(() => {
-      time.value = 1
-      viewers.value = 1
       reset.value = false
     }, 2000)
   }
