@@ -8,7 +8,7 @@
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full relative">
-      <main class="w-full flex items-center">
+      <main class="w-full flex items-center font-opensans">
         <div class="w-full max-w-screen-lg mx-auto p-5 bg-white flex gap-5">
           <div class="w-1/3">
             <img :src="cover" />
@@ -36,7 +36,7 @@
                 <span class="text-blue-500 text-sm">(346)</span>
               </div>
             </div>
-            <div class="font-extrabold pt-4">
+            <div class="font-bold pt-4">
               "The book shines. . . By delving into the ways people become susceptible to QAnon, Cook uncovers a deeper truth- Many of us go through life with a gaping hole caused by trauma, isolation or shame, and we find healthy and unhealthy ways to fill it."-The New York Times
             </div>
             <div class="font-normal pt-2">

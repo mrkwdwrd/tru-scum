@@ -32,7 +32,7 @@
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
       <div class="flex h-full relative">
-        <main class="w-full flex items-center">
+        <main class="w-full flex items-center font-opensans">
           <div class="w-full max-w-screen-md pr-10 pl-8 py-8 rounded-md mx-auto text-zinc-900 text-lg flex items-center  gap-6 bg-sky-950">
             <img :src="logo" class="h-10 mt-3"/>
             <div class="flex flex-grow items-center bg-white rounded-md relative gap-2 overflow-hidden">
