@@ -1,10 +1,9 @@
 <script setup>
-  import Likes from '@/components/Likes.vue'
   import { HandThumbUpIcon, HandThumbDownIcon, ShareIcon, EllipsisHorizontalIcon } from '@heroicons/vue/24/solid'
   import logo from '@/assets/images/LogicTrap_logo.png'
 
   const props = defineProps({
-    viewers: Number
+    likes: Number
   })
 </script>
 
