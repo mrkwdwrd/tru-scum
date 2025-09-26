@@ -1,6 +1,6 @@
 <script setup>
 import Comment from '@/components/Comment.vue'
-import usernames from '@/usernames'
+import usernames from '@/content/usernames'
 import { ref, onBeforeUnmount, onMounted } from 'vue'
 const props = defineProps({
   existingComments: {
