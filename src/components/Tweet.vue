@@ -1,6 +1,8 @@
 <script setup>
+import { twitter } from '@/content/users'
+
 const props = defineProps({
-  avatar: String,
+  user: String,
   tweet: Object
 })
 
@@ -19,8 +21,8 @@ const props = defineProps({
           </div>
           <!-- User -->
           <div>
-            <div class="font-bold">Twitter/X User</div>
-            <div class="text-gray-500">@twitteruser</div>
+            <div class="font-bold">{{ twitter[tweet.user].name }}</div>
+            <div class="text-gray-500">{{ twitter[tweet.user].handle }}</div>
           </div>
         </div>
       <!-- More -->

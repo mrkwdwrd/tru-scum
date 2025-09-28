@@ -15,38 +15,39 @@
       tweetsArray.value.push(arr[i])
       setTimeout(() => {
         addTweets(arr, i + 1)
-      }, Math.random() * 1000)
+      }, arr[i].delay)
     }
   }
 
   onMounted(() => {
-    addTweets(props.tweets.map((tweet, index) => {
-      return {
-        ...tweet,
-        position: index < 1 ? {
-          x: 0, y: 0
-        } : {
-          x: (Math.random() * 2 - 1) * 500,
-          y: (Math.random() * 2 - 1) * 300
+    setTimeout (() => {
+      addTweets(props.tweets.map((tweet, index) => {
+        return {
+          ...tweet,
+          delay: index < 1 ? 1800 : parseInt(index > 6 ? Math.random() * 1000 : Math.random() * 500),
+          position: index < 1 ? {
+            x: 0, y: 0
+          } : {
+            x: parseInt((Math.random() * 2 - 1) * 400),
+            y: parseInt((Math.random() * 2 - 1) * 225)
+          }
         }
-      }
-    }))
+      }))
+    }, 1000)
   })
 
 </script>
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
-
-      <TransitionGroup name="list" tag="div" class="h-full w-full text-white">
-        <div v-for="(tweet, key) in tweetsArray" :key="key" class="h-full w-full flex items-center absolute top-0 left-0 right-0 bottom-0 opacity-0">
-          <Tweet
-            :tweet="tweet"
-            :avatar="profileImage"
-            class="border border-slate-700 relative origin-center drop-shadow-[0_45px_45px_rgba(0,0,0,0.95)]"
-            :style="`left: ${tweet.position.x}px; top: ${tweet.position.y}px;`"/>
-        </div>
-      </TransitionGroup>
+    <TransitionGroup name="list" tag="div" class="h-full w-full text-white">
+      <div v-for="(tweet, key) in tweetsArray" :key="key" class="h-full w-full flex items-center absolute top-0 left-0 right-0 bottom-0 opacity-0">
+        <Tweet
+          :tweet="tweet"
+          class="border border-slate-700 relative origin-center drop-shadow-[0_45px_45px_rgba(0,0,0,0.95)]"
+          :style="`left: ${tweet.position.x}px; top: ${tweet.position.y}px;`"/>
+      </div>
+    </TransitionGroup>
   </Scene>
 </template>
 
@@ -56,7 +57,7 @@
     transform: scale(0%);
   }
   .list-leave-active {
-    opacity: 0.25;
+    opacity: 1;
     transform: scale(100%);
   }
   .list-enter-from,
@@ -68,6 +69,6 @@
   .list-leave-active,
   .list-enter-from,
   .list-leave-to {
-    transition: 1s all 1s ease-in-out;
+    transition: 1s all 0.5s ease-in-out;
   }
 </style>
