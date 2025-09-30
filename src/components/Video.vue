@@ -1,12 +1,12 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps({
   footer: Boolean,
   source: String,
   start: {
     type: Number,
-    default: 5
+    default: 0
   },
   playAt: Number,
   stopAt: Number
@@ -17,31 +17,46 @@ const video = ref()
 const timeline = ref()
 const current = ref()
 
-onMounted(() => {
-  video.value.addEventListener('loadedmetadata', function() {
-    timeline.value.style.transition = '1s all 1s ease-in'
-    current.value.style.transition = '1s all 1s ease-out'
-    setTimeout(() => {
-      current.value.style.width = `${(props.playAt / this.duration) * 100}%`
-      setTimeout(() => {
-        this.currentTime = props.playAt
-        this.play()
-        timeline.value.style.opacity = 0
-        current.value.style.opacity = 0
-      }, 2000)
-    }, 500)
-  }, false)
-
-  video.value.addEventListener('timeupdate', function(){
-    current.value.style.width = `${(this.currentTime / this.duration) * 100}%`
-    if(this.currentTime >= props.stopAt) {
-      timeline.value.style.opacity = 1
-      current.value.style.opacity = 1
-      this.pause()
+const scrubToPlay = (play, start = 0) => {
+  setTimeout(() => {
+    if (start < play) {
+      const curr = start + 5
+      video.value.currentTime = curr
+      current.value.style.width = `${(curr / video.value.duration) * 100}%`
+      return scrubToPlay(play, curr)
     }
-});
+    video.value.play()
+    setTimeout(() => {
+      timeline.value.style.opacity = 0
+      current.value.style.opacity = 0
+    }, 1000)
+  }, 50)
+}
 
+const videoStart = () => {
+    timeline.value.style.transition = 'opacity 1s ease-in'
+    current.value.style.transition = 'opacity 1s ease-out'
+    scrubToPlay(props.playAt)
+}
+
+const videoStop = () => {
+  current.value.style.width = `${(video.value.currentTime / video.value.duration) * 100}%`
+  if(video.value.currentTime >= props.stopAt) {
+    timeline.value.style.opacity = 1
+    current.value.style.opacity = 1
+    video.value.pause()
+  }
+}
+onMounted(() => {
+  video.value.addEventListener('loadedmetadata', videoStart)
+  video.value.addEventListener('timeupdate', videoStop)
 })
+
+onBeforeUnmount(() => {
+  video.value.removeEventListener('loadedmetadata', videoStart)
+  video.value.removeEventListener('timeupdate', videoStop)
+})
+
 </script>
 
 <template>
