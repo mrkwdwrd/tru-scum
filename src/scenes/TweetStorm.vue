@@ -1,7 +1,6 @@
 <script setup>
   import Scene from '@/components/Scene.vue'
   import Tweet from '@/components/Tweet.vue'
-  import profileImage from '@/assets/images/openart-image_GjENJ-VC_1731748862428_raw.png'
   import { onMounted, ref } from 'vue'
 
   const props = defineProps({
@@ -20,20 +19,18 @@
   }
 
   onMounted(() => {
-    setTimeout (() => {
-      addTweets(props.tweets.map((tweet, index) => {
-        return {
-          ...tweet,
-          delay: index < 1 ? 1800 : parseInt(index > 6 ? Math.random() * 1000 : Math.random() * 500),
-          position: index < 1 ? {
-            x: 0, y: 0
-          } : {
-            x: parseInt((Math.random() * 2 - 1) * 400),
-            y: parseInt((Math.random() * 2 - 1) * 225)
-          }
+    addTweets(props.tweets.map((tweet, index) => {
+      return {
+        ...tweet,
+        delay: index < 1 ? 800 : parseInt(index > 6 ? Math.random() * 1000 : Math.random() * 500),
+        position: index < 1 ? {
+          x: 0, y: 0
+        } : {
+          x: parseInt((Math.random() * 2 - 1) * 400),
+          y: parseInt((Math.random() * 2 - 1) * 225)
         }
-      }))
-    }, 1000)
+      }
+    }))
   })
 
 </script>

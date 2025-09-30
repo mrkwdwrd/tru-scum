@@ -16,7 +16,7 @@ const props = defineProps({
           <!-- Avatar -->
           <div class="w-14 h-14 rounded-full">
             <span class="block overflow-hidden rounded-full border-black ">
-              <img :src="avatar"/>
+              <img :src="twitter[tweet.user].avatar"/>
             </span>
           </div>
           <!-- User -->
