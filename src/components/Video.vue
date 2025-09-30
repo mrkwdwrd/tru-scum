@@ -39,7 +39,7 @@ const videoStart = () => {
     if (props.playAt === props.start) {
       return video.value.play()
     }
-    scrubToPlay(props.playAt)
+    scrubToPlay(props.playAt, props.start)
 }
 
 const videoStop = () => {

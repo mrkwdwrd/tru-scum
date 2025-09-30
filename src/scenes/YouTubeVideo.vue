@@ -23,7 +23,7 @@
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
-        <Video :id="uuid" :footer="true" :source="video?.source" :play-at="video?.playAt" :stop-at="video?.stopAt">
+        <Video :id="uuid" :footer="true" :source="video?.source" :start="video?.start" :play-at="video?.playAt" :stop-at="video?.stopAt">
           <Caption :video="video" />
         </Video>
       </div>
