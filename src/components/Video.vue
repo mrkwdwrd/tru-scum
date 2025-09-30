@@ -36,6 +36,9 @@ const scrubToPlay = (play, start = 0) => {
 const videoStart = () => {
     timeline.value.style.transition = 'opacity 1s ease-in'
     current.value.style.transition = 'opacity 1s ease-out'
+    if (props.playAt === props.start) {
+      return video.value.play()
+    }
     scrubToPlay(props.playAt)
 }
 
