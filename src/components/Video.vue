@@ -19,27 +19,29 @@ const current = ref()
 
 const scrubToPlay = (play, start = 0) => {
   setTimeout(() => {
-    if (start < play) {
-      const curr = start + 5
-      video.value.currentTime = curr
-      current.value.style.width = `${(curr / video.value.duration) * 100}%`
-      return scrubToPlay(play, curr)
+    if (video.value) {
+      if (start < play) {
+        const curr = start + 5
+        video.value.currentTime = curr
+        current.value.style.width = `${(curr / video.value.duration) * 100}%`
+        return scrubToPlay(play, curr)
+      }
+      video.value.play()
+      setTimeout(() => {
+        timeline.value.style.opacity = 0
+        current.value.style.opacity = 0
+      }, 1000)
     }
-    video.value.play()
-    setTimeout(() => {
-      timeline.value.style.opacity = 0
-      current.value.style.opacity = 0
-    }, 1000)
   }, 50)
 }
 
 const videoStart = () => {
-    timeline.value.style.transition = 'opacity 1s ease-in'
-    current.value.style.transition = 'opacity 1s ease-out'
-    if (props.playAt === props.start) {
-      return video.value.play()
-    }
-    scrubToPlay(props.playAt, props.start)
+  timeline.value.style.transition = 'opacity 1s ease-in'
+  current.value.style.transition = 'opacity 1s ease-out'
+  if (props.playAt === props.start) {
+    return video.value.play()
+  }
+  scrubToPlay(props.playAt, props.start)
 }
 
 const videoStop = () => {
