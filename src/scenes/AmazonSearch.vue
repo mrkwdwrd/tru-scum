@@ -22,8 +22,8 @@
   }
 
   onMounted(() => {
+    field.value?.focus()
     setTimeout(() => {
-      field.value?.focus()
       simulateTyping(props.term.split(''))
     }, 1200)
   })
