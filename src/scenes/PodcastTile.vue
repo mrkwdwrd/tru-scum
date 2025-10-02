@@ -31,7 +31,7 @@
           </svg>
           <div class="text-center mt-8 flex flex-col gap-4">
             <div class="">Episode One</div>
-            <div class="text-5xl font-abril">Lorem ipsum dolor sit</div>
+            <div class="text-5xl font-abril">Real Women Only</div>
             <div class="text-xl">Amelia Collins</div>
           </div>
           <div class="w-full mt-8">
