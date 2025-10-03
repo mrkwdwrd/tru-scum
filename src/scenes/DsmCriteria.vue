@@ -8,7 +8,7 @@
   onMounted(() => {
     setTimeout(() => {
       show.value = true
-    }, 1000)
+    }, 500)
   })
 
   function onBeforeEnter(el) {
