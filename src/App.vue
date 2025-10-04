@@ -1,8 +1,6 @@
 <script setup>
 import Logo from '@/scenes/Logo.vue'
-import Livestream from '@/scenes/Livestream.vue'
 import LivestreamWithComments from '@/scenes/LivestreamWithComments.vue'
-import LivestreamComments from '@/scenes/LivestreamComments.vue'
 import LivestreamOff from '@/scenes/LivestreamOff.vue'
 import InstagramAccount from '@/scenes/InstagramAccount.vue'
 import InstagramPost from '@/scenes/InstagramPost.vue'
@@ -22,7 +20,6 @@ import GoogleResults from './scenes/GoogleResults.vue'
 import AmazonSearch from './scenes/AmazonSearch.vue'
 import AmazonBook from './scenes/AmazonBook.vue'
 import YouTubeVideo from './scenes/YouTubeVideo.vue'
-import OxfordArticle from './scenes/OxfordArticle.vue'
 import PodcastTile from './scenes/PodcastTile.vue'
 import TweetStorm from './scenes/TweetStorm.vue'
 import DsmCriteria from './scenes/DsmCriteria.vue'
@@ -45,6 +42,7 @@ import {
 
 import { tweetStorm, tweet } from '@/content/tweets'
 import { videos } from './content/videos'
+import FacebookSearch from './scenes/FacebookSearch.vue'
 
 const elem = document.documentElement
 
@@ -68,7 +66,7 @@ let viewerInterval
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    cue.value = cue.value ? Math.min(cue.value + 1, 33) : 1
+    cue.value = cue.value ? Math.min(cue.value + 1, 70) : 1
   }
   if (e.code === 'Backspace') {
     cue.value = cue.value > 1 ? cue.value - 1 : null
@@ -190,11 +188,11 @@ watch(cue, val => {
 
     <!-- Tweet: Amelia -->
     <TwitterStatus v-if="cue === 5"
-      :tweet="tweet[0]" />
+      :tweet="tweet.amelia" />
 
     <!-- Tweetstorm: Amelia (1) -->
     <TweetStorm v-if="cue === 6"
-      :tweets="tweetStorm[0]" />
+      :tweets="tweetStorm.amelia" />
 
     <!-- Podcast Tile -->
     <PodcastTile v-if="cue === 7" />
@@ -216,7 +214,7 @@ watch(cue, val => {
 
     <!-- Tweetstorm: Amelia (2) -->
     <TweetStorm v-if="cue === 11"
-      :tweets="tweetStorm[0]" />
+      :tweets="tweetStorm.amelia" />
 
     <!-- Livestream -->
     <LivestreamWithComments v-if="cue === 12"
@@ -236,27 +234,27 @@ watch(cue, val => {
 
     <!-- Tweet: JK -->
     <TwitterStatus v-if="cue === 14"
-      :tweet="tweet[1]" />
+      :tweet="tweet.jk" />
 
     <!-- Tweetstorm: JK -->
     <TweetStorm v-if="cue === 15"
-      :tweets="tweetStorm[1]" />
+      :tweets="tweetStorm.jk" />
 
     <!-- Tweetstorm: Greg & Amelia -->
     <TweetStorm v-if="cue === 16"
-      :tweets="tweetStorm[1]" />
+      :tweets="tweetStorm.ameliaVsGreg" />
 
     <!-- Video: Debate (intro) -->
     <YouTubeVideo v-if="cue === 17" :video="videos.debateIntro" />
 
     <!-- Video: Debate (1) -->
-    <YouTubeVideo v-if="cue === 18" :video="videos.debate" />
+    <YouTubeVideo v-if="cue === 18" :video="videos.debate1" />
 
     <!-- Video: Debate (2) -->
-    <YouTubeVideo v-if="cue === 19" :video="videos.debate" />
+    <YouTubeVideo v-if="cue === 19" :video="videos.debate2" />
 
     <!-- Video: Debate (still/zoom) -->
-    <YouTubeVideo v-if="cue === 20" :video="videos.debate" />
+    <!-- <YouTubeVideo v-if="cue === 20" :video="videos.debate2" /> -->
 
     <!-- Livestream -->
     <LivestreamWithComments v-if="cue === 21"
@@ -270,7 +268,7 @@ watch(cue, val => {
     <VennDiagram v-if="cue === 22" />
 
     <!-- Video: Pink Floyd -->
-    <YouTubeVideo v-if="cue === 23" :video="videos.pinkfloyd" />
+    <YouTubeVideo v-if="cue === 23" :video="videos.pinkFloyd" />
 
     <!-- Livestream -->
     <LivestreamWithComments v-if="cue === 24"
@@ -333,13 +331,14 @@ watch(cue, val => {
     <!-- picture of brains on screen -->
 
     <!-- Video: Debate (3) -->
-    <YouTubeVideo v-if="cue === 38" :video="videos.debate" />
+    <YouTubeVideo v-if="cue === 38" :video="videos.debate3" />
 
     <!-- Black -->
     <Scene v-if="cue === 39" />
 
     <!-- Facebook: Search 'Amelia collins' -->
-
+    <FacebookSearch v-if="cue === 40"
+      term="amelia collins" />
     <!-- Facebook: Amelia -->
 
     <!-- Facebook: Primary school education - to st Mary’s fb page -->
@@ -367,10 +366,10 @@ watch(cue, val => {
     <!-- ("Calm down Greg” “LOL triggered!”) -->
 
     <!-- Video: Debate (4) -->
-    <YouTubeVideo v-if="cue === 46" :video="videos.debate" />
+    <YouTubeVideo v-if="cue === 46" :video="videos.debate4" />
 
     <!-- Video: Debate (5) -->
-    <YouTubeVideo v-if="cue === 47" :video="videos.debate" />
+    <YouTubeVideo v-if="cue === 47" :video="videos.debate5" />
 
     <!-- Livestream -->
     <LivestreamWithComments v-if="cue === 48"

@@ -1,5 +1,5 @@
-export const tweet = [
-  {
+export const tweet = {
+  amelia: {
     user: 'amelia',
     time: '1:49 PM',
     date: 'Aug 17, 2025',
@@ -10,7 +10,7 @@ export const tweet = [
     likes: '74k',
     saves: '1.2k'
   },
-  {
+  jk: {
     user: 'jk',
     time: '11:17 PM',
     date: 'Jun 21, 2023',
@@ -21,10 +21,11 @@ export const tweet = [
     likes: '196k',
     saves: '5.2k'
   },
-]
+}
 
-export const tweetStorm = [
-  [
+export const tweetStorm = {
+  amelia: [
+    tweet.amelia,
     {
       user: 'amelia',
       time: '1:49 PM',
@@ -235,7 +236,21 @@ export const tweetStorm = [
       saves: '1.2k'
     },
   ],
-  [
+  jk: [
+    tweet.jk,
+    {
+      user: 'jk',
+      time: '11:17 PM',
+      date: 'Jun 21, 2023',
+      content: "'Cis' is ideological language, signifying belief in the unfalsifiable concept of gender identity. You have a perfect right to believe in unprovable essences that may or may not match the sexed body, but the rest of us have a right to disagree, and to refuse to adopt your jargon.",
+      views: '21M',
+      comments: '10k',
+      retweets: '40k',
+      likes: '196k',
+      saves: '5.2k'
+    }
+  ],
+  ameliaVsGreg: [
     {
       user: 'amelia',
       time: '1:49 PM',
@@ -413,4 +428,4 @@ export const tweetStorm = [
       saves: '1.2k'
     },
   ]
-]
+}

@@ -4,7 +4,7 @@ export const twitter = {
     verified: true,
     handle: '@aecollins76',
     bio: 'Real women only.',
-    avatar: null
+    avatar: '/src/assets/users/twitter/amelia.jpg'
   },
   greg: {
     name: 'The Logic Trap',
