@@ -26,6 +26,7 @@ import OxfordArticle from './scenes/OxfordArticle.vue'
 import PodcastTile from './scenes/PodcastTile.vue'
 import TweetStorm from './scenes/TweetStorm.vue'
 import DsmCriteria from './scenes/DsmCriteria.vue'
+import VennDiagram from './scenes/VennDiagram.vue'
 
 import {
   section1,
@@ -127,7 +128,7 @@ const getFactor = (val) => {
 const calcViewers = () => {
   viewerInterval = setInterval(() => {
     const factor = getFactor(viewers.value)
-    const max = randomIntFromInterval(9376, 10022)
+    const max = randomIntFromInterval(9376, 11022)
     const inc = parseInt(Math.random() * factor)
     viewers.value = Math.max(Math.min(viewers.value + inc, max), 1)
   }, 1000)
@@ -160,158 +161,362 @@ watch(cue, val => {
 </script>
 
 <template>
-  <main class="!select-none cursor-none">
+  <main class="!select-none">
     <button v-if="!fullScreen"
       @click="enterFullScreen"
       class="absolute text-white top-0 right-0 left-0 bottom-0 cursor-pointer">
       Enter Full Screen
     </button>
 
-    <!-- Logic Trap Logo -->
-    <Logo v-if="cue === 1" />
+    <!-- Logo, Countdown (5 mins?)-->
+    <Logo v-if="cue === 1" :countdown="300000" />
 
-    <!-- Youtube frame -->
-    <!-- Viewer count -->
-    <LivestreamWithComments v-if="cue === 2"
+    <!-- Black  -->
+
+    <!-- Video: Trailer -->
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 3"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
       :comments="section1"
       @mount="startTime"
-      @comments="val => handleComments(val)"/>
+      @comments="val => handleComments(val)" />
 
-    <!-- Reading stream comments -->
-    <LivestreamComments v-if="cue === 3"
+    <!-- Google: “real women only vs logic trap”  -->
+    <GoogleSearch v-if="cue === 4"
+      term="real women only vs logic trap" />
+
+    <!-- Tweet: Amelia -->
+    <TwitterStatus v-if="cue === 5"
+      :tweet="tweet[0]" />
+
+    <!-- Tweetstorm: Amelia (1) -->
+    <TweetStorm v-if="cue === 6"
+      :tweets="tweetStorm[0]" />
+
+    <!-- Podcast Tile -->
+    <PodcastTile v-if="cue === 7" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 8"
+      :viewers="viewers"
       :time="time"
+      :comments="section3"
       :existingComments="comments"
-      :comments="section2"
-      @comments="val => handleComments(val)"/>
+      @comments="val => handleComments(val)" />
 
-    <!-- Opening twitter -->
-    <!-- Fake Amelia twitter account -->
-    <!-- - Includes at least one about her podcast -->
-    <TwitterStatus v-if="cue === 4" :tweet="tweet[0]" />
-    <TweetStorm v-if="cue === 5" :tweets="tweetStorm[0]" />
-    <PodcastTile v-if="cue === 6" />
+    <!-- Amazon search -->
+    <AmazonSearch v-if="cue === 9"
+      term="amelia collins real women only" />
 
-    <!-- Open article about Oxford -->
-    <OxfordArticle v-if="cue === 7" />
+    <!-- Amazon book -->
+    <AmazonBook v-if="cue === 10" />
 
-    <!-- Open amazon.com and search amelia’s book (fake) -->
-    <AmazonSearch v-if="cue === 8" term="amelia collins real women only"/>
-    <AmazonBook v-if="cue === 9" />
+    <!-- Tweetstorm: Amelia (2) -->
+    <TweetStorm v-if="cue === 11"
+      :tweets="tweetStorm[0]" />
 
-    <!-- Stream comments -->
-    <LivestreamComments v-if="cue === 10"
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 12"
+      :viewers="viewers"
       :time="time"
+      :comments="section3"
       :existingComments="comments"
-      :comments="section2"
-      @comments="val => handleComments(val)"/>
+      @comments="val => handleComments(val)" />
 
-    <!-- Twitter- JK Rowling -->
-    <TwitterStatus v-if="cue === 11" :tweet="tweet[1]" />
+    <!-- Livestream (TERF comments) -->
+    <LivestreamWithComments v-if="cue === 13"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
 
-    <!-- Twitter- Fake Amelia and Greg tweets -->
-    <TweetStorm v-if="cue === 12" :tweets="tweetStorm[1]" />
+    <!-- Tweet: JK -->
+    <TwitterStatus v-if="cue === 14"
+      :tweet="tweet[1]" />
 
-    <GoogleSearch v-if="cue === 13" term="real women only vs logic trap"/>
-    <!-- <GoogleResults v-if="cue === 14" term="real women only vs logic trap"/> -->
+    <!-- Tweetstorm: JK -->
+    <TweetStorm v-if="cue === 15"
+      :tweets="tweetStorm[1]" />
 
-    <!-- Opens youtube video of debate -->
-    <!-- Play, pause -->
-    <!-- <YouTubeVideo v-if="cue === 14" /> -->
+    <!-- Tweetstorm: Greg & Amelia -->
+    <TweetStorm v-if="cue === 16"
+      :tweets="tweetStorm[1]" />
 
-    <!-- Clip #1 -->
-    <!-- Adjust timestamp -->
-    <!-- <YouTubeVideo v-if="cue === 15" /> -->
+    <!-- Video: Debate (intro) -->
+    <YouTubeVideo v-if="cue === 17" :video="videos.debateIntro" />
 
-    <!-- Clip #2 -->
-    <!-- Youtube maybe the music video -->
-    <YouTubeVideo v-if="cue === 16" :video="videos.pinkfloyd" />
+    <!-- Video: Debate (1) -->
+    <YouTubeVideo v-if="cue === 18" :video="videos.debate" />
 
-    <!-- Google DSM criteria and open a diagram -->
-    <GoogleSearch v-if="cue === 17" term="gender dysphoria dsm-5 criteria"/>
-    <DsmCriteria v-if="cue === 18"/>
+    <!-- Video: Debate (2) -->
+    <YouTubeVideo v-if="cue === 19" :video="videos.debate" />
 
+    <!-- Video: Debate (still/zoom) -->
+    <YouTubeVideo v-if="cue === 20" :video="videos.debate" />
 
-    <!-- Instagram Juniper’s profile -->
-    <InstagramAccount v-if="cue === 19" />
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 21"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
 
-    <!-- Opens post -->
-    <InstagramPost v-if="cue === 20"
-      :image="dressImage"
-      :age="[ 21, 'days' ]"
-      :likes="92"
-      caption="Felt cute, might just conquer the world later 😌✨ #StayShiny 🌈💖">
-      <IgComment user="RainbowsAndRizz" image="RainbowsAndRizz" :age="`${21} days`" :likes="16" :replies="0" :stories="true" comment="Omg, you’re absolutely SLAYING this look! ✨🔥 Love the vibes, you’re glowing frfr!"/>
-      <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${21} days`" :likes="2" :replies="0" :stories="true" comment="ngl this fit is EVERYTHING 😍✨ ur looking soooo confident im obsessed! xxx"/>
-      <IgComment user="M4sc+M4gic" image="M4sc+M4gic" :age="`${21} days`" :likes="6" :replies="0" :stories="false" comment="Ayo, who let you be this stunning?? 💅🏽 This whole vibe is chef’s kiss 🤌🏻"/>
-      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${21} days`" :likes="1" :replies="0" :stories="true" comment="Bro, you’re legit radiating positivity 🫶 keep shining joojoo ✨🌟"/>
+    <!-- Venn Diagram -->
+    <VennDiagram v-if="cue === 22" />
+
+    <!-- Video: Pink Floyd -->
+    <YouTubeVideo v-if="cue === 23" :video="videos.pinkfloyd" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 24"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- Google: “dsm criteria”  -->
+    <GoogleSearch v-if="cue === 25"
+      term="gender dysphoria dsm-5 criteria" />
+
+    <DsmCriteria v-if="cue === 26" />
+
+    <!-- Black ? -->
+    <Scene v-if="cue === 27" />
+
+    <!-- IG: Greg photo (housemate) -->
+
+    <!-- Google: 'Daniel' -->
+    <GoogleSearch v-if="cue === 29"
+      term="daniel" />
+    <!-- (Daniel Radcliffe, Daniel Radcliffe Harry Potter, how tall is Daniel Radcliffe, Daniel Radcliffe Equis naked) -->
+
+    <!-- Google: 'Actors name Daniel' -->
+    <GoogleSearch v-if="cue === 30"
+      term="actors named daniel" />
+    <!-- Daniel day Lewis - click on name - show search page of him / his face  -->
+
+    <!-- IG: Juniper -->
+    <InstagramAccount v-if="cue === 32" />
+
+    <!-- IG: Juniper photo (cat ears? dress?) -->
+    <InstagramPost v-if="cue === 33"
+      :image="catEarsImage"
+      :age="[ 18, 'days' ]"
+      :likes="72"
+      caption="Getting kinda into this femboi astheic ngl 🐱🐾💙✨">
+      <IgComment user="RainbowsAndRizz" image="RainbowsAndRizz" :age="`${18} days`" :likes="16" :replies="2" :stories="true" comment="SWEET BABY BOI 🥺" />
+      <IgComment user="KawaiiKingX🌸🐾" image="KawaiiKingX" :age="`${18} days`" :likes="2" :replies="0" :stories="false" comment="Beautiful!!! ♥️" />
+      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${18} days`" :likes="1" :replies="0" :stories="true" comment="Yasssssssssssssssss" />
+      <IgComment user="NekoVibes" image="NekoVibes" :age="`${18} days`" :likes="1" :stories="true" comment="Trans rights are catboi rights!!!" />
+      <IgComment user="Meowster🐾💙" image="Meowster" :age="`${18} days`" :likes="1" :stories="false" comment="I’m getting into it too! You look gorgeous! 😊♥️" />
     </InstagramPost>
 
-    <!-- Back to video of debate -->
-    <!-- Adjust time stamp -->
-    <!-- Clip #3 -->
-    <!-- <YouTubeVideo v-if="cue === 21" /> -->
+    <!-- IG: Juniper bio -->
+    <InstagramBio v-if="cue === 34" />
 
-    <!-- Reads stream comments -->
-    <LivestreamComments v-if="cue === 22"
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 35"
+      :viewers="viewers"
       :time="time"
+      :comments="section3"
       :existingComments="comments"
-      :comments="section2"
-      @comments="val => handleComments(val)"/>
+      @comments="val => handleComments(val)" />
 
-    <!-- Youtube- pimple popping videos -->
-    <!-- <YouTubeVideo v-if="cue === 24" /> -->
+    <!-- Google doc of links  -->
 
-    <!-- Reads stream comments -->
-    <LivestreamComments v-if="cue === 23"
+    <!-- picture of brains on screen -->
+
+    <!-- Video: Debate (3) -->
+    <YouTubeVideo v-if="cue === 38" :video="videos.debate" />
+
+    <!-- Black -->
+    <Scene v-if="cue === 39" />
+
+    <!-- Facebook: Search 'Amelia collins' -->
+
+    <!-- Facebook: Amelia -->
+
+    <!-- Facebook: Primary school education - to st Mary’s fb page -->
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 43"
+      :viewers="viewers"
       :time="time"
+      :comments="section3"
       :existingComments="comments"
-      :comments="section2"
-      @comments="val => handleComments(val)"/>
+      @comments="val => handleComments(val)" />
+    <!-- Comment - Why d’you bother with the people on our side, Greg? Keep dunking on the leftist snowflakes -->
 
-    <!-- Back to video of debate -->
-    <!-- Adjust time stamp -->
-    <!-- Clip #4 -->
-    <!-- <YouTubeVideo v-if="cue === 26" /> -->
+    <!-- Video: Pimple popping -->
+    <YouTubeVideo v-if="cue === 44"
+      :video="videos.pimplePopping" />
 
-    <!-- Adjusts time stamp -->
-    <!-- Clip #5 -->
-    <!-- <YouTubeVideo v-if="cue === 27" /> -->
-
-    <!-- Reading stream comments -->
-    <LivestreamComments v-if="cue === 24"
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 45"
+      :viewers="viewers"
       :time="time"
+      :comments="section3"
       :existingComments="comments"
-      :comments="section2"
-      @comments="val => handleComments(val)"/>
+      @comments="val => handleComments(val)" />
+    <!-- ("Calm down Greg” “LOL triggered!”) -->
 
-    <!-- Juniper’s instagram -->
-    <!-- Opens new post -->
-    <InstagramPost v-if="cue === 25"
+    <!-- Video: Debate (4) -->
+    <YouTubeVideo v-if="cue === 46" :video="videos.debate" />
+
+    <!-- Video: Debate (5) -->
+    <YouTubeVideo v-if="cue === 47" :video="videos.debate" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 48"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 49"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+    <!-- (Juniper comments on live - what happened to juniper? Omg Greg check their insta now! Etc ) -->
+
+    <!-- IG: Juniper photo (note) -->
+    <InstagramPost v-if="cue === 50"
       :image="notesImage"
       :age="[ 10, 'minutes' ]"
       :likes="222">
-      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️"/>
-      <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟"/>
-      <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg"/>
-      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺"/>
+      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
+      <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟" />
+      <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg" />
+      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" />
     </InstagramPost>
 
-    <!-- Opens EvYves Instagram -->
-    <InstagramAccount v-if="cue === 30" />
+    <!-- <InstagramComments v-if="cue === 51" /> -->
 
-    <LivestreamOff v-if="cue === 31"
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 52"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- Livestream: EvYves comment -->
+    <LivestreamWithComments v-if="cue === 53"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 54"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- IG: Greg photo (housemate) -->
+    <InstagramPost v-if="cue === 55"
+      :image="notesImage"
+      :age="[ 10, 'minutes' ]"
+      :likes="222">
+      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
+      <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟" />
+      <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg" />
+      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" />
+    </InstagramPost>
+
+    <!-- IG: Greg photo (parents) -->
+    <InstagramPost v-if="cue === 56"
+      :image="notesImage"
+      :age="[ 10, 'minutes' ]"
+      :likes="222">
+      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
+      <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟" />
+      <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg" />
+      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" />
+    </InstagramPost>
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 57"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- Google: 'trans conversation therapy' -->
+    <GoogleSearch v-if="cue === 58"
+      term="trans conversation therapy" />
+
+    <!-- Google: Results - churches in America -->
+    <GoogleResults v-if="cue === 59"
+      term="trans conversation therapy" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 60"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- Google: 'cats the musical' -->
+    <GoogleSearch v-if="cue === 61"
+      term="cats the musical" />
+
+    <!-- 2019 cats film page -->
+
+    <!-- Video: Jellical cats ball -->
+    <YouTubeVideo v-if="cue === 63" :video="videos.cats" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 64"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
+    <!-- IG: Greg  -->
+    <InstagramAccount v-if="cue === 65" />
+
+    <!-- IG: EvYves  -->
+    <InstagramAccount v-if="cue === 66" />
+
+    <!-- Livestream -->
+    <LivestreamWithComments v-if="cue === 67"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+    <!-- Comments then triggered saying Evyves has left the live -->
+
+    <!-- Livestream -->
+
+    <!-- Livestream: Ended (?) -->
+    <LivestreamOff v-if="cue === 68"
       :viewers="viewers"
       :time="time"
       @mount="stopTime" />
 
-    <!-- <Logo v-if="cue === 32" />
-    <Logo v-if="cue === 28"
-      :fadeOut="true" /> -->
+    <!-- Black -->
+    <Scene v-if="cue === 69" />
 
-    <Credits v-if="cue === 33"/>
+    <!-- Credits -->
+    <Credits v-if="cue === 70" />
 
     <div v-if="showCue" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-neutral-200 font-extrabold">Cue {{ cue }}</div>
     <div v-if="reset" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-green-600 font-extrabold">RESET!</div>
