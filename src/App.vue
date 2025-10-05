@@ -43,6 +43,8 @@ import {
 import { tweetStorm, tweet } from '@/content/tweets'
 import { videos } from './content/videos'
 import FacebookSearch from './scenes/FacebookSearch.vue'
+import FacebookProfile from './scenes/FacebookProfile.vue'
+import Grid from './Grid.vue'
 
 const elem = document.documentElement
 
@@ -51,6 +53,8 @@ const reset = ref(false)
 const fullScreen = ref(false)
 
 const showCue = ref(false)
+
+const showGrid = ref(false)
 
 const cue = ref(null)
 
@@ -70,6 +74,9 @@ const keyListener = (e) => {
   }
   if (e.code === 'Backspace') {
     cue.value = cue.value > 1 ? cue.value - 1 : null
+  }
+  if (e.code === 'KeyG') {
+    toggleShowGrid()
   }
   if (e.code === 'KeyQ') {
     toggleShowCue()
@@ -93,6 +100,10 @@ const enterFullScreen = () => {
 
 const toggleShowCue = () => {
   showCue.value = !showCue.value
+}
+
+const toggleShowGrid = () => {
+  showGrid.value = !showGrid.value
 }
 
 const startTime = () => {
@@ -339,7 +350,9 @@ watch(cue, val => {
     <!-- Facebook: Search 'Amelia collins' -->
     <FacebookSearch v-if="cue === 40"
       term="amelia collins" />
+
     <!-- Facebook: Amelia -->
+    <FacebookProfile v-if="cue === 41" />
 
     <!-- Facebook: Primary school education - to st Mary’s fb page -->
 
@@ -517,6 +530,7 @@ watch(cue, val => {
     <!-- Credits -->
     <Credits v-if="cue === 70" />
 
+    <Grid v-if="showGrid" />
     <div v-if="showCue" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-neutral-200 font-extrabold">Cue {{ cue }}</div>
     <div v-if="reset" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-green-600 font-extrabold">RESET!</div>
 
