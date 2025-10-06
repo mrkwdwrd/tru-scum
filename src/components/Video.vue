@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 const props = defineProps({
   footer: Boolean,
@@ -9,11 +9,14 @@ const props = defineProps({
     default: 0
   },
   playAt: Number,
-  stopAt: Number
+  stopAt: Number,
+  scrubSpeed: {
+    type: Number,
+    default: 1
+  }
 })
 
 const video = ref()
-
 const timeline = ref()
 const current = ref()
 
@@ -21,25 +24,30 @@ const scrubToPlay = (play, start = 0) => {
   setTimeout(() => {
     if (video.value) {
       if (start < play) {
-        const curr = start + 5
+        const curr = start + parseInt(props.scrubSpeed)
         video.value.currentTime = curr
         current.value.style.width = `${(curr / video.value.duration) * 100}%`
         return scrubToPlay(play, curr)
       }
       video.value.play()
-      setTimeout(() => {
+      return setTimeout(() => {
         timeline.value.style.opacity = 0
         current.value.style.opacity = 0
-      }, 1000)
+      }, 500)
     }
-  }, 50)
+  }, 100)
 }
 
 const videoStart = () => {
   timeline.value.style.transition = 'opacity 1s ease-in'
   current.value.style.transition = 'opacity 1s ease-out'
-  if (props.playAt === props.start) {
-    return video.value.play()
+  if (props.playAt <= props.start) {
+    video.value.currentTime = props.start
+    video.value.play()
+    return setTimeout(() => {
+      timeline.value.style.opacity = 0
+      current.value.style.opacity = 0
+    }, 500)
   }
   scrubToPlay(props.playAt, props.start)
 }
@@ -55,6 +63,7 @@ const videoStop = () => {
 onMounted(() => {
   video.value.addEventListener('loadedmetadata', videoStart)
   video.value.addEventListener('timeupdate', videoStop)
+  video.value.currentTime = props.start
 })
 
 onBeforeUnmount(() => {
