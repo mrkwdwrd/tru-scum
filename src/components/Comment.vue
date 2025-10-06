@@ -24,10 +24,10 @@ onMounted (() => {
   <Transition>
     <div v-if="show" class="rounded-md p-5 w-full bg-neutral-900 relative top-0">
       <div class="flex gap-5 transition-opacity delay-100">
-        <span class="block bg-gray-500 w-12 h-12 rounded-full flex-shrink-0 overflow-hidden">
+        <span class="block bg-gray-500 w-16 h-16 rounded-full flex-shrink-0 overflow-hidden">
            <img :src="`/assets/profile-images/${image}.jpg`" />
         </span>
-        <div class="text-gray-300 font-medium flex-shrink text-sm">
+        <div class="text-gray-300 font-medium flex-shrink text-lg">
           <p class="font-bold">{{ user }}</p>
           <p v-html="text" class="text-gray-400"/>
         </div>
