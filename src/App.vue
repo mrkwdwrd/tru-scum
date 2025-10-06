@@ -1,6 +1,6 @@
 <script setup>
 import Logo from '@/scenes/Logo.vue'
-import LivestreamWithComments from '@/scenes/LivestreamWithComments.vue'
+import Livestream from '@/scenes/Livestream.vue'
 import LivestreamOff from '@/scenes/LivestreamOff.vue'
 import InstagramAccount from '@/scenes/InstagramAccount.vue'
 import InstagramPost from '@/scenes/InstagramPost.vue'
@@ -13,17 +13,20 @@ import { onMounted, ref, watch } from 'vue'
 import notesImage from '@/assets/images/IMG_12C199CFA5F9-1.jpg'
 import catEarsImage from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
 import dressImage from '@/assets/images/openart-image_8rlC-yOP_1731742127760_raw.jpg'
-import Credits from './scenes/Credits.vue'
-import TwitterStatus from './scenes/TwitterStatus.vue'
-import GoogleSearch from './scenes/GoogleSearch.vue'
-import GoogleResults from './scenes/GoogleResults.vue'
-import AmazonSearch from './scenes/AmazonSearch.vue'
-import AmazonBook from './scenes/AmazonBook.vue'
-import YouTubeVideo from './scenes/YouTubeVideo.vue'
-import PodcastTile from './scenes/PodcastTile.vue'
-import TweetStorm from './scenes/TweetStorm.vue'
-import DsmCriteria from './scenes/DsmCriteria.vue'
-import VennDiagram from './scenes/VennDiagram.vue'
+import Credits from '@/scenes/Credits.vue'
+import TwitterStatus from '@/scenes/TwitterStatus.vue'
+import GoogleSearch from '@/scenes/GoogleSearch.vue'
+import GoogleResults from '@/scenes/GoogleResults.vue'
+import GoogleResult from '@/components/GoogleResult.vue'
+import AmazonSearch from '@/scenes/AmazonSearch.vue'
+import AmazonBook from '@/scenes/AmazonBook.vue'
+import YouTubeVideo from '@/scenes/YouTubeVideo.vue'
+import PodcastTile from '@/scenes/PodcastTile.vue'
+import TweetStorm from '@/scenes/TweetStorm.vue'
+import DsmCriteria from '@/scenes/DsmCriteria.vue'
+import VennDiagram from '@/scenes/VennDiagram.vue'
+import FacebookPage from '@/scenes/FacebookPage.vue'
+import DanielDayLewis from '@/components/DanielDayLewis.vue'
 
 import {
   section1,
@@ -41,10 +44,10 @@ import {
 } from '@/content/comments'
 
 import { tweetStorm, tweet } from '@/content/tweets'
-import { videos } from './content/videos'
-import FacebookSearch from './scenes/FacebookSearch.vue'
-import FacebookProfile from './scenes/FacebookProfile.vue'
-import Grid from './Grid.vue'
+import { videos } from '@/content/videos'
+import FacebookSearch from '@/scenes/FacebookSearch.vue'
+import FacebookProfile from '@/scenes/FacebookProfile.vue'
+import Grid from '@/Grid.vue'
 
 const elem = document.documentElement
 
@@ -170,7 +173,7 @@ watch(cue, val => {
 </script>
 
 <template>
-  <main class="!select-none">
+  <main class="">
     <button v-if="!fullScreen"
       @click="enterFullScreen"
       class="absolute text-white top-0 right-0 left-0 bottom-0 cursor-pointer">
@@ -185,7 +188,7 @@ watch(cue, val => {
     <!-- Video: Trailer -->
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 3"
+    <Livestream v-if="cue === 3"
       :viewers="viewers"
       :time="time"
       :existingComments="comments"
@@ -209,7 +212,7 @@ watch(cue, val => {
     <PodcastTile v-if="cue === 7" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 8"
+    <Livestream v-if="cue === 8"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -228,7 +231,7 @@ watch(cue, val => {
       :tweets="tweetStorm.amelia" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 12"
+    <Livestream v-if="cue === 12"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -236,7 +239,7 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Livestream (TERF comments) -->
-    <LivestreamWithComments v-if="cue === 13"
+    <Livestream v-if="cue === 13"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -268,7 +271,7 @@ watch(cue, val => {
     <!-- <YouTubeVideo v-if="cue === 20" :video="videos.debate2" /> -->
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 21"
+    <Livestream v-if="cue === 21"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -282,7 +285,7 @@ watch(cue, val => {
     <YouTubeVideo v-if="cue === 23" :video="videos.pinkFloyd" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 24"
+    <Livestream v-if="cue === 24"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -302,16 +305,35 @@ watch(cue, val => {
 
     <!-- Google: 'Daniel' -->
     <GoogleSearch v-if="cue === 29"
-      term="daniel" />
+      term="daniel"
+      :suggestions="[
+        'Daniel Radcliffe',
+        'Daniel Radcliffe Harry Potter',
+        'How Tall is Daniel Radcliffe',
+        'Daniel Radcliffe Equus Naked'
+      ]" />
     <!-- (Daniel Radcliffe, Daniel Radcliffe Harry Potter, how tall is Daniel Radcliffe, Daniel Radcliffe Equis naked) -->
 
     <!-- Google: 'Actors name Daniel' -->
     <GoogleSearch v-if="cue === 30"
-      term="actors named daniel" />
+      term="actors named daniel"
+      :suggestions="[
+        'Daniel Day-Lewis',
+        'Daniel Radcliffe',
+        'Daniel Craig',
+        'Daniel Kaluuya',
+        'Dan Akroyd'
+      ]"
+      />
     <!-- Daniel day Lewis - click on name - show search page of him / his face  -->
+    <GoogleResults v-if="cue === 31"
+      term="Daniel Day-Lewis">
+      <DanielDayLewis />
+    </GoogleResults>
 
     <!-- IG: Juniper -->
     <InstagramAccount v-if="cue === 32" />
+    <!-- <InstagramBio v-if="cue === 32" /> -->
 
     <!-- IG: Juniper photo (cat ears? dress?) -->
     <InstagramPost v-if="cue === 33"
@@ -330,7 +352,7 @@ watch(cue, val => {
     <InstagramBio v-if="cue === 34" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 35"
+    <Livestream v-if="cue === 35"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -355,9 +377,10 @@ watch(cue, val => {
     <FacebookProfile v-if="cue === 41" />
 
     <!-- Facebook: Primary school education - to st Mary’s fb page -->
+    <FacebookPage v-if="cue === 42" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 43"
+    <Livestream v-if="cue === 43"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -370,7 +393,7 @@ watch(cue, val => {
       :video="videos.pimplePopping" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 45"
+    <Livestream v-if="cue === 45"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -385,7 +408,7 @@ watch(cue, val => {
     <YouTubeVideo v-if="cue === 47" :video="videos.debate5" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 48"
+    <Livestream v-if="cue === 48"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -393,7 +416,7 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 49"
+    <Livestream v-if="cue === 49"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -415,7 +438,7 @@ watch(cue, val => {
     <!-- <InstagramComments v-if="cue === 51" /> -->
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 52"
+    <Livestream v-if="cue === 52"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -423,7 +446,7 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Livestream: EvYves comment -->
-    <LivestreamWithComments v-if="cue === 53"
+    <Livestream v-if="cue === 53"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -431,7 +454,7 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 54"
+    <Livestream v-if="cue === 54"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -461,7 +484,7 @@ watch(cue, val => {
     </InstagramPost>
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 57"
+    <Livestream v-if="cue === 57"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -470,14 +493,19 @@ watch(cue, val => {
 
     <!-- Google: 'trans conversation therapy' -->
     <GoogleSearch v-if="cue === 58"
-      term="trans conversation therapy" />
+      term="trans conversion therapy" />
 
     <!-- Google: Results - churches in America -->
     <GoogleResults v-if="cue === 59"
-      term="trans conversation therapy" />
+      term="trans conversion therapy">
+      <div class="flex flex-col gap-12">
+        <GoogleResult />
+        <GoogleResult />
+      </div>
+    </GoogleResults>
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 60"
+    <Livestream v-if="cue === 60"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -494,7 +522,7 @@ watch(cue, val => {
     <YouTubeVideo v-if="cue === 63" :video="videos.cats" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 64"
+    <Livestream v-if="cue === 64"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -508,7 +536,7 @@ watch(cue, val => {
     <InstagramAccount v-if="cue === 66" />
 
     <!-- Livestream -->
-    <LivestreamWithComments v-if="cue === 67"
+    <Livestream v-if="cue === 67"
       :viewers="viewers"
       :time="time"
       :comments="section3"
