@@ -35,11 +35,13 @@
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
-      <div class="flex flex-col h-full justify-center items-center gap-10">
-        <span id="logo" :class="['block rounded-full overflow-hidden h-[60vh] aspect-square bg-white p-10', { 'fade-out': fade }]">
+      <div class="flex flex-col h-full justify-center items-center gap-12">
+        <span id="logo" :class="['block rounded-full overflow-hidden h-[50vh] aspect-square bg-white p-10', { 'fade-out': fade }]">
           <img :src="logo"/>
         </span>
-        <span v-if="countdown" id="countdown" :class="['text-white text-8xl font-semibold font-sourcesans uppercase text-center', { 'fade-out': fade }]">Livestream starting <br />in {{ new Date(remaining).toISOString().slice(11, 19) }}</span>
+        <span v-if="countdown" id="countdown" :class="['text-white text-8xl font-semibold font-sourcesans uppercase text-center', { 'fade-out': fade }]">
+          Livestream starting <br />in {{ new Date(remaining).toISOString().slice(11, 19) }}
+        </span>
       </div>
   </Scene>
 </template>

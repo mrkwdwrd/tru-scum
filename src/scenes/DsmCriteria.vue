@@ -30,7 +30,7 @@
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full relative">
       <main class="w-full flex items-center text-white">
-        <div class="w-full max-w-screen-sm mx-auto flex flex-col gap-5 justify-center" >
+        <div class="w-full max-w-screen-sm ml-48 mt-12 flex flex-col gap-5 items-start" >
           <div class="text-5xl font-abril" v-if="show">DSM-5 Criteria for Gender Dysphoria</div>
           <div class="text-xl font-sourcesans" v-if="show">A marked incongruence between one’s experienced/expressed gender and natal gender of at least 6 months in duration, as manifested by at least two of the following:</div>
           <TransitionGroup

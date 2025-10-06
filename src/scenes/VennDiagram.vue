@@ -8,7 +8,7 @@
     <div class="flex h-full relative">
       <main class="w-full flex items-center ">
         <div class="w-full max-w-screen-md mx-auto flex flex-col justify-center" >
-          <img :src="image" />
+          <img :src="image" class="scale-125 translate-y-4"/>
         </div>
       </main>
     </div>
