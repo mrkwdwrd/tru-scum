@@ -3,6 +3,8 @@
   import cover from '@/assets/images/amelia-fb-cover.jpg'
   import pic from '@/assets/users/facebook/amelia.jpg'
   import placeholder from '@/assets/images/fb-placeholder.png'
+  import oxford from '@/assets/images/oxford.jpg'
+  import stpauls from '@/assets/images/stpauls.jpg'
 </script>
 
 <template>
@@ -46,12 +48,34 @@
               <div class="px-2 py-1 rounded-md">Life events</div>
             </div>
             <div class="w-2/3 p-4">
-              <div>
-                <div class="text-white text-semibold">
+              <div class="text-zinc-300">
+                <div class="text-white font-semibold mb-4">
                   Work
                 </div>
-                <div class="w-12 h-12 rounded-full overflow-hidden">
-                  <img :src="placeholder" />
+                <div class="flex gap-4 text-sm mb-4 align-middle">
+                  <img :src="placeholder" class="w-10 h-10 rounded-full"/>
+                  <div>
+                    <div class="font-bold">CEO - Real Women Only at I Know My Rights</div>
+                    October 2025 - Present
+                  </div>
+                </div>
+                <div class="text-white font-semibold mb-4">
+                  University
+                </div>
+                <div class="flex gap-4 font-medium text-sm mb-4 items-center">
+                  <img :src="oxford" class="w-10 h-10 rounded-full"/>
+                  <div>
+                    Studied at <span class="font-bold">University of Oxford</span>
+                  </div>
+                </div>
+                <div class="text-white font-semibold mb-4">
+                  High School
+                </div>
+                <div class="flex gap-4 font-medium text-sm mb-4 items-center">
+                  <img :src="stpauls" class="w-10 h-10 rounded-full"/>
+                  <div>
+                    Went to <span class="font-bold">St Paul's Girls' School</span>
+                  </div>
                 </div>
               </div>
             </div>
