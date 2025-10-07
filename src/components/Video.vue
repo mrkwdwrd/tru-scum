@@ -1,9 +1,46 @@
 <script setup>
-import clip from '@/assets/videos/EnolaFall-Vestigal Tail.mp4'
+import { onMounted, ref } from 'vue'
+
 const props = defineProps({
-  id: Number,
   footer: Boolean,
-  time: Number
+  source: String,
+  start: {
+    type: Number,
+    default: 5
+  },
+  playAt: Number,
+  stopAt: Number
+})
+
+const video = ref()
+
+const timeline = ref()
+const current = ref()
+
+onMounted(() => {
+  video.value.addEventListener('loadedmetadata', function() {
+    timeline.value.style.transition = '1s all 1s ease-in'
+    current.value.style.transition = '1s all 1s ease-out'
+    setTimeout(() => {
+      current.value.style.width = `${(props.playAt / this.duration) * 100}%`
+      setTimeout(() => {
+        this.currentTime = props.playAt
+        this.play()
+        timeline.value.style.opacity = 0
+        current.value.style.opacity = 0
+      }, 2000)
+    }, 500)
+  }, false)
+
+  video.value.addEventListener('timeupdate', function(){
+    current.value.style.width = `${(this.currentTime / this.duration) * 100}%`
+    if(this.currentTime >= props.stopAt) {
+      timeline.value.style.opacity = 1
+      current.value.style.opacity = 1
+      this.pause()
+    }
+});
+
 })
 </script>
 
@@ -11,17 +48,21 @@ const props = defineProps({
   <div class="flex flex-col w-full">
     <div :class="['w-full h-full overflow-hidden', { 'max-h-[80vh]': footer }]">
       <div class="aspect-video overflow-hidden">
-        <video class="h-full w-full" autoplay>
-          <source :src="clip" type="video/mp4">
+        <video ref="video" class="h-full w-full">
+          <source :src="`${source}#t=15`" type="video/mp4">
         </video>
       </div>
+    </div>
+    <div class="w-full justify-between h-4 z-10 relative bottom-10 text-white">
+      <div ref="timeline" class="bg-white h-1 w-full rounded-full absolute"></div>
+      <div ref="current" class="bg-red-500 h-1 rounded-full absolute w-0"></div>
     </div>
     <div class="w-full px-5 flex justify-between -mt-12 h-12 z-10 bottom-0 text-white">
       <span class="w-1/2 flex flex-row items-center">
         <span id="tools-left" class="block bg-white h-12 w-24"></span>
-        <span v-if="time" class="inline-block">{{ new Date(time * 1000).toISOString().slice(11, 19) }}</span>
+        <span class="inline-block"></span>
       </span>
-      <span id="tools-right" class="block bg-white h-12 w-1/2 align-center"></span>
+      <span id="tools-right" class="block bg-white h-12 w-1/2 align-right"></span>
     </div>
     <slot/>
   </div>

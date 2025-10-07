@@ -7,9 +7,7 @@
   const instance = getCurrentInstance()
 
   const props = defineProps({
-    live:  Boolean,
-    time: Number,
-    viewers: Number
+    video: Object
   })
 
   const emits = defineEmits(['count', 'mount'])
@@ -25,8 +23,8 @@
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
-        <Video :id="uuid" :footer="true">
-          <Caption />
+        <Video :id="uuid" :footer="true" :source="video?.source" :play-at="video?.playAt" :stop-at="video?.stopAt">
+          <Caption :video="video" />
         </Video>
       </div>
     </div>

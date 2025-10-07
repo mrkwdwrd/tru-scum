@@ -9,7 +9,7 @@
     }
   })
 
-  const field = ref(null)
+  const field = ref()
   const input = ref('')
 
   const simulateTyping = (arr, i = 0) => {

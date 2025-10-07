@@ -44,7 +44,7 @@
       <div v-for="(tweet, key) in tweetsArray" :key="key" class="h-full w-full flex items-center absolute top-0 left-0 right-0 bottom-0 opacity-0">
         <Tweet
           :tweet="tweet"
-          class="border border-slate-700 relative origin-center drop-shadow-[0_45px_45px_rgba(0,0,0,0.95)]"
+          class="relative origin-center drop-shadow-[0_45px_45px_rgba(0,0,0,0.95)]"
           :style="`left: ${tweet.position.x}px; top: ${tweet.position.y}px;`"/>
       </div>
     </TransitionGroup>

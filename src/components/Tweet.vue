@@ -8,7 +8,7 @@ const props = defineProps({
 
 </script>
 <template>
-  <div class="w-full max-w-screen-sm px-10 py-5 mx-auto text-white text-lg bg-slate-900">
+  <div class="w-full max-w-screen-sm px-10 py-5 mx-auto text-white text-lg bg-slate-900 border border-slate-700 ">
     <!-- Header -->
     <div class="w-full flex justify-between items-center mb-6">
       <!-- User -->
