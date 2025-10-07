@@ -1,4 +1,4 @@
-# TruScum
+\# TruScum
 Visuals and multimedia used in the play TruScum, written by Oscar Bray.
 
 *Please note: this repo contains content that references suicide and self-harm, and includes transphobic language that people may (and should) find offensive, especially without the context of the live performance.*
@@ -14,7 +14,7 @@ Visuals and multimedia used in the play TruScum, written by Oscar Bray.
 TruScum, written by Oscar Bray, is a play that grapples with internalized self-hatred, transphobia, mental illness, the patriarchy and toxic masculinity. Greg works through these parts of himself in an online space, and yet the consequences for himself and those around him couldn’t be more real.
 
 ### Branches
-#### origin/butterfly-club-2024
+#### butterfly-club-2024
 Visuals used for the original production at The Butterfly Club, Melbourne - November 25th to 30th, 2024.
 
 Performer: Frankie Thorne
@@ -22,7 +22,7 @@ Performer: Frankie Thorne
 Director: Keith Brocket
 
 
-#### origin/butterfly-club-2024
+#### master
 Visuals used for the re-mount production for Melbourne Fringe at The Motley Bauhaus, Melbourne - October 13th to 19th, 2025.
 
 Performer: Frankie Thorne
