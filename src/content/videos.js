@@ -29,6 +29,16 @@ export const videos = {
     stopAt: 58,
     scrubSpeed: 1
   },
+  debateStill: {
+    title: 'Debate: Real Women Only vs The Logic Trap',
+    user: 'Guilherme Alves',
+    likes: '217k',
+    source: '/src/assets/videos/debate.mp4',
+    start: 58,
+    playAt: 58,
+    stopAt: 58,
+    scrubSpeed: 1
+  },
   debate3: {
     title: 'Debate: Real Women Only vs The Logic Trap',
     user: 'Guilherme Alves',
@@ -67,7 +77,7 @@ export const videos = {
     start: 0,
     playAt: 245,
     stopAt: 260,
-    scrubSpeed: 5
+    scrubSpeed: 10
   },
   pimplePopping: {
     title: 'Pimple Popping - Best of',

@@ -8,6 +8,8 @@
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
-    <IgUI />
+    <div class="h-screen flex justify-center items-center">
+      <IgUI />
+    </div>
   </Scene>
 </template>

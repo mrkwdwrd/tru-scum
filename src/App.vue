@@ -27,6 +27,8 @@ import DsmCriteria from '@/scenes/DsmCriteria.vue'
 import VennDiagram from '@/scenes/VennDiagram.vue'
 import FacebookPage from '@/scenes/FacebookPage.vue'
 import DanielDayLewis from '@/components/DanielDayLewis.vue'
+import VideoZoomIn from '@/scenes/VideoZoomIn.vue'
+import CitationList from '@/scenes/CitationList.vue'
 
 import {
   section1,
@@ -268,7 +270,7 @@ watch(cue, val => {
     <YouTubeVideo v-if="cue === 19" :video="videos.debate2" />
 
     <!-- Video: Debate (still/zoom) -->
-    <!-- <YouTubeVideo v-if="cue === 20" :video="videos.debate2" /> -->
+    <VideoZoomIn v-if="cue === 20" :video="videos.debateStill" />
 
     <!-- Livestream -->
     <Livestream v-if="cue === 21"
@@ -360,6 +362,7 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Google doc of links  -->
+    <CitationList />
 
     <!-- picture of brains on screen -->
 

@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 <template>
   <!-- Bio Section -->
-  <div class="flex  border-gray-500 w-full max-w-screen-lg p-10 mx-auto text-white">
+  <div class="flex border-gray-500 w-full max-w-screen-md p-10 mx-auto text-white">
     <div class="w-1/3 flex justify-center items-center">
       <div class="w-40 h-40 border-gray-500 border-4 rounded-full">
         <span class="block overflow-hidden rounded-full border-black border-4">
