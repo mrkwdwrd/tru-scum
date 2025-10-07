@@ -1,8 +1,7 @@
 <script setup>
   import Scene  from '@/components/Scene.vue'
-  import Camera from '@/components/Camera.vue'
-  import Caption from '@/components/LivestreamCaption.vue'
-  import StaticStream from '@/components/StaticStream.vue'
+  import Video from '@/components/Video.vue'
+  import Caption from '@/components/VideoCaption.vue'
   import { getCurrentInstance, onMounted, ref } from 'vue'
 
   const instance = getCurrentInstance()
@@ -26,12 +25,9 @@
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
-        <Camera v-if="live" :id="uuid" :footer="true" :time="time">
-          <Caption :viewers="viewers" />
-        </Camera>
-        <StaticStream v-else :id="uuid" :footer="true" :time="time">
-          <Caption :viewers="viewers" />
-        </StaticStream>
+        <Video :id="uuid" :footer="true">
+          <Caption />
+        </Video>
       </div>
     </div>
   </Scene>

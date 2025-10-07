@@ -1,58 +1,30 @@
 <script setup>
-  import Scene  from '@/components/Scene.vue'
-  import Caption from '@/components/LivestreamCaption.vue'
-  import { defineEmits, onBeforeUnmount, onMounted, ref } from 'vue'
-
-  const props = defineProps({
-    time: Number,
-    viewers: Number
-  })
-
-  let viewerInterval
-
-  const emits = defineEmits(['count', 'mount'])
-
-  const viewers = ref(props.viewers)
-
-  const calcViewers = () => {
-    viewerInterval = setInterval(() => {
-      const int = parseInt(Math.random() * 1500)
-      viewers.value = Math.max(Math.min(viewers.value - int, 9376), 0)
-    }, 1000)
-  }
-
-  onMounted(() => {
-    emits('mount')
-    calcViewers()
-  })
-
-  onBeforeUnmount(() => {
-    clearInterval(viewerInterval)
-  })
+import clip from '@/assets/videos/EnolaFall-Vestigal Tail.mp4'
+const props = defineProps({
+  id: Number,
+  footer: Boolean,
+  time: Number
+})
 </script>
 
 <template>
-  <Scene class="bg-black max-w-[1980px] mx-auto">
-    <div class="flex h-full w-3/4 mx-auto items-center">
-      <div class="w-full p-5 flex items-center flex-col">
-        <div class="flex flex-col w-full">
-          <div :class="['w-full h-full overflow-hidden max-h-[80vh]']">
-            <div class="aspect-video overflow-hidden flex justify-center items-center bg-neutral-900">
-              <span class="text-white text-sm">Livestream has ended.</span>
-            </div>
-          </div>
-          <div class="w-full px-5 flex justify-between -mt-12 h-12 z-10 bottom-0 text-white">
-            <span class="w-1/2 flex flex-row items-center">
-              <span id="tools-left" class="block bg-white h-12 w-24"></span>
-              <span v-if="time" class="inline-block">{{ new Date(time * 1000).toISOString().slice(11, 19) }}</span>
-            </span>
-            <span id="tools-right" class="block bg-white h-12 w-1/2 align-center"></span>
-          </div>
-          <Caption :viewers="viewers" />
-        </div>
+  <div class="flex flex-col w-full">
+    <div :class="['w-full h-full overflow-hidden', { 'max-h-[80vh]': footer }]">
+      <div class="aspect-video overflow-hidden">
+        <video class="h-full w-full" autoplay>
+          <source :src="clip" type="video/mp4">
+        </video>
       </div>
     </div>
-  </Scene>
+    <div class="w-full px-5 flex justify-between -mt-12 h-12 z-10 bottom-0 text-white">
+      <span class="w-1/2 flex flex-row items-center">
+        <span id="tools-left" class="block bg-white h-12 w-24"></span>
+        <span v-if="time" class="inline-block">{{ new Date(time * 1000).toISOString().slice(11, 19) }}</span>
+      </span>
+      <span id="tools-right" class="block bg-white h-12 w-1/2 align-center"></span>
+    </div>
+    <slot/>
+  </div>
 </template>
 
 <style lang="css" scoped>

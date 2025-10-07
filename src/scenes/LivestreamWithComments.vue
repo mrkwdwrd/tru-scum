@@ -2,7 +2,7 @@
   import Scene  from '@/components/Scene.vue'
   import Camera from '@/components/Camera.vue'
   import Comments from '@/components/Comments.vue'
-  import Caption from '@/components/Caption.vue'
+  import Caption from '@/components/LivestreamCaption.vue'
   import StaticStream from '@/components/StaticStream.vue'
 
   import { onMounted, getCurrentInstance, ref } from 'vue'
