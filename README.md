@@ -18,6 +18,7 @@ TruScum, written by Oscar Bray, is a play that grapples with internalized self-h
 Visuals used for the original production at The Butterfly Club, Melbourne - November 25th to 30th, 2024.
 
 Performer: Frankie Thorne
+
 Director: Keith Brocket
 
 
@@ -25,6 +26,7 @@ Director: Keith Brocket
 Visuals used for the re-mount production for Melbourne Fringe at The Motley Bauhaus, Melbourne - October 13th to 19th, 2025.
 
 Performer: Frankie Thorne
+
 Director: Gabrielle Ward
 
 ## Recommended IDE Setup
