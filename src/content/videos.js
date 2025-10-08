@@ -54,9 +54,9 @@ export const videos = {
     user: 'Guilherme Alves',
     likes: '217k',
     source: '/src/assets/videos/debate.mp4',
-    start: 0,
-    playAt: 0,
-    stopAt: null,
+    start: 70,
+    playAt: 76,
+    stopAt: 97.5,
     scrubSpeed: 1
   },
   debate5: {
@@ -64,9 +64,9 @@ export const videos = {
     user: 'Guilherme Alves',
     likes: '217k',
     source: '/src/assets/videos/debate.mp4',
-    start: 0,
-    playAt: 0,
-    stopAt: null,
+    start: 95,
+    playAt: 98,
+    stopAt: 108,
     scrubSpeed: 1
   },
   pinkFloyd: {
@@ -83,7 +83,7 @@ export const videos = {
     title: 'Pimple Popping - Best of',
     user: 'Guilherme Alves',
     likes: '217k',
-    source: '/src/assets/videos/pinkfloyd.mp4',
+    source: '',
     start: 0,
     playAt: 245,
     stopAt: 260,

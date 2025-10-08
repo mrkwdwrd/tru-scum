@@ -33,8 +33,10 @@
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
-    <div class="flex h-full w-3/4 mx-auto items-center">
-      <div class="w-full p-5 flex items-center flex-col">
+    <div class="flex h-full items-center ">
+      <div class="w-2/3 p-5 flex items-center flex-col"
+        style="transform: translate(100px, 140px)">
+
         <div class="flex flex-col w-full">
           <div :class="['w-full h-full overflow-hidden max-h-[80vh]']">
             <div class="aspect-video overflow-hidden flex justify-center items-center bg-neutral-900">

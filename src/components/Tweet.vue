@@ -2,7 +2,6 @@
 import { twitter } from '@/content/users'
 
 const props = defineProps({
-  user: String,
   tweet: Object
 })
 

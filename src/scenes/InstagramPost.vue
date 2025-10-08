@@ -1,15 +1,15 @@
 <script setup>
   import Scene  from '@/components/Scene.vue'
-  import IgUI from '@/components/IgUI.vue'
   import IgComment from '@/components/IgComment.vue'
   import IgAvatar from '@/components/IgAvatar.vue'
-  import profileImage from '@/assets/images/openart-image_GjENJ-VC_1731748862428_raw.png'
+  import { instagram } from '@/content/users'
 
   const props = defineProps({
     image: String,
     caption: String,
     likes: Number,
-    age: Array
+    age: Array,
+    user: String
   })
 
   const ageString = `${props.age[0]} ${props.age[1]} ago`
@@ -29,9 +29,9 @@
           <!-- Account -->
           <div class="p-4 border-b border-gray-700 text-white flex justify-between leading-8 font-bold text-md">
             <span class="align-middle flex gap-6 items-center">
-              <IgAvatar :image="profileImage"/>
+              <IgAvatar :image="instagram[user].avatar"/>
                 <span class="inline-flex items-center">
-                <span class="font-black">Juniper_in_bloom</span>
+                <span class="font-black">{{ instagram[user].handle }}</span>
                 <svg aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="24">
                   <circle cx="12" cy="12" r="2.25"/>
                 </svg>

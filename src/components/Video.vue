@@ -61,14 +61,18 @@ const videoStop = () => {
   }
 }
 onMounted(() => {
-  video.value.addEventListener('loadedmetadata', videoStart)
-  video.value.addEventListener('timeupdate', videoStop)
-  video.value.currentTime = props.start
+  if (video.value) {
+    video.value.addEventListener('loadedmetadata', videoStart)
+    video.value.addEventListener('timeupdate', videoStop)
+    video.value.currentTime = props.start
+  }
 })
 
 onBeforeUnmount(() => {
-  video.value.removeEventListener('loadedmetadata', videoStart)
-  video.value.removeEventListener('timeupdate', videoStop)
+  if (video.value) {
+    video.value.removeEventListener('loadedmetadata', videoStart)
+    video.value.removeEventListener('timeupdate', videoStop)
+  }
 })
 
 </script>
@@ -77,8 +81,8 @@ onBeforeUnmount(() => {
   <div class="flex flex-col w-full">
     <div :class="['w-full h-full overflow-hidden', { 'max-h-[80vh]': footer }]">
       <div class="aspect-video overflow-hidden">
-        <video ref="video" class="h-full w-full">
-          <source :src="`${source}#t=15`" type="video/mp4">
+        <video v-if="source" ref="video" class="h-full w-full">
+          <source :src="source" type="video/mp4">
         </video>
       </div>
     </div>

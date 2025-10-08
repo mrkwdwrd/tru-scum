@@ -6,13 +6,11 @@ import InstagramAccount from '@/scenes/InstagramAccount.vue'
 import InstagramPost from '@/scenes/InstagramPost.vue'
 import IgComment from '@/components/IgComment.vue'
 import InstagramComments from '@/scenes/InstagramComments.vue'
-
 import InstagramBio from '@/scenes/InstagramBio.vue'
 import Scene from '@/components/Scene.vue'
 import { onMounted, ref, watch } from 'vue'
 import notesImage from '@/assets/images/IMG_12C199CFA5F9-1.jpg'
 import catEarsImage from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
-import dressImage from '@/assets/images/openart-image_8rlC-yOP_1731742127760_raw.jpg'
 import Credits from '@/scenes/Credits.vue'
 import TwitterStatus from '@/scenes/TwitterStatus.vue'
 import GoogleSearch from '@/scenes/GoogleSearch.vue'
@@ -29,6 +27,12 @@ import FacebookPage from '@/scenes/FacebookPage.vue'
 import DanielDayLewis from '@/components/DanielDayLewis.vue'
 import VideoZoomIn from '@/scenes/VideoZoomIn.vue'
 import CitationList from '@/scenes/CitationList.vue'
+import CatsMovie from '@/components/CatsMovie.vue'
+import placeholder from '@/assets/images/placeholder.png'
+import tpusa from '@/assets/images/tpusa.png'
+import restoredhope from '@/assets/images/restoredhope.png'
+import billygraham from '@/assets/images/billygraham.png'
+import liberty from '@/assets/images/liberty.png'
 
 import {
   section1,
@@ -304,6 +308,17 @@ watch(cue, val => {
     <Scene v-if="cue === 27" />
 
     <!-- IG: Greg photo (housemate) -->
+    <InstagramPost v-if="cue === 28"
+      user="greg"
+      :image="placeholder"
+      :age="[ 10, 'minutes' ]"
+      :likes="222">
+      <!-- <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
+      <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟" />
+      <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg" />
+      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" /> -->
+    </InstagramPost>
+
 
     <!-- Google: 'Daniel' -->
     <GoogleSearch v-if="cue === 29"
@@ -334,11 +349,16 @@ watch(cue, val => {
     </GoogleResults>
 
     <!-- IG: Juniper -->
-    <InstagramAccount v-if="cue === 32" />
-    <!-- <InstagramBio v-if="cue === 32" /> -->
+    <InstagramAccount v-if="cue === 32"
+      user="juniper"
+    />
+    <!-- <InstagramBio v-if="cue === 32"
+      user="juniper"
+    /> -->
 
     <!-- IG: Juniper photo (cat ears? dress?) -->
     <InstagramPost v-if="cue === 33"
+      user="juniper"
       :image="catEarsImage"
       :age="[ 18, 'days' ]"
       :likes="72"
@@ -351,7 +371,9 @@ watch(cue, val => {
     </InstagramPost>
 
     <!-- IG: Juniper bio -->
-    <InstagramBio v-if="cue === 34" />
+    <InstagramBio v-if="cue === 34"
+      user="juniper"
+    />
 
     <!-- Livestream -->
     <Livestream v-if="cue === 35"
@@ -362,7 +384,7 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Google doc of links  -->
-    <CitationList />
+    <CitationList v-if="cue === 36" />
 
     <!-- picture of brains on screen -->
 
@@ -405,10 +427,12 @@ watch(cue, val => {
     <!-- ("Calm down Greg” “LOL triggered!”) -->
 
     <!-- Video: Debate (4) -->
-    <YouTubeVideo v-if="cue === 46" :video="videos.debate4" />
+    <YouTubeVideo v-if="cue === 46"
+      :video="videos.debate4" />
 
     <!-- Video: Debate (5) -->
-    <YouTubeVideo v-if="cue === 47" :video="videos.debate5" />
+    <YouTubeVideo v-if="cue === 47"
+      :video="videos.debate5" />
 
     <!-- Livestream -->
     <Livestream v-if="cue === 48"
@@ -429,6 +453,7 @@ watch(cue, val => {
 
     <!-- IG: Juniper photo (note) -->
     <InstagramPost v-if="cue === 50"
+      user="juniper"
       :image="notesImage"
       :age="[ 10, 'minutes' ]"
       :likes="222">
@@ -466,24 +491,26 @@ watch(cue, val => {
 
     <!-- IG: Greg photo (housemate) -->
     <InstagramPost v-if="cue === 55"
-      :image="notesImage"
+      user="greg"
+      :image="placeholder"
       :age="[ 10, 'minutes' ]"
       :likes="222">
-      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
+      <!-- <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
       <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟" />
       <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg" />
-      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" />
+      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" /> -->
     </InstagramPost>
 
     <!-- IG: Greg photo (parents) -->
     <InstagramPost v-if="cue === 56"
-      :image="notesImage"
+      user="greg"
+      :image="placeholder"
       :age="[ 10, 'minutes' ]"
       :likes="222">
-      <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
+      <!-- <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
       <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟" />
       <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg" />
-      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" />
+      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" /> -->
     </InstagramPost>
 
     <!-- Livestream -->
@@ -502,8 +529,30 @@ watch(cue, val => {
     <GoogleResults v-if="cue === 59"
       term="trans conversion therapy">
       <div class="flex flex-col gap-12">
-        <GoogleResult />
-        <GoogleResult />
+        <GoogleResult
+          :image="tpusa"
+          site="tpusafaith.com"
+          url="https://tpusafaith.com"
+          title="America Needs A Strong Church"
+          content="TPUSA Faith is dedicated to empowering Christians to put their faith into action. We engage, equip, and empower millions of grateful Americans." />
+        <GoogleResult
+          :image="restoredhope"
+          site="Restored Hope Network"
+          url="https://www.restoredhopenetwork.org › Transgender Resources"
+          title="Transgender Resources"
+          content="A one-page document with links that shares essential facts related to transgender medicine, what has been called gender affirming care by US Medical groups." />
+        <GoogleResult
+          :image="liberty"
+          site="Liberty University"
+          url="https://www.liberty.edu › about"
+          title="Liberty University: A Christian University in Virginia and Online"
+          content="Liberty University is an accredited evangelical liberal arts institution with 15 colleges and schools, including a law school, medical school, and school of ..." />
+        <GoogleResult
+          :image="billygraham"
+          site="Billy Graham Evangelistic Association"
+          url="https://billygraham.org"
+          title="Billy Graham Evangelistic Association"
+          content="BGEA, founded by Billy Graham, is a Christian non-profit dedicated to sharing the Gospel of Jesus Christ and empowering others to do the same." />
       </div>
     </GoogleResults>
 
@@ -520,9 +569,14 @@ watch(cue, val => {
       term="cats the musical" />
 
     <!-- 2019 cats film page -->
+    <GoogleResults v-if="cue === 62"
+      term="cats the musical">
+      <CatsMovie />
+    </GoogleResults>
 
     <!-- Video: Jellical cats ball -->
-    <YouTubeVideo v-if="cue === 63" :video="videos.cats" />
+    <YouTubeVideo v-if="cue === 63"
+      :video="videos.cats" />
 
     <!-- Livestream -->
     <Livestream v-if="cue === 64"
@@ -533,10 +587,14 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- IG: Greg  -->
-    <InstagramAccount v-if="cue === 65" />
+    <InstagramAccount v-if="cue === 65"
+      user="greg"
+    />
 
     <!-- IG: EvYves  -->
-    <InstagramAccount v-if="cue === 66" />
+    <InstagramAccount v-if="cue === 66"
+      user="evyves"
+    />
 
     <!-- Livestream -->
     <Livestream v-if="cue === 67"
