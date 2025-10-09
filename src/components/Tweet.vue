@@ -37,6 +37,9 @@ const props = defineProps({
     <div>
       {{ tweet.content }}
     </div>
+    <div v-if="tweet.image">
+      <img :src="tweet.image" class="rounded-lg mt-6"/>
+    </div>
     <!-- Meta -->
     <div class="text-gray-500 mt-8">
       {{ tweet.time }} · {{ tweet.date }} · <span class="text-white font-medium">{{ tweet.views }}</span> Views
