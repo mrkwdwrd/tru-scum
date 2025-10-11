@@ -9,7 +9,7 @@ import InstagramComments from '@/scenes/InstagramComments.vue'
 import InstagramBio from '@/scenes/InstagramBio.vue'
 import Scene from '@/components/Scene.vue'
 import { onMounted, ref, watch } from 'vue'
-import notesImage from '@/assets/images/IMG_12C199CFA5F9-1.jpg'
+import notesImage from '@/assets/images/notes.png'
 import catEarsImage from '@/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png'
 import Credits from '@/scenes/Credits.vue'
 import TwitterStatus from '@/scenes/TwitterStatus.vue'
@@ -29,10 +29,12 @@ import VideoZoomIn from '@/scenes/VideoZoomIn.vue'
 import CitationList from '@/scenes/CitationList.vue'
 import CatsMovie from '@/components/CatsMovie.vue'
 import placeholder from '@/assets/images/placeholder.png'
+import gregBaby from '@/assets/images/greg-baby.jpg'
 import tpusa from '@/assets/images/tpusa.png'
 import restoredhope from '@/assets/images/restoredhope.png'
 import billygraham from '@/assets/images/billygraham.png'
 import liberty from '@/assets/images/liberty.png'
+import brain from '@/assets/images/brain.png'
 
 import {
   section1,
@@ -79,7 +81,7 @@ let viewerInterval
 
 const keyListener = (e) => {
   if (e.code === 'Space') {
-    cue.value = cue.value ? Math.min(cue.value + 1, 70) : 1
+    cue.value = cue.value ? Math.min(cue.value + 1, 69) : 1
   }
   if (e.code === 'Backspace') {
     cue.value = cue.value > 1 ? cue.value - 1 : null
@@ -179,7 +181,7 @@ watch(cue, val => {
 </script>
 
 <template>
-  <main class="">
+  <main class="!cursor-none">
     <button v-if="!fullScreen"
       @click="enterFullScreen"
       class="absolute text-white top-0 right-0 left-0 bottom-0 cursor-pointer">
@@ -192,6 +194,14 @@ watch(cue, val => {
     <!-- Black  -->
 
     <!-- Video: Trailer -->
+    <Scene v-if="cue === 2"
+      class="bg-black max-w-[1980px] mx-auto">
+      <div class="aspect-video overflow-hidden">
+        <video class="h-full w-full" autoplay>
+          <source src="/src/assets/videos/montage.mp4" type="video/mp4">
+        </video>
+      </div>
+    </Scene>
 
     <!-- Livestream -->
     <Livestream v-if="cue === 3"
@@ -202,23 +212,31 @@ watch(cue, val => {
       @mount="startTime"
       @comments="val => handleComments(val)" />
 
+    <!-- Livestream - TRIGGERED COMMENTS -->
+    <Livestream v-if="cue === 4"
+      :viewers="viewers"
+      :time="time"
+      :comments="section2"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
     <!-- Google: “real women only vs logic trap”  -->
-    <GoogleSearch v-if="cue === 4"
+    <GoogleSearch v-if="cue === 5"
       term="real women only vs logic trap" />
 
     <!-- Tweet: Amelia -->
-    <TwitterStatus v-if="cue === 5"
+    <TwitterStatus v-if="cue === 6"
       :tweet="tweet.amelia" />
 
     <!-- Tweetstorm: Amelia (1) -->
-    <TweetStorm v-if="cue === 6"
+    <TweetStorm v-if="cue === 7"
       :tweets="tweetStorm.amelia" />
 
     <!-- Podcast Tile -->
-    <PodcastTile v-if="cue === 7" />
+    <PodcastTile v-if="cue === 8" />
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 8"
+    <Livestream v-if="cue === 9"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -226,25 +244,17 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Amazon search -->
-    <AmazonSearch v-if="cue === 9"
-      term="amelia collins real women only" />
+    <AmazonSearch v-if="cue === 10"
+      term="amelia collins womb-an" />
 
     <!-- Amazon book -->
-    <AmazonBook v-if="cue === 10" />
+    <AmazonBook v-if="cue === 11" />
 
     <!-- Tweetstorm: Amelia (2) -->
-    <TweetStorm v-if="cue === 11"
+    <TweetStorm v-if="cue === 12"
       :tweets="tweetStorm.amelia" />
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 12"
-      :viewers="viewers"
-      :time="time"
-      :comments="section3"
-      :existingComments="comments"
-      @comments="val => handleComments(val)" />
-
-    <!-- Livestream (TERF comments) -->
     <Livestream v-if="cue === 13"
       :viewers="viewers"
       :time="time"
@@ -252,32 +262,44 @@ watch(cue, val => {
       :existingComments="comments"
       @comments="val => handleComments(val)" />
 
+    <!-- Livestream (TERF comments) -->
+    <Livestream v-if="cue === 14"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      @comments="val => handleComments(val)" />
+
     <!-- Tweet: JK -->
-    <TwitterStatus v-if="cue === 14"
+    <TwitterStatus v-if="cue === 15"
       :tweet="tweet.jk" />
 
     <!-- Tweetstorm: JK -->
-    <TweetStorm v-if="cue === 15"
+    <TweetStorm v-if="cue === 16"
       :tweets="tweetStorm.jk" />
 
     <!-- Tweetstorm: Greg & Amelia -->
-    <TweetStorm v-if="cue === 16"
+    <TweetStorm v-if="cue === 17"
       :tweets="tweetStorm.ameliaVsGreg" />
 
     <!-- Video: Debate (intro) -->
-    <YouTubeVideo v-if="cue === 17" :video="videos.debateIntro" />
+    <YouTubeVideo v-if="cue === 18"
+      :video="videos.debateIntro" />
 
     <!-- Video: Debate (1) -->
-    <YouTubeVideo v-if="cue === 18" :video="videos.debate1" />
+    <YouTubeVideo v-if="cue === 19"
+      :video="videos.debate1" />
 
     <!-- Video: Debate (2) -->
-    <YouTubeVideo v-if="cue === 19" :video="videos.debate2" />
+    <YouTubeVideo v-if="cue === 20"
+      :video="videos.debate2" />
 
     <!-- Video: Debate (still/zoom) -->
-    <VideoZoomIn v-if="cue === 20" :video="videos.debateStill" />
+    <VideoZoomIn v-if="cue === 21"
+      :video="videos.debateStill" />
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 21"
+    <Livestream v-if="cue === 22"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -285,13 +307,14 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Venn Diagram -->
-    <VennDiagram v-if="cue === 22" />
+    <VennDiagram v-if="cue === 23" />
 
     <!-- Video: Pink Floyd -->
-    <YouTubeVideo v-if="cue === 23" :video="videos.pinkFloyd" />
+    <YouTubeVideo v-if="cue === 24"
+      :video="videos.pinkFloyd" />
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 24"
+    <Livestream v-if="cue === 25"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -299,16 +322,16 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Google: “dsm criteria”  -->
-    <GoogleSearch v-if="cue === 25"
+    <GoogleSearch v-if="cue === 26"
       term="gender dysphoria dsm-5 criteria" />
 
-    <DsmCriteria v-if="cue === 26" />
+    <DsmCriteria v-if="cue === 27" />
 
     <!-- Black ? -->
-    <Scene v-if="cue === 27" />
+    <Scene v-if="cue === 28" />
 
     <!-- IG: Greg photo (housemate) -->
-    <InstagramPost v-if="cue === 28"
+    <InstagramPost v-if="cue === 29"
       user="greg"
       :image="placeholder"
       :age="[ 10, 'minutes' ]"
@@ -321,7 +344,7 @@ watch(cue, val => {
 
 
     <!-- Google: 'Daniel' -->
-    <GoogleSearch v-if="cue === 29"
+    <GoogleSearch v-if="cue === 30"
       term="daniel"
       :suggestions="[
         'Daniel Radcliffe',
@@ -332,7 +355,7 @@ watch(cue, val => {
     <!-- (Daniel Radcliffe, Daniel Radcliffe Harry Potter, how tall is Daniel Radcliffe, Daniel Radcliffe Equis naked) -->
 
     <!-- Google: 'Actors name Daniel' -->
-    <GoogleSearch v-if="cue === 30"
+    <GoogleSearch v-if="cue === 31"
       term="actors named daniel"
       :suggestions="[
         'Daniel Day-Lewis',
@@ -343,18 +366,10 @@ watch(cue, val => {
       ]"
       />
     <!-- Daniel day Lewis - click on name - show search page of him / his face  -->
-    <GoogleResults v-if="cue === 31"
+    <GoogleResults v-if="cue === 32"
       term="Daniel Day-Lewis">
       <DanielDayLewis />
     </GoogleResults>
-
-    <!-- IG: Juniper -->
-    <InstagramAccount v-if="cue === 32"
-      user="juniper"
-    />
-    <!-- <InstagramBio v-if="cue === 32"
-      user="juniper"
-    /> -->
 
     <!-- IG: Juniper photo (cat ears? dress?) -->
     <InstagramPost v-if="cue === 33"
@@ -367,7 +382,7 @@ watch(cue, val => {
       <IgComment user="KawaiiKingX🌸🐾" image="KawaiiKingX" :age="`${18} days`" :likes="2" :replies="0" :stories="false" comment="Beautiful!!! ♥️" />
       <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${18} days`" :likes="1" :replies="0" :stories="true" comment="Yasssssssssssssssss" />
       <IgComment user="NekoVibes" image="NekoVibes" :age="`${18} days`" :likes="1" :stories="true" comment="Trans rights are catboi rights!!!" />
-      <IgComment user="Meowster🐾💙" image="Meowster" :age="`${18} days`" :likes="1" :stories="false" comment="I’m getting into it too! You look gorgeous! 😊♥️" />
+      <!-- <IgComment user="Meowster🐾💙" image="Meowster" :age="`${18} days`" :likes="1" :stories="false" comment="I’m getting into it too! You look gorgeous! 😊♥️" /> -->
     </InstagramPost>
 
     <!-- IG: Juniper bio -->
@@ -387,9 +402,20 @@ watch(cue, val => {
     <CitationList v-if="cue === 36" />
 
     <!-- picture of brains on screen -->
+    <Scene v-if="cue === 37"
+      class="bg-black max-w-[1980px] mx-auto">
+      <div class="flex h-full relative">
+        <main class="w-full flex items-center ">
+          <div class="w-full max-w-screen-lg mx-auto flex flex-col justify-center" >
+            <img :src="brain" />
+          </div>
+        </main>
+      </div>
+    </Scene>
 
     <!-- Video: Debate (3) -->
-    <YouTubeVideo v-if="cue === 38" :video="videos.debate3" />
+    <YouTubeVideo v-if="cue === 38"
+    :video="videos.debate3" />
 
     <!-- Black -->
     <Scene v-if="cue === 39" />
@@ -460,12 +486,19 @@ watch(cue, val => {
       <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
       <IgComment user="TheyShineBright 🌈🌈🌈" image="TheyShineBright" :age="`${9} minutes`" :likes="2" :replies="1" :stories="true" comment="Oh my god I can’t believe it please let him be safe!!! Take care of yourself 💟" />
       <IgComment user="NekoVibes" image="NekoVibes" :age="`${8} minutes`" :likes="18" :replies="6" :stories="true" comment="Greg needs to delete his channel. I wouldn’t even believe it if he apologised at this point. He’s an absolute cancer to our community. More people need to see what happens when unhinged narcissistic trolls like him get a platform. They’re the ones who ACTUALLY make us look bad. Take a long hard look at yourself and log off. #ByeGreg" />
-      <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" />
+      <!-- <IgComment user="ChillWithWill" image="ChillWithWill" :likes="4" :replies="2" :stories="false" comment="im crying…juni’s such a beacon of hope and positivity for me as a closeted enby i can’t even imagine…i hope he’s safe and i love you robin pls take care of yourself 🥺" /> -->
     </InstagramPost>
 
-    <!-- <InstagramComments v-if="cue === 51" /> -->
-
     <!-- Livestream -->
+    <Livestream v-if="cue === 51"
+      :viewers="viewers"
+      :time="time"
+      :comments="section3"
+      :existingComments="comments"
+      :hideComments="true"
+      @comments="val => handleComments(val)" />
+
+    <!-- Livestream: EvYves comment -->
     <Livestream v-if="cue === 52"
       :viewers="viewers"
       :time="time"
@@ -473,24 +506,8 @@ watch(cue, val => {
       :existingComments="comments"
       @comments="val => handleComments(val)" />
 
-    <!-- Livestream: EvYves comment -->
-    <Livestream v-if="cue === 53"
-      :viewers="viewers"
-      :time="time"
-      :comments="section3"
-      :existingComments="comments"
-      @comments="val => handleComments(val)" />
-
-    <!-- Livestream -->
-    <Livestream v-if="cue === 54"
-      :viewers="viewers"
-      :time="time"
-      :comments="section3"
-      :existingComments="comments"
-      @comments="val => handleComments(val)" />
-
     <!-- IG: Greg photo (housemate) -->
-    <InstagramPost v-if="cue === 55"
+    <InstagramPost v-if="cue === 53"
       user="greg"
       :image="placeholder"
       :age="[ 10, 'minutes' ]"
@@ -502,9 +519,9 @@ watch(cue, val => {
     </InstagramPost>
 
     <!-- IG: Greg photo (parents) -->
-    <InstagramPost v-if="cue === 56"
+    <InstagramPost v-if="cue === 54"
       user="greg"
-      :image="placeholder"
+      :image="gregBaby"
       :age="[ 10, 'minutes' ]"
       :likes="222">
       <!-- <IgComment user="EnbyGlow✨" image="EnbyGlow" :age="`${10} minutes`" :likes="2" :stories="true" comment="I cannot imagine what you must be going through right now, Robin. Sending love, hugs, prayers…everything. 🫂♥️" />
@@ -514,7 +531,7 @@ watch(cue, val => {
     </InstagramPost>
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 57"
+    <Livestream v-if="cue === 55"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -522,11 +539,11 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Google: 'trans conversation therapy' -->
-    <GoogleSearch v-if="cue === 58"
-      term="trans conversion therapy" />
+    <GoogleSearch v-if="cue === 56"
+      term="trans conversion therapy that works" />
 
     <!-- Google: Results - churches in America -->
-    <GoogleResults v-if="cue === 59"
+    <GoogleResults v-if="cue === 57"
       term="trans conversion therapy">
       <div class="flex flex-col gap-12">
         <GoogleResult
@@ -557,7 +574,7 @@ watch(cue, val => {
     </GoogleResults>
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 60"
+    <Livestream v-if="cue === 58"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -565,39 +582,42 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
 
     <!-- Google: 'cats the musical' -->
-    <GoogleSearch v-if="cue === 61"
+    <GoogleSearch v-if="cue === 59"
       term="cats the musical" />
 
     <!-- 2019 cats film page -->
-    <GoogleResults v-if="cue === 62"
-      term="cats the musical">
-      <CatsMovie />
-    </GoogleResults>
+    <YouTubeVideo v-if="cue === 60"
+      :video="videos.catsMovie" />
+
+    <!-- Google: 'cats the musical original' -->
+    <GoogleSearch v-if="cue === 61"
+      term="cats the musical original" />
 
     <!-- Video: Jellical cats ball -->
-    <YouTubeVideo v-if="cue === 63"
+    <YouTubeVideo v-if="cue === 62"
       :video="videos.cats" />
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 64"
+    <Livestream v-if="cue === 63"
       :viewers="viewers"
       :time="time"
       :comments="section3"
       :existingComments="comments"
+      :hideComments="true"
       @comments="val => handleComments(val)" />
 
     <!-- IG: Greg  -->
-    <InstagramAccount v-if="cue === 65"
+    <InstagramAccount v-if="cue === 64"
       user="greg"
     />
 
     <!-- IG: EvYves  -->
-    <InstagramAccount v-if="cue === 66"
+    <InstagramAccount v-if="cue === 65"
       user="evyves"
     />
 
     <!-- Livestream -->
-    <Livestream v-if="cue === 67"
+    <Livestream v-if="cue === 66"
       :viewers="viewers"
       :time="time"
       :comments="section3"
@@ -605,19 +625,17 @@ watch(cue, val => {
       @comments="val => handleComments(val)" />
     <!-- Comments then triggered saying Evyves has left the live -->
 
-    <!-- Livestream -->
-
     <!-- Livestream: Ended (?) -->
-    <LivestreamOff v-if="cue === 68"
+    <LivestreamOff v-if="cue === 67"
       :viewers="viewers"
       :time="time"
       @mount="stopTime" />
 
     <!-- Black -->
-    <Scene v-if="cue === 69" />
+    <Scene v-if="cue === 68" />
 
     <!-- Credits -->
-    <Credits v-if="cue === 70" />
+    <Credits v-if="cue === 69" />
 
     <Grid v-if="showGrid" />
     <div v-if="showCue" class="absolute text-black top-0 right-0 left-0 p-2 text-center bg-neutral-200 font-extrabold">Cue {{ cue }}</div>

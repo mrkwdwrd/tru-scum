@@ -38,8 +38,11 @@
       </div>
       <!-- Grid -->
       <div class="flex w-full max-w-screen-lg mx-auto flex-wrap">
-        <div v-for="image in user.images" class="w-1/3 aspect-square p-[0.075rem]">
+        <div v-if="user.images" v-for="image in user.images" class="w-1/3 aspect-square p-[0.075rem]">
           <img :src="image" class="w-full h-full"/>
+        </div>
+        <div v-else class="w-full text-center p-12 text-zinc-500">
+          This account is private
         </div>
       </div>
     </main>

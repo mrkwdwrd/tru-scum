@@ -28,3 +28,5 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+src/assets/videos/cats-movie.mp4
+src/assets/videos/pimple.mp4

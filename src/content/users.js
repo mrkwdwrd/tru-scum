@@ -9,9 +9,9 @@ export const twitter = {
   greg: {
     name: 'The Logic Trap',
     verified: true,
-    handle: '@logictrappod',
+    handle: '@thelogictrapper',
     bio: '',
-    avatar: '/src/assets/users/twitter/LogicTrap_logo.jpg'
+    avatar: '/src/assets/users/twitter/greg.jpg'
   },
   jk: {
     name: 'J.K. Rowling',
@@ -25,14 +25,14 @@ export const twitter = {
 export const instagram = {
   juniper: {
     name: 'Juniper',
-    handle: 'Juniper_in_bloom',
+    handle: 'its_me_juniper',
     bio: '16 ♑️ ftm non-binary transmasc (he/they)<br />silly lil internet boi',
     posts: 949,
     followers: 311,
     following: 410,
     pronouns: 'He/They',
     link: 'http://tiktok.com/@juniper.blum148',
-    avatar: 'src/assets/images/openart-image_GjENJ-VC_1731748862428_raw.png',
+    avatar: '/src/assets/users/ig/juniper.jpg',
     images: [
       'src/assets/images/openart-image_jwDWGUjj_1731311309198_raw.png',
       'src/assets/images/openart-image_8rlC-yOP_1731742127760_raw.jpg',
@@ -41,18 +41,15 @@ export const instagram = {
   },
   greg: {
     name: 'Greg',
-    handle: 'greg',
-    bio: '',
-    posts: 1827,
-    followers: 311,
-    following: 410,
+    handle: 'greg_arious',
+    bio: 'Keeper of both facts and logic<br />Streaming every Thursday',
+    posts: 84,
+    followers: 5789,
+    following: 2319,
     pronouns: 'He/Him',
-    link: null,
-    avatar: 'src/assets/images/placeholder.png',
+    link: 'youtube.com/@LogicTrap',
+    avatar: '/src/assets/users/ig/greg.jpg',
     images: [
-      'src/assets/images/placeholder.png',
-      'src/assets/images/placeholder.png',
-      'src/assets/images/placeholder.png',
       'src/assets/images/placeholder.png',
       'src/assets/images/placeholder.png',
       'src/assets/images/placeholder.png',
@@ -60,21 +57,14 @@ export const instagram = {
   },
   evyves: {
     name: 'EvYves',
-    handle: 'evyves',
-    bio: '',
-    posts: 949,
-    followers: 311,
-    following: 410,
-    pronouns: '',
+    handle: 'everyday_evyves',
+    bio: 'Queer AF<br />Soundtracking my life 🎵🎶',
+    posts: 16,
+    followers: 312,
+    following: 587,
+    pronouns: 'They/Them',
     link: null,
-    avatar: 'src/assets/images/placeholder.png',
-    images: [
-      'src/assets/images/placeholder.png',
-      'src/assets/images/placeholder.png',
-      'src/assets/images/placeholder.png',
-      'src/assets/images/placeholder.png',
-      'src/assets/images/placeholder.png',
-      'src/assets/images/placeholder.png',
-    ]
+    avatar: 'src/assets/users/ig/evyves.jpg',
+    images: null
   }
 }

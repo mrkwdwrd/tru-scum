@@ -14,7 +14,8 @@
     existingComments: Array,
     comments: Array,
     viewers: Number,
-    time: Number
+    time: Number,
+    hideComments: Boolean
   })
 
   const emits = defineEmits(['count', 'mount', 'comments'])
@@ -38,7 +39,7 @@
           <Caption :viewers="viewers" />
         </StaticStream>
       </div>
-      <div class="h-3/4 w-1/3 flex items-center justify-center pl-36 relative overflow-hidden">
+      <div v-if="!hideComments" class="h-3/4 w-1/3 flex items-center justify-center pl-36 relative overflow-hidden">
         <Comments :existingComments="existingComments" :comments="comments" :time="time" @comments="val => emits('comments', val)"/>
         <div class="absolute top-0 left-36 right-0 h-1/3 bg-gradient-to-t from-transparent to-black" />
       </div>

@@ -22,7 +22,7 @@
     addTweets(props.tweets.map((tweet, index) => {
       return {
         ...tweet,
-        delay: index < 1 ? 800 : parseInt(index > 6 ? Math.random() * 1000 : Math.random() * 500),
+        delay: index < 1 ? 800 : parseInt(index > 6 ? Math.random() * 1200 : Math.random() * 800),
         position: index < 1 ? {
           x: 0, y: 0
         } : {

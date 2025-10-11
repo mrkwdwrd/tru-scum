@@ -35,7 +35,7 @@
     <div class="flex h-full w-3/4 mx-auto items-center">
       <div class="w-full p-5 flex items-center flex-col">
         <Video
-          :style="`transform: scale(${scale}); transform-origin: 190px 360px;`"
+          :style="`transform: scale(${scale}); transform-origin: 240px 420px;`"
           :id="uuid"
           :footer="true"
           :source="video?.source"

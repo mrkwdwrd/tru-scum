@@ -1,8 +1,8 @@
 <script setup>
   import Scene from '@/components/Scene.vue'
-  import cover from '@/assets/images/cover.jpg'
+  import cover from '@/assets/images/book-cover.png'
   import { StarIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
-  import profile from '@/assets/profile-images/0088.jpg'
+  import profile from '@/assets/images/ameliacollins.png'
 </script>
 
 <template>
@@ -16,10 +16,10 @@
           <div class="w-2/3 px-5">
             <div class="border-zinc-300 border-b pb-4">
               <div class=" text-black text-xl font-bold pr-28 pb-4">
-                The Quiet Damage: QAnon and the Destruction of the American Family <span class="text-lg text-zinc-500 font-semibold">Paperback – 26 August 2025</span>
+                Natal, Natural Womb-an. How to stand up when modern day feminism is under attack. <br /><span class="text-lg text-zinc-500 font-semibold">Paperback – 26 August 2025</span>
               </div>
               <div class="text-sm font-semibold mb-1">
-                by <span class="text-blue-500">Jesselyn Cook</span> <span class="text-zinc-500">(Author)</span>
+                by <span class="text-blue-500">Amelia Collins</span> <span class="text-zinc-500">(Author)</span>
               </div>
               <div class="flex w-full text-sm font-semibold items-center gap-2">
                 4.5
@@ -37,7 +37,7 @@
               </div>
             </div>
             <div class="font-bold pt-4">
-              "The book shines. . . By delving into the ways people become susceptible to QAnon, Cook uncovers a deeper truth- Many of us go through life with a gaping hole caused by trauma, isolation or shame, and we find healthy and unhealthy ways to fill it."-The New York Times
+              "The book shines. . . By delving into the ways people become susceptible to QAnon, Cook uncovers a deeper truth- Many of us go through life with a gaping hole caused by trauma, isolation or shame, and we find healthy and unhealthy ways to fill it." - The New York Times
             </div>
             <div class="font-normal pt-2">
               "SHED MY DNA"- three excruciating words uttered by a QAnon-obsessed mother, once a highly respected lawyer, to her only son, once the closest person in her life. QAnon beliefs and adjacent conspiracy theories have had devastating political consequences as they've exploded in popularity. What's often overlooked is the lasting havoc they wreak on our society at its most basic and intimate level-the family.
@@ -48,7 +48,7 @@
             </div>
             <div class="flex items-center gap-4 mt-2">
               <img :src="profile" class="rounded-full h-14"/>
-              <span class="text-blue-500 font-semibold">Jesselyn Cook</span>
+              <span class="text-blue-500 font-semibold">Amelia Collins</span>
               <span class="border-zinc-400 border rounded-full px-8 py-1 font-semibold text-sm">Follow</span>
             </div>
           </div>

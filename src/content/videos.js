@@ -3,7 +3,7 @@ export const videos = {
     title: 'Debate: Real Women Only vs The Logic Trap',
     user: 'Guilherme Alves',
     likes: '217k',
-    source: '/src/assets/videos/debate.mp4',
+    source: '/src/assets/videos/jingle.mp4',
     start: 0,
     playAt: 0,
     stopAt: 0,
@@ -74,7 +74,7 @@ export const videos = {
     user: 'Guilherme Alves',
     likes: '217k',
     source: '/src/assets/videos/pinkfloyd.mp4',
-    start: 0,
+    start: 180,
     playAt: 245,
     stopAt: 260,
     scrubSpeed: 10
@@ -83,10 +83,20 @@ export const videos = {
     title: 'Pimple Popping - Best of',
     user: 'Guilherme Alves',
     likes: '217k',
-    source: '',
+    source: '/src/assets/videos/pimple.mp4',
     start: 0,
-    playAt: 245,
-    stopAt: 260,
+    playAt: 0,
+    stopAt: 150,
+    scrubSpeed: 5
+  },
+  catsMovie: {
+    title: 'Cats | Skimbleshanks the Railway Cat in 4K HDR',
+    user: 'Andrew Lloyd Webber Musicals',
+    likes: '5.8k',
+    source: '/src/assets/videos/cats-movie.mp4',
+    start: 0,
+    playAt: 5,
+    stopAt: 18,
     scrubSpeed: 5
   },
   cats: {
