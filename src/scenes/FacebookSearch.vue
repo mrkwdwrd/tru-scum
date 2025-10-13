@@ -1,7 +1,6 @@
 <script setup>
   import { onMounted, ref } from 'vue'
   import Scene from '@/components/Scene.vue'
-  import logo from '@/assets/images/amazon-logo.png'
   const props = defineProps({
     term: {
       type: String,
@@ -25,7 +24,7 @@
     setTimeout(() => {
       field.value?.focus()
       simulateTyping(props.term.split(''))
-    }, 1200)
+    }, 500)
   })
 </script>
 

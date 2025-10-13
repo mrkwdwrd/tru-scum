@@ -90,7 +90,7 @@ onBeforeUnmount(() => {
       <div ref="timeline" class="bg-white h-1 w-full rounded-full absolute"></div>
       <div ref="current" class="bg-red-500 h-1 rounded-full absolute w-0"></div>
     </div>
-    <div class="w-full px-5 flex justify-between -mt-12 h-12 z-10 bottom-0 text-white">
+    <div class="w-full px-5 flex justify-between -mt-12 h-12 z-10 bottom-0 text-white bg-black/10">
       <span class="w-1/2 flex flex-row items-center">
         <span id="tools-left" class="block bg-white h-12 w-24"></span>
         <span class="inline-block"></span>

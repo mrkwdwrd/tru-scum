@@ -14,7 +14,7 @@
     <div class="w-full">
       <div class="flex gap-3 items-center">
         <!-- Icon -->
-        <div v-if-"image" class="w-8 h-8 rounded-full bg-white">
+        <div v-if="image" class="w-8 h-8 rounded-full bg-white">
           <span class="block overflow-hidden rounded-full border-black ">
             <img :src="image" class="h-full w-full"/>
           </span>

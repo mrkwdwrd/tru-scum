@@ -14,18 +14,18 @@ setTimeout(() => {
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto flex items-center content-center w-full">
-      <div id="credits" :class="['text-center text-white w-full flex flex-col gap-1 max-w-3xl mx-auto scale-150', { 'fade-in': fade }]">
-        <h1 class="uppercase text-5xl font-black">TruScum</h1>
+      <div id="credits" :class="['text-left text-white w-full flex flex-col gap-1 max-w-3xl mx-auto', { 'fade-in': fade }]">
+        <h1 class="uppercase text-6xl font-black">TruScum</h1>
         <h2 class="uppercase font-medium mt-4">Written By</h2>
-        <p class="uppercase font-medium text-3xl">Oscar Bray</p>
+        <p class="uppercase font-medium text-4xl">Oscar Bray</p>
         <h2 class="uppercase font-medium mt-4">Performer/producer</h2>
-        <p class="uppercase font-medium text-3xl">Frankie Thorne</p>
+        <p class="uppercase font-medium text-4xl">Frankie Thorne</p>
         <h2 class="uppercase font-medium mt-4">Director</h2>
-        <p class="uppercase font-medium text-3xl">Gabrielle Ward</p>
+        <p class="uppercase font-medium text-4xl">Gabrielle Ward</p>
         <h2 class="uppercase font-medium mt-4">Tech & Tech Design</h2>
-        <p class="uppercase font-medium text-3xl">Mark Woodward</p>
+        <p class="uppercase font-medium text-4xl">Mark Woodward</p>
         <h2 class="uppercase font-medium mt-4">Special thanks to</h2>
-        <p class="uppercase font-medium text-2xl">Anna Piper Scott, Anthony Kuiper, Blake Barnard, Chris Tomkins, George Jefford, James Hazelden, Julian Colman, Mads Lou and Sunny Mallard</p>
+        <p class="uppercase font-medium text-3xl">Anna Piper Scott, Bridget Morrison, <br />George Jefford, Abbey Hansen, <br />Ryan Hamilton, Keith Brockett</p>
       </div>
   </Scene>
 </template>

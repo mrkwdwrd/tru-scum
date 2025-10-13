@@ -2,12 +2,18 @@
 import Comment from '@/components/Comment.vue'
 import usernames from '@/content/usernames'
 import { ref, onBeforeUnmount, onMounted } from 'vue'
+import { chat } from '@/content/users.js'
+
 const props = defineProps({
   existingComments: {
     type: Array,
     default: []
   },
   comments: Array,
+  injectComments: {
+    type: Array,
+    default: null
+  },
   time: Number
 })
 
@@ -35,7 +41,7 @@ const findImage = () => {
   if (images.value.length > 80) {
     images.value.shift()
   }
-  return Math.floor(int).toString().padStart(4, 0)
+  return `/assets/profile-images/${Math.floor(int).toString().padStart(4, 0)}.jpg`
 }
 
 const showComments = (array) => {
@@ -60,8 +66,31 @@ const showComments = (array) => {
   }
 }
 
+const injectComments = (array) => {
+  return new Promise(function (resolve) {
+    array.forEach(function (comment) {
+      comments.value.push({
+        image: comment.user ? chat[comment.user].avatar : findImage(),
+        user: comment.user ? chat[comment.user].name : usernames[parseInt(Math.random() * (1099 - 1) + 1)],
+        text: comment.text,
+        delay: parseInt(Math.random() * 900)
+      })
+    })
+    return resolve()
+  })
+}
+
 onMounted(() => {
-  showComments(props.comments)
+  if (props.injectComments) {
+    injectComments(props.injectComments).then(() => {
+      setTimeout(() => {
+        showComments(props.comments)
+      }, 2500)
+    })
+  } else {
+    showComments(props.comments)
+  }
+
 })
 </script>
 

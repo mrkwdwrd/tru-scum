@@ -1,6 +1,5 @@
 <script setup>
   import { HandThumbUpIcon, HandThumbDownIcon, ShareIcon, EllipsisHorizontalIcon } from '@heroicons/vue/24/solid'
-  import logo from '@/assets/images/LogicTrap_logo.png'
 
   const props = defineProps({
     video: Object
@@ -13,7 +12,7 @@
       <span class="font-bold text-2xl block">{{ video.title }}</span>
       <div class="flex items-center gap-3 my-3">
           <i class="block h-8 w-8 bg-gray-300 rounded-full overflow-hidden">
-            <img :src="logo"/>
+            <img :src="video.avatar"/>
           </i>
           <span class="block font-bold text-md text-white">{{ video.user }}</span>
       </div>

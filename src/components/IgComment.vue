@@ -1,6 +1,6 @@
 <script setup>
   import IgAvatar from '@/components/IgAvatar.vue'
-  import profileImage from '@/assets/images/openart-image_GjENJ-VC_1731748862428_raw.png'
+  import { instagram } from '@/content/users'
 
   const props = defineProps({
     caption: {
@@ -25,15 +25,14 @@
     image: String
   })
 
-  // const ageString = `${props.age[0]}${props.age[1][0]}`
 </script>
 
 <template>
   <div class="p-4 text-white flex justify-between text-sm flex-wrap">
     <span class="inline-flex gap-6 items-start w-full">
-      <IgAvatar :stories="stories" :image="caption ? profileImage : `/assets/profile-images/${image}.jpg`"/>
+      <IgAvatar :stories="stories" :image="caption ? instagram[user].avatar : `/assets/profile-images/${image}.jpg`"/>
       <span class="pt-1 font-medium w-full flex-grow">
-        <span class="font-black mr-2">{{ user }}</span>
+        <span class="font-black mr-2">{{ caption ? instagram[user].handle : user }}</span>
          {{ comment }}
         <div class="text-gray-300 flex mt-4 text-xs gap-3">
           <span>{{ age }}</span>

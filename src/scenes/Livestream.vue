@@ -13,6 +13,10 @@
     live: Boolean,
     existingComments: Array,
     comments: Array,
+    injectComments: {
+      type: Array,
+      default: null
+    },
     viewers: Number,
     time: Number,
     hideComments: Boolean
@@ -31,7 +35,7 @@
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="flex h-full items-center ">
       <div class="w-2/3 p-5 flex items-center flex-col"
-        style="transform: translate(100px, 140px)">
+        style="transform: translate(100px, 60px)">
         <Camera v-if="live" :id="uuid" :footer="true" :time="time">
           <Caption :viewers="viewers" />
         </Camera>
@@ -40,7 +44,7 @@
         </StaticStream>
       </div>
       <div v-if="!hideComments" class="h-3/4 w-1/3 flex items-center justify-center pl-36 relative overflow-hidden">
-        <Comments :existingComments="existingComments" :comments="comments" :time="time" @comments="val => emits('comments', val)"/>
+        <Comments :existingComments="existingComments" :injectComments="injectComments" :comments="comments" :time="time" @comments="val => emits('comments', val)"/>
         <div class="absolute top-0 left-36 right-0 h-1/3 bg-gradient-to-t from-transparent to-black" />
       </div>
     </div>

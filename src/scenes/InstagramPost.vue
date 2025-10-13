@@ -9,7 +9,8 @@
     caption: String,
     likes: Number,
     age: Array,
-    user: String
+    user: String,
+    own: Boolean
   })
 
   const ageString = `${props.age[0]} ${props.age[1]} ago`
@@ -22,20 +23,20 @@
     <!-- Image Container -->
       <div class="flex justify-center">
         <!-- Image -->
-        <img :src="image" class="w-[1200px] h-[1200px] max-h-[70vh] max-w-[70vh]"/>
+        <img :src="image" class="w-[1200px] h-[1200px] max-h-[80vh] max-w-[80vh]"/>
 
         <!-- Sidebar -->
         <div class="max-w-[500px] min-w-[405px] max-h-[80vh] flex flex-col bg-black justify-between">
           <!-- Account -->
           <div class="p-4 border-b border-gray-700 text-white flex justify-between leading-8 font-bold text-md">
             <span class="align-middle flex gap-6 items-center">
-              <IgAvatar :image="instagram[user].avatar"/>
+              <IgAvatar :image="instagram[user].avatar" :stories="instagram[user].stories"/>
                 <span class="inline-flex items-center">
                 <span class="font-black">{{ instagram[user].handle }}</span>
-                <svg aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="24">
+                <svg v-if="!own" aria-label="Save" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="16" role="img" viewBox="0 0 24 24" width="24">
                   <circle cx="12" cy="12" r="2.25"/>
                 </svg>
-                <span class="text-blue-500">Follow</span>
+                <span v-if="!own" class="text-blue-500">Follow</span>
               </span>
             </span>
 
@@ -50,7 +51,7 @@
 
           <!-- Comments -->
           <div class="overflow-hidden flex-grow w-full">
-            <IgComment v-if="caption" :caption="true" user="Juniper_in_bloom" :age="captionAgeString" :comment="caption" />
+            <IgComment v-if="caption" :caption="true" :user="user" :age="captionAgeString" :comment="caption" :stories="instagram[user].stories"/>
             <slot/>
           </div>
 

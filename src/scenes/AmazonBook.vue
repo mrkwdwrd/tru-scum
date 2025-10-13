@@ -1,6 +1,6 @@
 <script setup>
   import Scene from '@/components/Scene.vue'
-  import cover from '@/assets/images/book-cover.png'
+  import cover from '@/assets/images/book-cover.jpg'
   import { StarIcon, ChevronDownIcon } from '@heroicons/vue/24/solid'
   import profile from '@/assets/images/ameliacollins.png'
 </script>
@@ -37,20 +37,19 @@
               </div>
             </div>
             <div class="font-bold pt-4">
-              "The book shines. . . By delving into the ways people become susceptible to QAnon, Cook uncovers a deeper truth- Many of us go through life with a gaping hole caused by trauma, isolation or shame, and we find healthy and unhealthy ways to fill it." - The New York Times
+              The new left cannot define what a woman is. In the face of attacks from the far-right on the reproductive rights, labour protections and cultural standing of biological women, the response of too many activists has been to push for ‘gender fluidity’ and even more censorship of language and thought. How did we get here, and what can we do?
             </div>
             <div class="font-normal pt-2">
-              "SHED MY DNA"- three excruciating words uttered by a QAnon-obsessed mother, once a highly respected lawyer, to her only son, once the closest person in her life. QAnon beliefs and adjacent conspiracy theories have had devastating political consequences as they've exploded in popularity. What's often overlooked is the lasting havoc they wreak on our society at its most basic and intimate level-the family.
+              <em>Natal, Natural, Womb-an</em> offers answers from the fresh, erudite voice of Amelia Collins. An accomplished doctor of feminist philosophy, Collins’ first essay collection celebrates natural womanhood and femininity using past and present scholarship to pave the way for a brighter feminist future. Her writing is both compassionate to the victims of modern transgender ideology, and unafraid to stand up to those who seek to undermine natural womanhood. Gripping, provocative, and delightfully snarky at times, <em>Natal, Natural, Womb-an</em> is the playbook for a new wave of feminism defined by natural, proud women.
             </div>
-
-            <div class="font-extrabold pt-4">
+            <!-- <div class="font-extrabold pt-4">
               Follow the Author
             </div>
             <div class="flex items-center gap-4 mt-2">
               <img :src="profile" class="rounded-full h-14"/>
               <span class="text-blue-500 font-semibold">Amelia Collins</span>
               <span class="border-zinc-400 border rounded-full px-8 py-1 font-semibold text-sm">Follow</span>
-            </div>
+            </div> -->
           </div>
         </div>
       </main>

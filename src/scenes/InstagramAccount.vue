@@ -4,14 +4,15 @@
   import { instagram } from '@/content/users'
 
   const props = defineProps({
-    user: String
+    user: String,
+    own: Boolean
   })
 </script>
 
 <template>
   <Scene class="bg-black max-w-[1980px] mx-auto">
     <div class="h-screen flex justify-center items-center">
-      <IgUI :user="instagram[user]"/>
+      <IgUI :user="instagram[user]" :own="own"/>
     </div>
   </Scene>
 </template>

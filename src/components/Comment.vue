@@ -25,7 +25,7 @@ onMounted (() => {
     <div v-if="show" class="rounded-md p-5 w-full bg-neutral-900 relative top-0">
       <div class="flex gap-5 transition-opacity delay-100">
         <span class="block bg-gray-500 w-16 h-16 rounded-full flex-shrink-0 overflow-hidden">
-           <img :src="`/assets/profile-images/${image}.jpg`" />
+           <img :src="image" />
         </span>
         <div class="text-gray-300 font-medium flex-shrink text-lg">
           <p class="font-bold">{{ user }}</p>

@@ -1,7 +1,6 @@
 <script setup>
   import Scene from '@/components/Scene.vue'
   import IgBio from '@/components/IgBio.vue'
-  import profileImage from '@/assets/images/openart-image_GjENJ-VC_1731748862428_raw.png'
   import { instagram } from '@/content/users'
 
   const props = defineProps({

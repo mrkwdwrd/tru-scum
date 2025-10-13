@@ -25,7 +25,7 @@
     field.value?.focus()
     setTimeout(() => {
       simulateTyping(props.term.split(''))
-    }, 1200)
+    }, 800)
   })
 </script>
 

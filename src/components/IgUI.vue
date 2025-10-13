@@ -1,21 +1,22 @@
 <script setup>
-  import IgBio  from '@/components/IgBio.vue';
-  import profileImage from '@/assets/images/openart-image_GjENJ-VC_1731748862428_raw.png'
+  import IgBio  from '@/components/IgBio.vue'
+  import { LockClosedIcon } from '@heroicons/vue/24/solid'
 
   const props = defineProps({
     user: Object,
-    images: Array
+    images: Array,
+    own: Boolean
   })
 </script>
 
 <template>
   <div class="flex justify-center">
     <main class="w-full text-white">
-      <IgBio class="border-b" :image="profileImage" :user="user"/>
+      <IgBio class="border-b" :user="user" :own="own"/>
       <!--Sections -->
       <div class="flex w-full max-w-screen-lg px-10 mx-auto uppercase text-xs font-semibold">
         <div class="w-1/3"></div>
-        <div class="w-2/3 flex gap-10">
+        <div  class="w-2/3 flex gap-10">
           <span class="flex gap-2 items-center border-t border-white py-4">
             <svg fill="currentColor" height="12" role="img" viewBox="0 0 24 24" width="12">
               <rect fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="14.985" y2="14.985"></line>
@@ -41,7 +42,8 @@
         <div v-if="user.images" v-for="image in user.images" class="w-1/3 aspect-square p-[0.075rem]">
           <img :src="image" class="w-full h-full"/>
         </div>
-        <div v-else class="w-full text-center p-12 text-zinc-500">
+        <div v-else class="w-full flex items-center justify-center text-center p-12 text-zinc-500 gap-2">
+          <LockClosedIcon class="h-6"/>
           This account is private
         </div>
       </div>
