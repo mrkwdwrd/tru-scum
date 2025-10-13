@@ -42,7 +42,7 @@ export const instagram = {
     followers: 311,
     following: 410,
     pronouns: 'He/They',
-    link: 'http://tiktok.com/@juniper.blum148',
+    link: 'http://tiktok.com/@juniper.in.bloom148',
     avatar: '/src/assets/users/ig/juniper.jpg',
     images: []
   },
